@@ -1,0 +1,27 @@
+-- account
+-- money(decimal),  account_seq(decial), account_num, 
+-- account_type, create_date, limit
+CREATE TABLE account(
+	account_seq DECIMAL PRIMARY KEY,
+	account_num VARCHAR2(20),
+	account_type VARCHAR2(20),
+	create_date DATE,
+	money DECIMAL,
+	limit DECIMAL
+);
+DROP TABLE account;
+
+INSERT INTO account VALUES(
+	1, '123-456-789', '일반통장', SYSDATE, 0, 0
+);
+
+INSERT INTO account(
+ account_seq, account_num, account_type, create_date, money, limit
+) 
+VALUES(
+	2, '125-222-222', '일반통장', SYSDATE, 1000, 0
+);
+
+SELECT * FROM account;
+SELECT * FROM TAB;
+

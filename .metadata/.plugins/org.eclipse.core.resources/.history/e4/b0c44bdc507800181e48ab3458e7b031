@@ -1,0 +1,25 @@
+-- address
+-- addr_seq (DECIMAL, pk)
+-- zipcode
+-- province 경기도
+-- city 서울시, 안양시
+-- gugun 강남구, 가평군
+-- doro 백범로 15번길
+CREATE SEQUENCE account_seq START WITH 1000;
+CREATE TABLE address(
+	address_seq DECIMAL PRIMARY KEY,
+	zipcode s(20),
+	province VARCHAR2(20),
+	city VARCHAR2(20),
+	gugun VARCHAR2(20),
+	doro VARCHAR2(20)
+);
+INSERT INTO address(
+	address_seq, zipcode, province, city, gugun, doro
+)
+VALUES(
+	account_seq.nextval,'11111','','서울시','강남구','백범로 15번길'
+);
+
+DROP TABLE address;
+SELECT * FROM address;

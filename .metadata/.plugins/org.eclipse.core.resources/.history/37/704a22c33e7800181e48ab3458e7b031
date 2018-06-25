@@ -1,0 +1,8 @@
+-- account
+-- money(decimal),  account_seq(decial), account_num, 
+-- account_type, create_date, limit
+CREATE TABLE account(
+	
+);
+SELECT * FROM TAB;
+

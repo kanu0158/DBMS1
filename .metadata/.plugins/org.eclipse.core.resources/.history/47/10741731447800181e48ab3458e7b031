@@ -1,0 +1,14 @@
+-- account
+-- money(decimal),  account_seq(decial), account_num, 
+-- account_type, create_date, limit
+CREATE TABLE account(
+	account_num VARCHAR2(20) PRIMARY KEY,
+	account_type VARCHAR2(20),
+	create_date DATE,
+	money DECIMAL,
+	account_seq DECIMAL,
+	limit DECIMAL
+);
+DROP TABLE account;
+SELECT * FROM TAB;
+

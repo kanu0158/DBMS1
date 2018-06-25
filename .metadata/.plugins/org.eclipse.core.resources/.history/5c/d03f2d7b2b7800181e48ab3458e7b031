@@ -1,0 +1,16 @@
+package domain;
+
+public class StaffBean extends MemberBean {
+
+	
+	public String getAccessNum() {
+		return accessNum;
+	}
+
+
+	public void setAccessNum(String accessNum) {
+		this.accessNum = accessNum;
+	}
+
+
+}
