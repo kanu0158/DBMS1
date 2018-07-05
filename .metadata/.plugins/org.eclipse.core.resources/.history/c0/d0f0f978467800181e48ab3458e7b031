@@ -1,7 +1,0 @@
--- address
--- addr_seq (DECIMAL, pk)
--- zipcode
--- province 경기도
--- city 서울시, 안양시
--- gugun 강남구, 가평군
--- doro 백범로 15번길
