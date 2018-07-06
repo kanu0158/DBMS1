@@ -14,3 +14,6 @@ public interface ExamDAO {
 	public void updateExam(ExamBean examBean);
 	public void deleteExam(ExamBean examBean);
 }
+
+
+

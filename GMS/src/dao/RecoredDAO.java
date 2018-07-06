@@ -13,4 +13,5 @@ public interface RecoredDAO {
 	public int countRecord();
 	public void updateRecord(RecordBean recordBean);
 	public void deleteRecord(RecordBean recordBean);
+	public String selectFirstRowNum();//AES순 1번이 최근
 }

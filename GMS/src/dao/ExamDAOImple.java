@@ -10,9 +10,7 @@ public class ExamDAOImple implements ExamDAO {
 	private ExamDAOImple() {}
 	@Override
 	public void insertExam(ExamBean examBean) {
-		System.out.println(examBean.getMemId());
-		System.out.println(examBean.getMonth());
-		System.out.println(examBean.getScore());
+		System.out.println("examDAO : " + examBean);
 	}
 	@Override
 	public List<ExamBean> selectExamList() {

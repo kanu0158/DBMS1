@@ -11,6 +11,7 @@ public class RecordServiceImpl implements RecordService {
 	private RecordServiceImpl() {}
 	@Override
 	public void createRecord(RecordBean recordBean) {
+		createGrade();
 		RecordDAOImpl.getInstance().insertRecord(recordBean);
 	}
 	@Override

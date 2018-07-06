@@ -9,6 +9,8 @@ public class SubjectServiceImpl implements SubjectService {
 	private static SubjectService instance = new SubjectServiceImpl();
 	public static SubjectService getInstance() {return instance;}
 	private SubjectServiceImpl() {}
+	
+	
 	@Override
 	public void createSubject(SubjectBean subjectBean) {
 		SubjectDAOImpl.getInstance().insertSubject(subjectBean);

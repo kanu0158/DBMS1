@@ -10,6 +10,6 @@ public interface ExamService {
 	public List<ExamBean> findBySome(String word);
 	public ExamBean findByOne(ExamBean examBean);
 	public int count();
-	public void updateSome(ExamBean examBean);
+	public void updateExam(ExamBean examBean);
 	public void dropExam(ExamBean examBean);
 }

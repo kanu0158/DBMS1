@@ -43,6 +43,11 @@ public class RecordDAOImpl implements RecoredDAO{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public String selectFirstRowNum() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
