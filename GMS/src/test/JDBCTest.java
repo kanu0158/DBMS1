@@ -9,7 +9,7 @@ public class JDBCTest {//실제 dao는 메인 없음, 연습용
 			//오라클드라이버라는객체가만들어진거다 이게 있어야 드라이버매니저가 동작한다.
 			// 클래스가 나를 부르는 방식으로 객체 생성, 생성자 & 싱글톤이 아닌
 			//호출했는데 리턴받는 값이 없다. 오라클객체가 자기자신을 호출하는 느낌
-			//여기 내부는 오라클영역이라고 생각해야한다.
+			//여기 내부는 오라클드라이버영역이라고 생각해야한다.
 			Connection conn = DriverManager
 					.getConnection("jdbc:oracle:thin:@localhost:1521:xe"
 							,"seein"

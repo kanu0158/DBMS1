@@ -34,8 +34,9 @@
 			<td id="main-tab-Layout-td" colspan="2"><img src="img/home/recording.PNG"  alt="" width="990" height="390"/></td>
 			<td >
 				<ul>
-					<li><a href="jsp/home/user_login.jsp"> 사용자로그인 바보야</a></li><br>
-					<li><a href="jsp/home/admin_login.jsp"> 관리자로그인</a></li>
+					<li><a href="jsp/login/user_login_form.jsp"> 사용자로그인 바보야</a></li><br>
+					<li><a href="jsp/login/admin_login.jsp"> 관리자로그인</a></li>
+					<li><a href="jsp/join/joinForm.jsp"> 회원가입</a></li>
 					<li><%=c %></li><!-- 익스프레션 -->
 				</ul>
 			</td>
