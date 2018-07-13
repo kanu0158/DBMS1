@@ -40,9 +40,10 @@
 <fullyQualifiedTypeName name="factory.Database"/>
 <fullyQualifiedTypeName name="factory.MariaDB"/>
 <fullyQualifiedTypeName name="factory.MySQL"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="domain.MemberBean"/>
 <fullyQualifiedTypeName name="factory.DatabaseFactory"/>
 <fullyQualifiedTypeName name="enums.Vendor"/>
 <fullyQualifiedTypeName name="pool.DBConstant"/>
-<fullyQualifiedTypeName name="java.sql.ResultSet"/>
-<fullyQualifiedTypeName name="domain.MemberBean"/>
+<fullyQualifiedTypeName name="enums.MemberQuery"/>
 </qualifiedTypeNameHistroy>
