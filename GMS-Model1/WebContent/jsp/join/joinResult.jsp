@@ -21,6 +21,7 @@
 	}else if(MemberServiceImpl.getInstance().createMember(m)) {
 		%>
 		<h3>회원가입성공!</h3>
+		<h3><a href="../login/user_login_form.jsp">로그인하기</a></h3>
 		<%
 	}
 	%>

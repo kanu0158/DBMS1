@@ -3,6 +3,7 @@ package dao;
 import java.sql.*;
 import java.util.*;
 import domain.MemberBean;
+import enums.MemberQuery;
 import enums.Vendor;
 import factory.Database;
 import factory.DatabaseFactory;
@@ -43,8 +44,10 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	
 	@Override
-	public MemberBean insertMember(MemberBean memberBean) {
-		MemberBean m = null;
+	public void insertMember(MemberBean memberBean) {
+		
+		/*다운되면 실패인거야 굳이 이렇게 반환해줄필요없어*/
+		/*MemberBean m = null;*/
 		/*INSERT INTO MEMBER(
 			    MEM_ID, TEAM_ID, NAME, ROLL, PASSWORD, SSN
 			)
@@ -52,13 +55,25 @@ public class MemberDAOImpl implements MemberDAO {
 			    'TEST99', '', '임시99', '', '1234', '880808-1' 
 			);*/
 		try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+			
+			/*insert처럼 반환값이 없는 것들은  executeUpdate를 사용해
+			 * executeUpdate 는 성공하면 1을 반환하는데 확인하려고 int rs로 받은거지 안받아야해  문제 생기면 그냥 시스템 다운되는거지   */
+			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+					.getConnection().createStatement().executeUpdate(String.format(MemberQuery.INSERT_MEMBER.toString(), memberBean.getUserid(),memberBean.getName(),memberBean.getPassword(),memberBean.getSsn()));
+			
+			/*ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+					.getConnection().createStatement().executeQuery(String.format(MemberQuery.INSERT_MEMBER.toString(), memberBean.getUserid(),memberBean.getName(),memberBean.getPassword(),memberBean.getSsn()));
+			*/	
+			
+			
+			
+			/*ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 					.getConnection().createStatement().executeQuery(String.format("  INSERT INTO MEMBER   "
 							+ "  (MEM_ID, NAME, PASSWORD, SSN  ) "
 							+ "  VALUES   "
 							+ "  ( '%s', '%s', '%s', '%s' ) ", memberBean.getUserid(),memberBean.getName(),memberBean.getPassword(),memberBean.getSsn()));
 				
-
+*/
 			
 			
 			/*
@@ -68,14 +83,12 @@ public class MemberDAOImpl implements MemberDAO {
 					+ "  ( '%s', '%s', '%s', '%s' ) ", memberBean.getUserid(),memberBean.getName(),memberBean.getPassword(),memberBean.getSsn());
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);*/
-			m = memberBean;
+			/*m = memberBean;*/
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return m;
-		
+		/*return m;*/	
 	}
 	@Override
 	public List<MemberBean> selectMemberList() {
@@ -108,25 +121,20 @@ public class MemberDAOImpl implements MemberDAO {
 	WHERE
 	    MEM_ID LIKE 'shin' AND PASSWORD LIKE '1';*/
 		try {
+			
+			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+					.getConnection().createStatement().executeQuery(String.format(MemberQuery.IS_ID.toString()
+							, memberBean.getUserid()));
+			/*
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection().createStatement().executeQuery(String.format(
-					"  SELECT MEM_ID USER_ID, "
-					+ "  TEAM_ID,  "
-					+ "  NAME USER_NAME,  "
-					+ "  ROLL,  "
-					+ "  PASSWORD USER_PASS,  "
-					+ "  SSN  "
-					+ "  FROM  MEMBER"
-					+ "  WHERE MEM_ID LIKE '%s' AND PASSWORD LIKE '%s' "
-					, memberBean.getUserid(), memberBean.getPassword()));
+					"  SELECT MEM_ID USER_ID "
+					+ "  FROM  MEMBER   "
+					+ "  WHERE MEM_ID LIKE '%s'  "
+					, memberBean.getUserid()));*/
 			while(rs.next()) {
 				m = new MemberBean();
 				m.setUserid(rs.getString("USER_ID"));
-				m.setName(rs.getString("USER_NAME"));
-				m.setPassword(rs.getString("USER_PASS"));
-				m.setRoll(rs.getString("ROLL"));
-				m.setSsn(rs.getString("SSN"));
-				m.setTeamid(rs.getString("TEAM_ID"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -146,25 +154,35 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public void deleteMember(MemberBean memberBean) {
-		// TODO Auto-generated method stub
-		
+		try {
+			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+			.getConnection().createStatement().executeUpdate(String.format(MemberQuery.DELETE_MEMBER.toString(),memberBean.getUserid(),memberBean.getPassword()));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public MemberBean login(MemberBean memberBean) {
 		MemberBean m = null;
 		try {
+			
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+					.getConnection().createStatement().executeQuery(String.format(MemberQuery.LOGIN.toString(),memberBean.getUserid(),memberBean.getPassword()));
+
+			/*ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 					.getConnection().createStatement().executeQuery(String.format("SELECT " 
 						     + "   MEM_ID USER_ID, "
 						     + "   PASSWORD USER_PASS, "
 						     + "   NAME USER_NAME,   "
 						     + "   SSN USER_SSN,    "
-						     + "   ROLL USER_ROLL   "
+						     + "   ROLL USER_ROLL,   "
+						     + "   TEAM_ID   "
 						    + "   FROM   "
 						     + "   MEMBER   "
 						    + "   WHERE    " 
 						     + "   MEM_ID LIKE '%s' AND PASSWORD LIKE '%s'  ",memberBean.getUserid(),memberBean.getPassword()));
-				
+	*/			
 				while(rs.next()) {
 					m = new MemberBean();
 					m.setUserid(rs.getString("USER_ID"));
@@ -172,6 +190,7 @@ public class MemberDAOImpl implements MemberDAO {
 					m.setName(rs.getString("USER_NAME"));
 					m.setSsn(rs.getString("USER_SSN"));
 					m.setRoll(rs.getString("USER_ROLL"));
+					m.setTeamid(rs.getString("TEAM_ID"));
 				}
 				/*첫번째방법 그 자리에서 널인지 바로 처리하는 것*/
 				/*if(m == null) {

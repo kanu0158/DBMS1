@@ -5,7 +5,8 @@ import java.util.List;
 import domain.MemberBean;
 
 public interface MemberDAO {
-	public MemberBean insertMember(MemberBean memberBean);
+	/*public MemberBean insertMember(MemberBean memberBean);insert넣을뿐 굳이 반환은 안받아 */ 
+	public void insertMember(MemberBean memberBean);
 	public List<MemberBean> selectMemberList();
 	public List<MemberBean> selectMemberName(String memberName);
 	public MemberBean selectMemberOne(MemberBean memberBean);

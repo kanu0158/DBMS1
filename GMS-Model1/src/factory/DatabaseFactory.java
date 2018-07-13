@@ -5,7 +5,7 @@ import pool.DBConstant;
 
 /*ShapeFactory 클래스*/
 public class DatabaseFactory {
-	public static Database createDatabase(Vendor v,String id,String pass) {
+	public static Database createDatabase(Vendor v,String id,String pass) {//static을 붙여 공장은 이미 존재하게해
 		Database db = null;
 		String driver = "",url="";
 		switch (v) {

@@ -13,7 +13,9 @@ public class MemberServiceImpl implements MemberService{
 	private MemberBean session;
 	@Override
 	public boolean createMember(MemberBean memberBean) {
-		return (MemberDAOImpl.getInstance().insertMember(memberBean) != null);
+		/*return (MemberDAOImpl.getInstance().insertMember(memberBean) != null);*/
+		MemberDAOImpl.getInstance().insertMember(memberBean);
+		return findById(memberBean);
 	}
 
 	@Override

@@ -28,6 +28,17 @@
 		<h3>사용자 이름 : <%=x.getName() %></h3>
 		<h3>사용자 나이 : <%=x.getSsn() %></h3>
 		<h3>사용자 직책 : <%=x.getRoll() %></h3>
+		<h3>사용자 팀 : <%=x.getTeamid() %></h3>
+		
+		<div id="user-login-layout">
+		<h1>사용자계정 탈퇴하기</h1>
+		<form id="user-delete-form" action="user_delete_result.jsp">
+		ID: <input type="TEXT" name="USER-ID" /><br>
+		PASS: <input TYPE="TEXT" NAME="USER-PASS" /><br>
+		<input type="submit" name="SUBMIT" value="전 송"/>
+		</form>
+		</div>
+		
 		<%
 	}else{
 		%>
