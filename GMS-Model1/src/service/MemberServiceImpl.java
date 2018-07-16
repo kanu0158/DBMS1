@@ -15,12 +15,12 @@ public class MemberServiceImpl implements MemberService{
 	public boolean createMember(MemberBean memberBean) {
 		/*return (MemberDAOImpl.getInstance().insertMember(memberBean) != null);*/
 		MemberDAOImpl.getInstance().insertMember(memberBean);
-		return findById(memberBean);
+		return (findById(memberBean.getUserid()) != null);
 	}
 
 	@Override
-	public boolean findById(MemberBean memberBean) {
-		return (MemberDAOImpl.getInstance().selectMemberOne(memberBean) != null);
+	public MemberBean findById(String userid) {
+		return MemberDAOImpl.getInstance().selectMemberOne(userid);
 	}
 	@Override
 	public List<MemberBean> findByAll() {
@@ -28,9 +28,17 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void updateMemberId(MemberBean memberBean) {
-		MemberDAOImpl.getInstance().updateMember(memberBean);
-		
+	public boolean updateMemberPass(MemberBean memberBean) {
+		boolean flag = false;
+		String pass = memberBean.getPassword().split("/")[0];
+		String newPass = memberBean.getPassword().split("/")[1];
+		memberBean.setPassword(pass);
+		if(login(memberBean)) {
+			memberBean.setPassword(newPass);
+			MemberDAOImpl.getInstance().updateMember(memberBean);
+			flag = true;
+		}
+		return flag;
 	}
 
 	@Override
@@ -39,7 +47,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public List<MemberBean> findByName(String word) {
-		return MemberDAOImpl.getInstance().selectMemberName(word);
+		return MemberDAOImpl.getInstance().selectMemberTeam(word);
 	}
 	@Override
 	public int count() {

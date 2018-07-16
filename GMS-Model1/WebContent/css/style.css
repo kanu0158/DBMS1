@@ -1,5 +1,6 @@
 
-table,th,td {border: 1px solid black;}
+ table,th,td {border: 1px solid black;} 
+.width-300{width:300px}
 .width-full{width:100%;}
 .height-80{height:80px}
 .height-100{height:100px}
@@ -8,7 +9,6 @@ table,th,td {border: 1px solid black;}
 .align-left{text-align: left}
 .align-right{text-align: right}
 .align-center{text-align: center}
-
 /* main */
 #main-tab-Layout{width:100%;margine: 0 auto;height:390px }
 #main-tab-Layout-td{width:60%;height:400px}
@@ -21,3 +21,7 @@ table,th,td {border: 1px solid black;}
 /* admin_login */
 #admin-login-layout{width: 250px;margin:150px auto}
 #admin-login-form{border:1px solid black}
+ 
+/*list */
+#list-layout{ border: 1px solid black;background-color:#e6f9ff;}	
+

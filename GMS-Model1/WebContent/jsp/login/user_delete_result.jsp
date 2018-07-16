@@ -19,11 +19,17 @@
 	MemberBean m = new MemberBean();
 	m.setUserid(request.getParameter("USER-ID"));
 	m.setPassword(request.getParameter("USER-PASS"));
-	MemberServiceImpl.getInstance().deleteMember(m);
-		
-%>
-	
-		<h3>삭제완료</h3>
+	if(MemberServiceImpl.getInstance().login(m)){
+		MemberServiceImpl.getInstance().deleteMember(m);
+		%>
+		<h3>계정탈퇴완료</h3>
 		<h3><a href="../../main.jsp">홈으로 돌아가기</a></h3> 
+		<%}else {
+			%>
+			<h3>계정탈퇴실패</h3>
+			<h3><a href="../../main.jsp">홈으로 돌아가기</a></h3> 
+			<%
+		}
+		%>
 </body>
 </html>

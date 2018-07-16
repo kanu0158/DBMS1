@@ -37,6 +37,11 @@
 					<li><a href="jsp/login/user_login_form.jsp"> 사용자로그인 바보야</a></li><br>
 					<li><a href="jsp/login/admin_login.jsp"> 관리자로그인</a></li>
 					<li><a href="jsp/join/joinForm.jsp"> 회원가입</a></li>
+					<li><a href="jsp/update/update_form.jsp"> 비밀번호변경</a></li>
+					<li><a href="jsp/count/countResult.jsp"> 회원수</a></li>
+					<li><a href="jsp/count/memberList.jsp"> 회원목록</a></li>
+					<li><a href="jsp/mypage/searchTeamForm.jsp"> 팀이름검색</a></li>
+					<li><a href="jsp/mypage/searchIDForm.jsp"> ID검색</a></li>
 					<li><%=c %></li><!-- 익스프레션 -->
 				</ul>
 			</td>

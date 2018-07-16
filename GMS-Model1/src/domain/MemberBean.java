@@ -53,7 +53,7 @@ public class MemberBean {
 
 	@Override
 	public String toString() {
-		return "MemberBean [userid=" + userid + ", ssn=" + ssn + ", name=" + name + ", roll=" + roll + ", teamid="
+		return "[userid=" + userid + ", ssn=" + ssn + ", name=" + name + ", roll=" + roll + ", teamid="
 				+ teamid + ", password=" + password + "]";
 	}
 

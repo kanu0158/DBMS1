@@ -92,8 +92,43 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public List<MemberBean> selectMemberList() {
-		List<MemberBean> lst = null;
+		List<MemberBean> lst = new ArrayList<>();
 		try {
+			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+					.getConnection().createStatement().executeQuery(MemberQuery.SELECT_ALL.toString());
+			MemberBean mem = null;
+			while(rs.next()) {
+				mem = new MemberBean();
+				mem.setUserid(rs.getString("USER_ID"));
+				mem.setPassword(rs.getString("USER_PASS"));
+				mem.setName(rs.getString("USER_NAME"));
+				mem.setRoll(rs.getString("USER_ROLL"));
+				mem.setSsn(rs.getString("USER_SSN"));
+				mem.setTeamid(rs.getString("TEAM_ID"));
+				lst.add(mem);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lst;
+	}
+	@Override
+	public List<MemberBean> selectMemberTeam(String teamId) {
+		List<MemberBean> lst = new ArrayList<>();
+		try {
+			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+					.getConnection().createStatement().executeQuery(String.format(MemberQuery.SELECT_TEAM.toString(),teamId));
+			MemberBean mem = null;
+			while(rs.next()) {
+				mem = new MemberBean();
+				mem.setUserid(rs.getString("USER_ID"));
+				mem.setPassword(rs.getString("USER_PASS"));
+				mem.setName(rs.getString("USER_NAME"));
+				mem.setRoll(rs.getString("USER_ROLL"));
+				mem.setSsn(rs.getString("USER_SSN"));
+				mem.setTeamid(rs.getString("TEAM_ID"));
+				lst.add(mem);
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -102,13 +137,8 @@ public class MemberDAOImpl implements MemberDAO {
 		return lst;
 	}
 	@Override
-	public List<MemberBean> selectMemberName(String memberName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public MemberBean selectMemberOne(MemberBean memberBean) {
-		MemberBean m = null;
+	public MemberBean selectMemberOne(String userid) {
+		MemberBean mem = null;
 		/*SELECT 
 	    MEM_ID USER_ID,
 	    TEAM_ID,
@@ -124,7 +154,7 @@ public class MemberDAOImpl implements MemberDAO {
 			
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 					.getConnection().createStatement().executeQuery(String.format(MemberQuery.IS_ID.toString()
-							, memberBean.getUserid()));
+							, userid));
 			/*
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection().createStatement().executeQuery(String.format(
@@ -133,23 +163,45 @@ public class MemberDAOImpl implements MemberDAO {
 					+ "  WHERE MEM_ID LIKE '%s'  "
 					, memberBean.getUserid()));*/
 			while(rs.next()) {
-				m = new MemberBean();
-				m.setUserid(rs.getString("USER_ID"));
+				mem = new MemberBean();
+				mem.setUserid(rs.getString("USER_ID"));
+				mem.setPassword(rs.getString("USER_PASS"));
+				mem.setName(rs.getString("USER_NAME"));
+				mem.setRoll(rs.getString("USER_ROLL"));
+				mem.setSsn(rs.getString("USER_SSN"));
+				mem.setTeamid(rs.getString("TEAM_ID"));
+				
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return m;
+		return mem;
 	}
 	@Override
 	public int countMember() {
-		// TODO Auto-generated method stub
-		return 0;
+		int memCount = 999;
+		try {
+			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+			.getConnection().createStatement().executeQuery(MemberQuery.MEMBER_COUNT.toString());
+			while(rs.next()) {
+				memCount = rs.getInt("멤버수");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return memCount;
 	}
 	@Override
 	public void updateMember(MemberBean memberBean) {
-		// TODO Auto-generated method stub
+		try {
+			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+			.getConnection().createStatement().execute(String.format(MemberQuery.UPDATE_PASS.toString(),memberBean.getPassword(),memberBean.getUserid()));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	@Override

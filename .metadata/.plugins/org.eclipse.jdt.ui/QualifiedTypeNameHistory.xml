@@ -26,8 +26,6 @@
 <fullyQualifiedTypeName name="dao.RecordDAOImpl"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="dao.MemberDAOImpl"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="test.TestDao"/>
 <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.MemberValuePair"/>
@@ -40,10 +38,12 @@
 <fullyQualifiedTypeName name="factory.Database"/>
 <fullyQualifiedTypeName name="factory.MariaDB"/>
 <fullyQualifiedTypeName name="factory.MySQL"/>
+<fullyQualifiedTypeName name="dao.MemberDAOImpl"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-<fullyQualifiedTypeName name="domain.MemberBean"/>
 <fullyQualifiedTypeName name="factory.DatabaseFactory"/>
 <fullyQualifiedTypeName name="enums.Vendor"/>
 <fullyQualifiedTypeName name="pool.DBConstant"/>
 <fullyQualifiedTypeName name="enums.MemberQuery"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="domain.MemberBean"/>
 </qualifiedTypeNameHistroy>
