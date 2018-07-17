@@ -15,6 +15,10 @@ public class MemberController extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("MemberController ENTER!!!");
+		String servletPath = request.getServletPath();
+		System.out.println("request.getServletPath() : "+servletPath);
+		String appCtx = request.getContextPath();
+		System.out.println(" request.getContextPath() : "+ appCtx);
 		String action = request.getParameter("action");
 		String page = request.getParameter("page");
 		/*RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/joinForm.jsp"); // 관제탑
