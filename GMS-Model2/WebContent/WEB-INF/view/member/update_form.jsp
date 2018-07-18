@@ -16,7 +16,7 @@
 	ID : <input type="text" name="USER-ID"></input><br>
 	PASS : <input type="text" name="USER-PASS"></input><br>
 	NEW_PASS : <input type="text" name="NEW-PASS"></input>
-	<input type="hidden" name="action" value="move" />
+	<input type="hidden" name="action" value="update" />
 	<input type="hidden" name="page" value="update_result" />
 	<input type="submit" name="submit" value="전송"></input>
 	</form>

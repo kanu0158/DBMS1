@@ -18,7 +18,7 @@
 		PASS: <input type="text" name="USER-PASS" /><br>
 		NAME: <input type="text" name="USER-NAME" /><br>
 		SSN: <input type="text" name="USER-SSN" /><br>
-		<input type="hidden" name="action" value="move" />
+		<input type="hidden" name="action" value="join" />
 		<input type="hidden" name="page" value="joinResult" />
 		<input type="submit" name="SUBMIT" value="전송" />
 	</form>

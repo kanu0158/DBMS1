@@ -7,25 +7,25 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>HELLO</title>
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="resources/css/style.css" />
 </head>
 <body>
 	<table id="main-tab-Layout">
 		<tr class="height-80">
-			<th class="align-left" ><img src="img/home/bugs.PNG"  alt="" width="150" height="150"/></th>
-			<th class="width-full align-center" ><img src="img/home/serch.PNG"  alt="" width="600" height="100"/></th>
-			<th><img src="img/home/post.PNG"  alt="" width="200" height="150"/></th>
+			<th class="align-left" ><img src="resources/img/home/bugs.PNG"  alt="" width="150" height="150"/></th>
+			<th class="width-full align-center" ><img src="resources/img/home/serch.PNG"  alt="" width="600" height="100"/></th>
+			<th><img src="resources/img/home/post.PNG"  alt="" width="200" height="150"/></th>
 		</tr>
 		<tr>
-			<td id="main-tab-Layout-td" colspan="2"><img src="img/home/recording.PNG"  alt="" width="990" height="390"/></td>
+			<td id="main-tab-Layout-td" colspan="2"><img src="resources/img/home/recording.PNG"  alt="" width="990" height="390"/></td>
 			<td >
 				<ul>
 					<li><a href="<%=ctx%>/member.do?action=move&page=user_login_form"> 사용자로그인 바보야</a></li><br>
 					<li><a href="<%=ctx%>/view/login/admin_login"> 관리자로그인</a></li>
 					<li><a href="<%=ctx%>/member.do?action=move&page=joinForm"> 회원가입</a></li>
 					<li><a href="<%=ctx%>/member.do?action=move&page=update_form"> 비밀번호변경</a></li>
-					<li><a href="<%=ctx%>/member.do?action=move&page=countResult"> 회원수</a></li>
-					<li><a href="<%=ctx%>/member.do?action=move&page=memberList"> 회원목록</a></li>
+					<li><a href="<%=ctx%>/member.do?action=count&page=countResult"> 회원수</a></li>
+					<li><a href="<%=ctx%>/member.do?action=list&page=memberList"> 회원목록</a></li>
 					<li><a href="<%=ctx%>/member.do?action=move&page=searchTeamForm"> 팀이름검색</a></li>
 					<li><a href="<%=ctx%>/member.do?action=move&page=searchIDForm"> ID검색</a></li>
 				</ul>

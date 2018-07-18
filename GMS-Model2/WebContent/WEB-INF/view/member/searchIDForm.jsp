@@ -11,7 +11,7 @@
 <body>
 	<form action="<%=ctx%>/member.do">
 	ID : <input type="text" name="USER-ID" />
-	<input type="hidden" name="action" value="move" />
+	<input type="hidden" name="action" value="retrieve" />
 	<input type="hidden" name="page" value="searchIDResult" />
 	<input type="submit" name="submit" value="검색" />
 	</form>

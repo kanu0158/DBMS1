@@ -9,13 +9,13 @@
 	<title>회원목록</title>
 <link rel="stylesheet" href="../../css/tableStyle.css" /> 
 </head>
-
+<%-- 
 <%
 		List<MemberBean> lst = MemberServiceImpl.getInstance().findByAll();		
 %>
-
+ --%>
 <body>
-<h3>전체 회원수 <%=lst.size() %> 명</h3>
+<%-- <h3>전체 회원수 <%=lst.size() %> 명</h3>
 <table>
 	<tr id="list-layout">
 	<th>Name</th>
@@ -40,6 +40,8 @@ for(MemberBean e : lst){
 <%	
 }
 %>
-</table>
+</table> --%>
+<h3>멤버전체리스트 출력 성공!</h3>
+<h3><a href="<%=application.getContextPath()%>/index.jsp">홈으로 가기</a></h3>
 </body>
 </html>

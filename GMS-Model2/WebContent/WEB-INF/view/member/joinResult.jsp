@@ -6,7 +6,7 @@
 	<title>회원가입결과</title>
 </head>
 <body>
-	<h3>회원가입결과!</h3>
+	<h3>회원가입성공!</h3>
 	<h3><a href="<%=application.getContextPath()%>/index.jsp">홈으로 가기</a></h3>
 </body>
 </html>

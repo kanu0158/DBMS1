@@ -15,7 +15,7 @@
 	<form id="user-login-form" action="<%=ctx%>/member.do">
 	ID: <input type="TEXT" name="USER-ID" /><br>
 	PASS: <input TYPE="TEXT" NAME="USER-PASS" /><br>
-	<input type="hidden" name="action" value="move" />
+	<input type="hidden" name="action" value="login" />
 	<input type="hidden" name="page" value="user_login_result" />
 	<input type="submit" name="SUBMIT" value="전 송"/>
 	</form>

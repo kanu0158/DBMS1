@@ -7,6 +7,7 @@
 	<title>회원 수 출력</title>
 </head>
 <body>
+		<h3>회원수출력성공</h3>
 		<h3><a href="<%=application.getContextPath()%>/index.jsp">홈으로 가기</a></h3>
 		
 </body>

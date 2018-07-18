@@ -138,7 +138,8 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public MemberBean selectMemberOne(String userid) {
-		MemberBean mem = null;
+		MemberBean mem = new MemberBean();
+		mem.setUserid("999");
 		/*SELECT 
 	    MEM_ID USER_ID,
 	    TEAM_ID,
@@ -163,7 +164,6 @@ public class MemberDAOImpl implements MemberDAO {
 					+ "  WHERE MEM_ID LIKE '%s'  "
 					, memberBean.getUserid()));*/
 			while(rs.next()) {
-				mem = new MemberBean();
 				mem.setUserid(rs.getString("USER_ID"));
 				mem.setPassword(rs.getString("USER_PASS"));
 				mem.setName(rs.getString("USER_NAME"));

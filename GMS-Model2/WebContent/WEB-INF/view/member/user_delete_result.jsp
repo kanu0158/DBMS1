@@ -14,23 +14,7 @@
 <!-- "jdbc:oracle:thin:@localhost:1521:xe"
 							,"seein"
 							,"0158" -->
-<%
-	/* 스크립틀릿(연산)에서 바로담아도 되니 디클러레이션 생략가능  */
-	MemberBean m = new MemberBean();
-	m.setUserid(request.getParameter("USER-ID"));
-	m.setPassword(request.getParameter("USER-PASS"));
-	if(MemberServiceImpl.getInstance().login(m)){
-		MemberServiceImpl.getInstance().deleteMember(m);
-		%>
-		<h3>계정탈퇴완료</h3>
-		<h3><a href="../../main.jsp">홈으로 돌아가기</a></h3> 
-		<%}else {
-			%>
-			<h3>계정탈퇴실패</h3>
-			<h3><a href="../../main.jsp">홈으로 돌아가기</a></h3> 
-			<%
-		}
-		%>
+		<h3>계정탈퇴성공</h3>
 		<h3><a href="<%=application.getContextPath()%>/index.jsp">홈으로 가기</a></h3>
 </body>
 </html>
