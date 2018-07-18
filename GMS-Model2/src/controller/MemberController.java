@@ -63,6 +63,7 @@ public class MemberController extends HttpServlet {
 		case LIST:
 			System.out.println("LIST안으로 진입");
 			response.sendRedirect(request.getContextPath());
+			//request.getRequestDispatcher("/index.jsp").forward(request, response);
 			break;
 		case RETRIEVE:
 			System.out.println("RETRIEVE안으로 진입");
@@ -87,6 +88,7 @@ public class MemberController extends HttpServlet {
 		case COUNT:
 			System.out.println("COUNT안으로 진입");
 			response.sendRedirect(request.getContextPath());
+			break;
 		}
 		/*request.getRequestDispatcher("/WEB-INF/view/member/joinForm.jsp").forward(request, response);
 		request.getRequestDispatcher("/WEB-INF/view/member/joinResult.jsp").forward(request, response);*/
