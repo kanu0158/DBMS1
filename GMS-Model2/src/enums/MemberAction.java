@@ -4,5 +4,10 @@ package enums;
 /*static의 final을 대체하기 위해 enum을 사용한다*/
 /*앤트맨처럼 긴 쿼리문을 이넘의 짧은걸로 대체할수있음 속도에선 이넘값으로 호출하니 약간 느릴순있지만 장점이 크기때문에 감수할만 하다*/
 public enum MemberAction {
-	MOVE,CREATE,LIST,SEARCH,RETRIEVE,COUNT,UPDATE,DELETE,LOGIN,JOIN;
+	MOVE,
+	CREATE,
+	LIST,SEARCH,RETRIEVE,COUNT,
+	UPDATE,
+	DELETE,
+	LOGIN,JOIN;
 }
