@@ -11,7 +11,6 @@ public class Sentry {//보초병
 		String servletPath=request.getServletPath(); // 서블릿패스 == /member.do
 		System.out.println("2.센트리내부:"
 				+ servletPath.substring(1, servletPath.indexOf("."))); // member만 추출
-		cmd.setDomain(servletPath.substring(1, servletPath.indexOf(".")));
 		cmd = Commander.order(request);
 	}
 }

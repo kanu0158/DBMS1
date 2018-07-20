@@ -9,9 +9,9 @@
 	<title>팀검색완료</title>
 </head>
 <body>
-	<%-- <%
+	<%
 		String teamid = request.getParameter("TEAM-ID");
-		List<MemberBean> lst = MemberServiceImpl.getInstance().findByName(teamid);
+		List<MemberBean> lst = (List<MemberBean>)request.getAttribute("team");
 	
 	%>
 		<h3>팀 : <%=teamid %></h3>
@@ -38,8 +38,8 @@
 			%>
 		
 		</table>
-		 --%>
-		 <h3>팀검색성공</h3>
-		<h3><a href="<%=application.getContextPath()%>/index.jsp">홈으로 가기</a></h3>
+	
+		 <%-- <h3>팀검색성공</h3>
+		<h3><a href="<%=application.getContextPath()%>/index.jsp">홈으로 가기</a></h3> --%>
 </body>
 </html>

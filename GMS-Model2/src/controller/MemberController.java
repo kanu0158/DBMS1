@@ -61,25 +61,28 @@ public class MemberController extends HttpServlet {
 			break;
 		case LIST:
 			System.out.println("6.LIST안으로 진입");
-			mems = ((ListCommand) Sentry.cmd).getMems();
-			System.out.println(mems);
-			Carrier.redirect(request, response,"/member.do?action=move&page=memberList");
+			//mems = ((ListCommand) Sentry.cmd).getMems();
+			//System.out.println(mems);
+			//Carrier.redirect(request, response,"/member.do?action=move&page=memberList");
 			//response.sendRedirect(request.getContextPath());
 			//request.getRequestDispatcher("/index.jsp").forward(request, response);
+			Carrier.forward(request, response);
+			
 			break;
 		case RETRIEVE:
 			System.out.println("6.RETRIEVE안으로 진입");
-			mem = ((RetrieveCommand) Sentry.cmd).getMem();
-			System.out.println(mem);
-			Carrier.redirect(request, response,"/member.do?action=move&page=searchIDResult");
+			//mem = ((RetrieveCommand) Sentry.cmd).getMem();
+			//System.out.println(mem);
+			Carrier.forward(request, response);
 			//response.sendRedirect(request.getContextPath());
 			break;
 		case SEARCH:
 			System.out.println("6.search안으로 진입");
-			mems = ((SelectCommand)Sentry.cmd).getMems();
-			System.out.println(mems);
-			Carrier.redirect(request, response,"/member.do?action=move&page=searchTeamResult");
+			//mems = ((SelectCommand)Sentry.cmd).getMems();
+			//System.out.println(mems);
+			//Carrier.redirect(request, response,"/member.do?action=move&page=searchTeamResult");
 			//response.sendRedirect(request.getContextPath());
+			Carrier.forward(request, response);
 			break;
 		case DELETE:
 			System.out.println("6.delete안으로 진입");
@@ -93,14 +96,19 @@ public class MemberController extends HttpServlet {
 			break;
 		case LOGIN:
 			System.out.println("6.LOGIN안으로 진입");
-			Carrier.redirect(request, response,"");
+			if(request.getAttribute("match").equals("TRUE")){
+				Carrier.forward(request, response);
+			}else {
+				Carrier.redirect(request, response,"/member.do?action=move&page=user_login_form");
+			}
 			//response.sendRedirect(request.getContextPath());
 			break;
 		case COUNT:
 			System.out.println("6.COUNT안으로 진입");
-			c = ((CountCommand) Sentry.cmd).getCount();
-			System.out.println("count : "+c);
-			Carrier.redirect(request, response,"/member.do?action=move&page=countResult");
+			/*c = ((CountCommand) Sentry.cmd).getCount();
+			System.out.println("count : "+c);*/
+			//Carrier.redirect(request, response,"/member.do?action=move&page=countResult");
+			Carrier.forward(request, response);
 			break;
 		}
 		/*request.getRequestDispatcher("/WEB-INF/view/member/joinForm.jsp").forward(request, response);

@@ -22,7 +22,8 @@ public class SelectCommand extends Command{//팀멤버찾는명령
 	}
 	@Override
 		public void execute() {
-			switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+			request.setAttribute("team", MemberServiceImpl.getInstance().findByName(request.getParameter("TEAM-ID")));
+			/*switch (Domain.valueOf(domain.toUpperCase())) {
 			case MEMBER:
 				System.out.println("select커맨드 진입");
 				this.mems = MemberServiceImpl.getInstance().findByName(request.getParameter("TEAM-ID"));
@@ -31,7 +32,7 @@ public class SelectCommand extends Command{//팀멤버찾는명령
 
 			default:
 				break;
-			}
+			}*/
 			super.execute();
 		}
 }

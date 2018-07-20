@@ -6,10 +6,10 @@ import enums.Domain;
 import service.MemberServiceImpl;
 
 public class CountCommand extends Command {
-	private int count;
+/*	private int count;
 	public int getCount() {
 		return count;
-	}
+	}*/
 
 	public CountCommand(HttpServletRequest request) {
 		setRequest(request);
@@ -21,9 +21,9 @@ public class CountCommand extends Command {
 	
 	@Override
 	public void execute() {
-		this.count = MemberServiceImpl.getInstance().count();
+		//this.count = MemberServiceImpl.getInstance().count();
+		//super.execute();
+		request.setAttribute("count", MemberServiceImpl.getInstance().count());
 		super.execute();
-		/*request.setAttribute("count", MemberServiceImpl.getInstance().count());
-		super.execute();*/
 	}
 }
