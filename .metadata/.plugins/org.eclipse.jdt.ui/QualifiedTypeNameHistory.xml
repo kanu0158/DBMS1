@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="dao.RecordDAOImpl"/>
-<fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="test.TestDao"/>
 <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.MemberValuePair"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="domain.MemberBean"/>
 <fullyQualifiedTypeName name="command.Carrier"/>
 <fullyQualifiedTypeName name="command.SearchCommand"/>
+<fullyQualifiedTypeName name="lombok.Data"/>
+<fullyQualifiedTypeName name="lombok.ToString"/>
 </qualifiedTypeNameHistroy>

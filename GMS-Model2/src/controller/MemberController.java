@@ -14,11 +14,11 @@ import domain.*;
 import enums.*;
 import service.*;
 
-@WebServlet({"/member.do"}) // url 매핑이다.
+@WebServlet("/member.do") // url 매핑이다.
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //doget + dopost == service 메소드    
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("1.MemberController ENTER!!!");
 		Sentry.init(request);
 		System.out.println("4.멤버컨트롤러에서 액션조회: "+Sentry.cmd.getAction());
@@ -113,10 +113,6 @@ public class MemberController extends HttpServlet {
 		}
 		/*request.getRequestDispatcher("/WEB-INF/view/member/joinForm.jsp").forward(request, response);
 		request.getRequestDispatcher("/WEB-INF/view/member/joinResult.jsp").forward(request, response);*/
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

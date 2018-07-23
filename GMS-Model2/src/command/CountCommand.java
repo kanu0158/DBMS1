@@ -3,8 +3,8 @@ package command;
 import javax.servlet.http.HttpServletRequest;
 
 import enums.Domain;
+import lombok.Data;
 import service.MemberServiceImpl;
-
 public class CountCommand extends Command {
 /*	private int count;
 	public int getCount() {

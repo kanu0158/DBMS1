@@ -1,17 +1,16 @@
+<%@page import="domain.MemberBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  <!-- jstl , c는 core의 약자-->
 <c:set var="context" value="<%=application.getContextPath() %>" />
-<%-- 
-<% 
-	String ctx = application.getContextPath(); //서블릿 설정값의 경로를 가지고 온다 .현재 스크립틀릿(클라)에서 서블릿(서버)으로 가기위해
+<%
+	List<MemberBean> lst = (List<MemberBean>)request.getAttribute("list");
 %>
-
- --%>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>ID찾기결과</title>
+	<title>회원리스트</title>
 	<link rel="stylesheet" href="${context}/resources/css/style.css" />
 
 </head>
@@ -24,14 +23,39 @@
 		<div id="menu-box">
 			<ul id="menu">
 				<li><a href="${context}/admin.do?action=list&page=memberList">USER_LIST</a></li>
-				<li><a href="${context}/member.do?action=move&page=searchIDForm">SEARCH_ID</a></li>
+				<li><a href="${context}/member.do?action=move&page=searchIDForm"">SEARCH_ID</a></li>
 				<li><a href="${context}/member.do?action=move&page=searchTeamForm">SEARCH_TEAM</a></li>
 			</ul>
 		</div>
 	</div> 	<!-- header end -->
 	<div id="content">
 		<div id="content-box">
-			<h3><%=request.getAttribute("member") %></h3>		
+			<h3>전체 회원수 <%=lst.size() %> 명</h3>
+<table>
+	<tr id="list-layout">
+	<th>Name</th>
+	<th>Userid</th>
+	<th>Password</th>
+	<th>Teamid</th>
+	<th>SSN</th>
+	<th>Roll</th>
+	</tr>
+
+<%
+for(MemberBean e : lst){
+	%>
+		<tr id="list-layout">
+			<td><%=e.getName()%> </td>
+			<td><%=e.getUserid()%> </td>
+			<td><%=e.getPassword()%> </td>
+			<td><%=e.getTeamid()%> </td>
+			<td><%=e.getSsn()%> </td>
+			<td><%=e.getRoll()%> </td>
+		</tr>
+<%	
+}
+%>
+</table> 	
 		</div>
 	</div> <!-- content end -->
 	<div id="footer">
@@ -52,3 +76,57 @@
 	
 </body>
 </html>
+
+
+
+<%-- 
+
+<%@page import="service.MemberServiceImpl"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="domain.*" %>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>회원목록</title>
+<link rel="stylesheet" href="../../css/tableStyle.css" /> 
+</head>
+
+<h3>리스트</h3>
+
+<%
+		List<MemberBean> lst = (List<MemberBean>)request.getAttribute("list");		
+%>
+
+<body>
+<h3>전체 회원수 <%=lst.size() %> 명</h3>
+<table>
+	<tr id="list-layout">
+	<th>Name</th>
+	<th>Userid</th>
+	<th>Password</th>
+	<th>Teamid</th>
+	<th>SSN</th>
+	<th>Roll</th>
+	</tr>
+
+<%
+for(MemberBean e : lst){
+	%>
+		<tr id="list-layout">
+			<td><%=e.getName()%> </td>
+			<td><%=e.getUserid()%> </td>
+			<td><%=e.getPassword()%> </td>
+			<td><%=e.getTeamid()%> </td>
+			<td><%=e.getSsn()%> </td>
+			<td><%=e.getRoll()%> </td>
+		</tr>
+<%	
+}
+%>
+</table> 
+<h3>멤버전체리스트 출력 성공!</h3>
+<h3><a href="<%=application.getContextPath()%>/index.jsp">홈으로 가기</a></h3>
+</body>
+</html> --%>
