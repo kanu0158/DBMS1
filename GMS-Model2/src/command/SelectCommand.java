@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
 import enums.Domain;
+import enums.Term;
 import service.MemberServiceImpl;
 
 public class SelectCommand extends Command{//팀멤버찾는명령
@@ -22,7 +23,7 @@ public class SelectCommand extends Command{//팀멤버찾는명령
 	}
 	@Override
 		public void execute() {
-			request.setAttribute("team", MemberServiceImpl.getInstance().findByName(request.getParameter("TEAM-ID")));
+			request.setAttribute(Term.TEAM.toString(), MemberServiceImpl.getInstance().findByName(request.getParameter("TEAM-ID")));
 			/*switch (Domain.valueOf(domain.toUpperCase())) {
 			case MEMBER:
 				System.out.println("select커맨드 진입");

@@ -10,9 +10,15 @@
 <link rel="stylesheet" href="../../css/style.css" />
 </head>
 <body>
+<script>
+function sendForm() {
+	alert('sendForm 진입성공');
+	return true;		
+}
+</script>
 	<div id="user-login-layout">
 	<h1>사용자로그인</h1>
-	<form id="user-login-form" action="<%=ctx%>/member.do">
+	<form id="user-login-form" action="${context}/member.do" onsubmit="return sendForm()" method="get">
 	ID: <input type="TEXT" name="USER-ID" /><br>
 	PASS: <input TYPE="TEXT" NAME="USER-PASS" /><br>
 	<input type="hidden" name="action" value="login" />

@@ -35,9 +35,6 @@ public class AdminController extends HttpServlet {
 		/*RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/joinForm.jsp"); // 관제탑
 		rd.forward(request, response); // 디스패처가 값을 보내는 것
 		*/
-		MemberBean mem = null;
-		List<MemberBean> mems = null;
-		int c = 0;
 		switch (MemberAction.valueOf(Sentry.cmd.getAction().toUpperCase())) {// 센트리가 말해줌 이친구 무브때문에 왔대요
 		case MOVE:
 			System.out.println("6.move안으로 진입");

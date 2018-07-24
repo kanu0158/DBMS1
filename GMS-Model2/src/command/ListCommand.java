@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
 import enums.Domain;
+import enums.Term;
 import service.MemberServiceImpl;
 
 public class ListCommand extends Command {
@@ -23,7 +24,7 @@ public class ListCommand extends Command {
 	}
 	@Override
 	public void execute() {
-		request.setAttribute("list", MemberServiceImpl.getInstance().findByAll());
+		request.setAttribute(Term.LIST.toString(), MemberServiceImpl.getInstance().findByAll());
 		/*switch (Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("list커맨드진입");

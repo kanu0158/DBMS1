@@ -1,6 +1,6 @@
 body{
 		font-family: 'Malgun Gothic', 'Verdana';   /* 한글이면 맑은고딕 영어면 버다나 */
-		background-color: #00ff00;
+		background-color:  #ffcc99;
 		color: #fff;  /* 글자색 희색 */
 		margin: 0;  /* 바깥쪽 간격 */
 		padding: 0;  /* 안쪽 간격 */
@@ -68,23 +68,23 @@ div#content-box{
 	margin-top: 40px;
 }
 div#menu-box{
-	clear:both; /* 다시 크기를 초기화? 다시 스태틱으로 바뀐다음에 설정적용된다?*/
+	clear:both; /* 다시 크기를 초기화? 다시 스태틱으로 바뀐다음에 설정적용된다? */
 	margin-top: 40px;
-}
+} 
 ul#menu{
 	text-align: right;
 	margin: 0;
-	border-bottom: 1px #8000ff;
+	border-bottom: 1px #ff80c0;
 	position: relative;  /* 부모는 메뉴박스 */ 
 }
 ul#menu li{
 	display: inline;  /* 한줄로 한다 */
 	list-style: none;  /* . or 1 (숫자) 안주게 함 */
-	background-color: #ff8000;
+	background-color: #ff80ff;
 }
 ul#menu li a{
 	padding: 10px 20px;
-	background-color: #00ffff;
+	background-color: #ffff00;
 	font-weight: bold;
 	text-decoration: none;   /* a태그에 줄 치지 말라는것 */
 	line-height: 2.8em;  /* 메뉴박스 기준이기때문에 그리 크진 않음 */
@@ -95,7 +95,7 @@ ul#menu li a:hover{
 	text-decoration: none;   /* a태그에 줄 치지 말라는것 */
 }
 ul#menu li a:active{ /* 클릭할때 */
-	background-color: #00ff00;
+	background-color: #ff8080;
 	text-decoration: none;   /* a태그에 줄 치지 말라는것 */
 }
 div#footer{

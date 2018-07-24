@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
 import enums.Domain;
+import enums.Term;
 import service.MemberServiceImpl;
 
 public class LoginCommand extends Command{
@@ -22,11 +23,11 @@ public class LoginCommand extends Command{
 			mem.setUserid(request.getParameter("USER-ID"));
 			mem.setPassword(request.getParameter("USER-PASS"));
 			if(MemberServiceImpl.getInstance().login(mem)) {
-				request.setAttribute("match", "TRUE");
-				request.setAttribute("user", MemberServiceImpl.getInstance().findById(request.getParameter("USER-ID")));
+				request.setAttribute(Term.MATCH.toString(), "TRUE");
+				request.setAttribute(Domain.USER.toString(), MemberServiceImpl.getInstance().findById(request.getParameter("USER-ID")));
 				System.out.println("로그인성공!!");
 			}else {
-				request.setAttribute("match", "FALSE");
+				request.setAttribute(Term.MATCH.toString(), "FALSE");
 			}
 		super.execute();
 	}

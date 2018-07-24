@@ -23,6 +23,7 @@ public class MemberController extends HttpServlet {
 		Sentry.init(request);
 		System.out.println("4.멤버컨트롤러에서 액션조회: "+Sentry.cmd.getAction());
 		System.out.println("5.멤버컨트롤러에서page조회: "+Sentry.cmd.getPage());
+		
 		/*String servletPath = request.getServletPath();
 		System.out.println("request.getServletPath() : "+servletPath);
 		String appCtx = request.getContextPath();
@@ -32,9 +33,6 @@ public class MemberController extends HttpServlet {
 		/*RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/joinForm.jsp"); // 관제탑
 		rd.forward(request, response); // 디스패처가 값을 보내는 것
 		*/
-		MemberBean mem = null;
-		List<MemberBean> mems = null;
-		int c = 0;
 		switch (MemberAction.valueOf(Sentry.cmd.getAction().toUpperCase())) {// 센트리가 말해줌 이친구 무브때문에 왔대요
 		case MOVE:
 			System.out.println("6.move안으로 진입");

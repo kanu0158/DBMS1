@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="test.TestDao"/>
 <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.MemberValuePair"/>
 <fullyQualifiedTypeName name="java.lang.Class"/>
@@ -55,9 +54,10 @@
 <fullyQualifiedTypeName name="command.CreateCommand"/>
 <fullyQualifiedTypeName name="command.ListCommand"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="domain.MemberBean"/>
 <fullyQualifiedTypeName name="command.Carrier"/>
 <fullyQualifiedTypeName name="command.SearchCommand"/>
 <fullyQualifiedTypeName name="lombok.Data"/>
 <fullyQualifiedTypeName name="lombok.ToString"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Member"/>
+<fullyQualifiedTypeName name="domain.MemberBean"/>
 </qualifiedTypeNameHistroy>

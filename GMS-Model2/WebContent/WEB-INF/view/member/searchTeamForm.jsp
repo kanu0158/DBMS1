@@ -2,8 +2,6 @@
 <%@page import="java.util.*" %>
 <%@page import="service.MemberServiceImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  <!-- jstl , c는 core의 약자-->
-<c:set var="context" value="<%=application.getContextPath() %>" />
 <%-- 
 <% 
 	String ctx = application.getContextPath(); //서블릿 설정값의 경로를 가지고 온다 .현재 스크립틀릿(클라)에서 서블릿(서버)으로 가기위해
@@ -19,6 +17,12 @@
 
 </head>
 <body>
+<script>
+function sendForm() {
+	alert('sendForm 진입성공');
+	return true;		
+}
+</script>
 <div id="wrapper">
 	<div id="header">
 		<div id="title-box">
@@ -34,7 +38,7 @@
 	</div> 	<!-- header end -->
 	<div id="content">
 		<div id="content-box">
-			<form action="${context}/member.do">
+			<form action="${context}/member.do" onsubmit="return sendForm()" method="get">
 				<input type="text" name="TEAM-ID" />
 				<input type="hidden" name="action" value="search" />
 				<input type="hidden" name="page" value="searchTeamResult" />

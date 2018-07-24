@@ -1,8 +1,6 @@
 <%@page import="domain.MemberBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  <!-- jstl , c는 core의 약자-->
-<c:set var="context" value="<%=application.getContextPath() %>" />
 <%
 	List<MemberBean> lst = (List<MemberBean>)request.getAttribute("list");
 %>

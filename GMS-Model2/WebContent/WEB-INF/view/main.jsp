@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  <!-- jstl , c는 core의 약자-->
-<c:set var="context" value="<%=application.getContextPath() %>" />
 <!doctype html>
 <html lang="en">
 	<jsp:include page="common/head.jsp"/>
@@ -18,5 +16,18 @@
 		<jsp:include page="common/footerBox.jsp"/>
 	</div>
 </div>
+<script> /* 바디 안에 넣음, 전역메소드로 처리한 것 */
+function move(domain,action,page){
+	console.log('console:클릭 테스트성공!! ${context}')
+	alert('alert:클릭 테스트 성공!! ${context}'); // java의 sysout과 비슷
+	
+	//location은 객체 href는 속성
+	location.href = "${context}/"+domain
+					+".do?action="+action
+							+"&page="+page;
+}
+
+
+</script>
 </body>
 </html>
