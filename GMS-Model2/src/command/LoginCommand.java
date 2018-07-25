@@ -20,11 +20,11 @@ public class LoginCommand extends Command{
 	public void execute() {
 			System.out.println("로그인에 들어옴!!");
 			MemberBean mem = new MemberBean();
-			mem.setUserid(request.getParameter("USER-ID"));
-			mem.setPassword(request.getParameter("USER-PASS"));
+			mem.setUserid(request.getParameter("user_id"));
+			mem.setPassword(request.getParameter("user_pass"));
 			if(MemberServiceImpl.getInstance().login(mem)) {
 				request.setAttribute(Term.MATCH.toString(), "TRUE");
-				request.setAttribute(Domain.USER.toString(), MemberServiceImpl.getInstance().findById(request.getParameter("USER-ID")));
+				request.setAttribute(Domain.USER.toString(), MemberServiceImpl.getInstance().findById(request.getParameter("user_id")));
 				System.out.println("로그인성공!!");
 			}else {
 				request.setAttribute(Term.MATCH.toString(), "FALSE");

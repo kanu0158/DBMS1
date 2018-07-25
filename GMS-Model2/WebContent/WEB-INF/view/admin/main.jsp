@@ -21,6 +21,5 @@
 		<jsp:include page="../common/footerBox.jsp"/>
 	</div>
 </div>
-
 </body>
 </html>

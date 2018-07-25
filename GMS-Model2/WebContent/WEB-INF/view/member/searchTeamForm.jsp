@@ -39,7 +39,7 @@ function sendForm() {
 	<div id="content">
 		<div id="content-box">
 			<form action="${context}/member.do" onsubmit="return sendForm()" method="get">
-				<input type="text" name="TEAM-ID" />
+				<input type="text" name="team_id" />
 				<input type="hidden" name="action" value="search" />
 				<input type="hidden" name="page" value="searchTeamResult" />
 				<input type="submit" name="SUBMIT" value="검색" />

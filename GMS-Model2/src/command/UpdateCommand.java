@@ -20,8 +20,8 @@ public class UpdateCommand extends Command {
 		case MEMBER:
 			System.out.println("update에 들어옴");
 			MemberBean mem = new MemberBean();
-			mem.setUserid(request.getParameter("USER-ID"));
-			mem.setPassword(request.getParameter("USER-PASS")+"/"+request.getParameter("NEW-PASS"));
+			mem.setUserid(request.getParameter("user_id"));
+			mem.setPassword(request.getParameter("user_pass")+"/"+request.getParameter("new_pass"));
 			MemberServiceImpl.getInstance().updateMemberPass(mem);
 			System.out.println("update성공!!");
 			break;

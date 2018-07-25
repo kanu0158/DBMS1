@@ -17,15 +17,13 @@
 	</div>
 </div>
 <script> /* 바디 안에 넣음, 전역메소드로 처리한 것 */
-function move(domain,action,page){
-	console.log('console:클릭 테스트성공!! ${context}')
-	alert('alert:클릭 테스트 성공!! ${context}'); // java의 sysout과 비슷
-	
-	//location은 객체 href는 속성
-	location.href = "${context}/"+domain
-					+".do?action="+action
-							+"&page="+page;
-}
+/* function move(domain,action,page){
+	console.log('console:클릭 테스트성공!!${context}');
+	alert('alert:클릭 테스트 성공!!${context}'); // java의 sysout과 비슷
+	alert('domain =' + domain + 'action ='+action +'page ='+page);
+	//location은 객체 href는 속
+	location.href = ("common" == domain)?"${context}/"+domain+".do" : "${context}/"+domain +".do?action="+action	+"&page="+page;
+} */
 
 
 </script>

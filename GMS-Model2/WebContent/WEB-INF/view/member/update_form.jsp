@@ -13,9 +13,9 @@
 	<div id="user-login-layout">
 	<h3>비밀번호변경</h3>
 	<form action="<%=ctx%>/member.do">
-	ID : <input type="text" name="USER-ID"></input><br>
-	PASS : <input type="text" name="USER-PASS"></input><br>
-	NEW_PASS : <input type="text" name="NEW-PASS"></input>
+	ID : <input type="text" name="user_id"></input><br>
+	PASS : <input type="text" name="user_pass"></input><br>
+	NEW_PASS : <input type="text" name="new_pass"></input>
 	<input type="hidden" name="action" value="update" />
 	<input type="hidden" name="page" value="update_result" />
 	<input type="submit" name="submit" value="전송"></input>

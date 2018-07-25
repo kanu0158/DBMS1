@@ -21,8 +21,8 @@ public class DeleteCommand extends Command{
 		case MEMBER:
 			System.out.println("delete에 들어옴!!");
 			MemberBean mem = new MemberBean();
-			mem.setUserid(request.getParameter("USER-ID"));
-			mem.setPassword(request.getParameter("USER-PASS"));
+			mem.setUserid(request.getParameter("user_id"));
+			mem.setPassword(request.getParameter("user_pass"));
 			MemberServiceImpl.getInstance().deleteMember(mem);
 			System.out.println("멤버제거 성공!!");
 			break;

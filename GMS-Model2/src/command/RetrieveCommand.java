@@ -22,7 +22,7 @@ public class RetrieveCommand extends Command {
 	
 	@Override
 	public void execute() {
-		request.setAttribute(Domain.MEMBER.toString(), MemberServiceImpl.getInstance().findById(request.getParameter("USER-ID")));
+		request.setAttribute(Domain.MEMBER.toString(), MemberServiceImpl.getInstance().findById(request.getParameter("user_id")));
 		/*switch (Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("RetrieveCommand 진입");

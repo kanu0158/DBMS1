@@ -33,7 +33,7 @@
 	<div id="content">
 		<div id="content-box">
 			<%
-		String teamid = request.getParameter("TEAM-ID");
+		String teamid = request.getParameter("team_id");
 		List<MemberBean> lst = (List<MemberBean>)request.getAttribute("team");
 	
 	%>

@@ -5,11 +5,7 @@
 <!doctype html>
 <html lang="en">
 <!-- userid, ssn (800101-1),name,roll,teamid,password  -->
-<head>
-	<meta charset="UTF-8" />
-	<title>회원가입화면</title>
-	<link rel="stylesheet" href="../../css/style.css" />
-</head>
+<jsp:include page="../common/head.jsp"/>
 <body>
 <script>
 function sendForm() {
@@ -19,16 +15,51 @@ function sendForm() {
 </script>
 	<div id="user-login-layout">
 	<h1>회원가입</h1>
-	<form action="${context}/member.do" onsubmit="return sendForm()" method="get">
-		ID: <input type="text" name="USER-ID" /><br>
-		PASS: <input type="text" name="USER-PASS" /><br>
-		NAME: <input type="text" name="USER-NAME" /><br>
-		SSN: <input type="text" name="USER-SSN" /><br>
+	<form id="user-join-form">
+		ID: <input type="text" name="user_id" /><br>
+		PASS: <input type="text" name="user_pass" /><br>
+		NAME: <input type="text" name="user_name" /><br>
+		SSN: <input type="text" name="user_ssn" /><br>
 		<input type="hidden" name="action" value="join" />
 		<input type="hidden" name="page" value="joinResult" />
-		<input type="submit" name="SUBMIT" value="전송" />
+		<input id="joinFormBtn"type="button" value="전송" />
 	</form>
 	</div>
+<script>
+document.getElementById('joinFormBtn').addEventListener('click',function(){
+	alert('조인폼태그 클릭 내부');
+	var form = document.getElementById('user-join-form');
+	form.action = "${context}/member.do"; /* 이렇게하면 action은 어트리뷰트->프로퍼티로 바뀌고 값을 바꿀수있게된다. */
+	form.method = "post";
+	var userid = form.user_id.value;
+	var userpass = form.user_pass.value;
+	var username = form.user_name.value;
+	var userssn = form.user_ssn.value;
+	mem.setUserid(userid);
+	mem.setPassword(userpass);
+	mem.setName(username);
+	mem.setSsn(userssn);
+	if(mem.joinValidation()){
+		form.submit();
+	}
 	
+	
+/* 	if( form.user_id.value == ""){
+		alert('아이디써줘');
+	}else if(form.user_pass.value == ""){
+		alert('비밀번호써줘');
+	}else if(form.user_name.value == ""){
+		alert('이름써줘');
+	}else if(form.user_ssn.value == ""){
+		alert('주민써줘');
+	}else if("${isid}" == false){
+		alert('존재하는 아이디');
+	}else {
+		form.submit();
+	}
+ */
+	//form.submit();
+})
+</script>	
 </body>
 </html>

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
 import enums.Domain;
+import enums.Term;
 import service.MemberServiceImpl;
 
 public class CreateCommand extends Command {
@@ -20,12 +21,18 @@ public class CreateCommand extends Command {
 		case MEMBER:
 			System.out.println("회원가입에 들어옴!!");
 			MemberBean mem = new MemberBean();
-			mem.setUserid(request.getParameter("USER-ID"));
-			mem.setPassword(request.getParameter("USER-PASS"));
-			mem.setName(request.getParameter("USER-NAME"));
-			mem.setSsn(request.getParameter("USER-SSN"));
-			MemberServiceImpl.getInstance().createMember(mem);
-			System.out.println("회원가입성공!!");
+			mem.setUserid(request.getParameter("user_id"));
+			mem.setPassword(request.getParameter("user_pass"));
+			mem.setName(request.getParameter("user_name"));
+			mem.setSsn(request.getParameter("user_ssn"));
+			if(MemberServiceImpl.getInstance().login(mem)) {
+				MemberServiceImpl.getInstance().createMember(mem);
+				request.setAttribute(Term.ISID.toString(), "TRUE");
+				System.out.println("회원가입성공!!");
+			}else {
+				request.setAttribute(Term.ISID.toString(), "FALSE");
+			}
+			
 			
 			break;
 			default:
