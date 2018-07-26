@@ -27,6 +27,7 @@ function sendForm() {
 	//alert('login_form에 유효성 체크값:' + mem.loginValidation());
 	document.getElementById('loginFormBtn').addEventListener('click',function(){
 		alert('로긴폼태그 클릭 내부');
+		var mem = new Member();
 		var form = document.getElementById('user-login-form');
 		form.action = "${context}/member.do"; /* 이렇게하면 action은 어트리뷰트->프로퍼티로 바뀌고 값을 바꿀수있게된다. */
 		form.method = "post";

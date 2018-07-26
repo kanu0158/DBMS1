@@ -28,6 +28,7 @@ function sendForm() {
 <script>
 document.getElementById('joinFormBtn').addEventListener('click',function(){
 	alert('조인폼태그 클릭 내부');
+	var mem = new Member();
 	var form = document.getElementById('user-join-form');
 	form.action = "${context}/member.do"; /* 이렇게하면 action은 어트리뷰트->프로퍼티로 바뀌고 값을 바꿀수있게된다. */
 	form.method = "post";

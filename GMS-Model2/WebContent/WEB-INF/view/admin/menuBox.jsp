@@ -3,13 +3,34 @@
 
 <div id="menu-box">
 	<ul id="menu">
-	<li><a onclick="common.move('common','','')">HOME</a></li>
-	<li><a onclick="common.move('admin','list','memberList')">USER_LIST</a></li>
-	<li><a onclick="common.move('member','move','searchIDForm')">SEARCH_ID</a></li>
-	<li><a onclick="common.move('member','move','searchTeamForm')">SEARCH_TEAM</a></li>
+	<li><a id="moveMain">HOME</a></li>
+	<li><a id="moveList">USER_LIST</a></li>
+	<li><a id="moveRetrieve">SEARCH_ID</a></li>
+	<li><a id="moveSearch">SEARCH_TEAM</a></li>
 	</ul>
 </div> 
+<script>
+document.getElementById('moveMain').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
+	alert('클릭홈메인 이벤트 체크!!');
+	new Common().move('${context}','common','','');
+});
 
+document.getElementById('moveList').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
+	alert('클릭리스트 이벤트 체크!!');
+	new Common().move('${context}','admin','list','memberList');
+});
+
+document.getElementById('moveRetrieve').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
+	alert('클릭홈메인 이벤트 체크!!');
+	new Common().move('${context}','member','move','searchIDForm');
+});
+
+document.getElementById('moveSearch').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
+	alert('클릭홈메인 이벤트 체크!!');
+	new Common().move('${context}','member','move','searchTeamForm');
+});
+	
+</script>
 
 <%-- <div id="menu-box">
 	<ul id="menu">
