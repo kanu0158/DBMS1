@@ -9,12 +9,12 @@
 <script>
 document.getElementById('moveMain').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭홈메인 이벤트 체크!!');
-	new Common().move('${context}','common','','');
+	router.move(['${context}','common','','']);
 });
 
 document.getElementById('moveAdminMain').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭어드민메인 이벤트 체크!!');
-	new Common().move('${context}','admin','move','main');
+	router.move(['${context}','admin','move','main']);
 });
 </script>
 

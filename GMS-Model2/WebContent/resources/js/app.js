@@ -1,4 +1,74 @@
-function Common(){
+(()=>{})();
+
+//single thread model임 , 세미콜론은 이제 꼭 붙여야해
+var router = (()=>{ //파라미터 없을때를 표시하기위해 소괄호 쳐준거고 밑에 x는 소괄호 생략, 파라미터는 무조건 하나만 보낸다 
+		return {move : x =>{ // new가 아니라 이게 진짜 객체의 모습이다.  스칼라모양
+			console.log('console:클릭 테스트성공!!${context}');
+			alert('move:클릭 테스트 성공!!${context}'); // java의 sysout과 비슷
+			alert('domain =' + x[1] + 'action ='+x[2] +'page ='+x[3]);
+			//location은 객체 href는 속
+			location.href = ("common" === x[1])?x[0]+"/"+x[1]+".do" : x[0]+"/"+x[1] +".do?action="+x[2]	+"&page="+x[3];
+		}};  /*이게 클로저다 프라이빗의 공간을 퍼블릭으로 열어주는 것, */
+								/*표기법은 JSON  move : move =='move' : move	 같다고 처리해주자 디폴트로 */
+})();  
+
+
+
+/*var move = (()=>{  
+	return x =>{ 
+		console.log('console:클릭 테스트성공!!${context}');
+		alert('move:클릭 테스트 성공!!${context}'); 
+		alert('domain =' + x[1] + 'action ='+x[2] +'page ='+x[3]);
+		
+		location.href = ("common" === x[1])?x[0]+"/"+x[1]+".do" : x[0]+"/"+x[1] +".do?action="+x[2]	+"&page="+x[3];
+	};  
+})(); 
+*/
+
+var service = (()=>{
+	return {
+		loginValidation : x=>{
+			if(x.getUserid()===''){
+				alert('아이디입력해');
+				document.getElementById('user-login-form').user_id.focus();
+				return false;
+			}else if(x.getPassword()===''){
+				alert('pass입력해');
+				document.getElementById('user-login-form').user_pass.focus();
+				return false;
+			}else{
+				return true;
+			}
+		},
+		joinValidation : x=>{
+			if(x.getUserid() === ''){
+				alert('아이디써줘');
+				document.getElementById('user-join-form').user_id.focus();
+				return false;
+			}else if(x.getPassword() ===''){
+				alert('비밀번호써줘');
+				document.getElementById('user-join-form').user_pass.focus();
+				return false;
+			}else if(x.getName() ===''){
+				alert('이름써줘');
+				document.getElementById('user-join-form').user_name.focus();
+				return false;
+			}else if(x.getSsn() ===''){
+				alert('주민써줘');
+				document.getElementById('user-join-form').user_ssn.focus();
+				return false;
+			}else {
+				return true;
+			}
+		}
+	  };
+})();
+
+/*var service = (()=>{
+	return {validation : x=>{}};
+})(); // 기본 폼
+*/
+/*function Common(){
 		this.move = function (t,domain,action,page){
 			console.log('console:클릭 테스트성공!!${context}');
 			alert('move:클릭 테스트 성공!!${context}'); // java의 sysout과 비슷
@@ -6,7 +76,7 @@ function Common(){
 			//location은 객체 href는 속
 			location.href = ("common" === domain)?t+"/"+domain+".do" : t+"/"+domain +".do?action="+action	+"&page="+page;
 		}
-};
+};*/
 	/* function Common(){
 		this.move = function (domain,action,page){
 			console.log('console:클릭 테스트성공!!${context}');

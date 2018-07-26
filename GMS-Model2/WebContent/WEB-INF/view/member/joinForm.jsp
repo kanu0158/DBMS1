@@ -40,7 +40,7 @@ document.getElementById('joinFormBtn').addEventListener('click',function(){
 	mem.setPassword(userpass);
 	mem.setName(username);
 	mem.setSsn(userssn);
-	if(mem.joinValidation()){
+	if(service.joinValidation(mem)){
 		form.submit();
 	}
 	

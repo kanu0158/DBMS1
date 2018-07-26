@@ -36,7 +36,7 @@ function sendForm() {
 		mem.setUserid(userid);
 		mem.setPassword(userpass);
 		
-		if(mem.loginValidation()){
+		if(service.loginValidation(mem)){
 			form.submit();
 		}
 		

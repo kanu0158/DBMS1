@@ -12,22 +12,22 @@
 <script>
 document.getElementById('moveMain').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭홈메인 이벤트 체크!!');
-	new Common().move('${context}','common','','');
+	router.move(['${context}','common','','']);
 });
 
 document.getElementById('moveList').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭리스트 이벤트 체크!!');
-	new Common().move('${context}','admin','list','memberList');
+	router.move(['${context}','admin','list','memberList']);
 });
 
 document.getElementById('moveRetrieve').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭홈메인 이벤트 체크!!');
-	new Common().move('${context}','member','move','searchIDForm');
+	router.move(['${context}','member','move','searchIDForm']);
 });
 
 document.getElementById('moveSearch').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭홈메인 이벤트 체크!!');
-	new Common().move('${context}','member','move','searchTeamForm');
+	router.move(['${context}','member','move','searchTeamForm']);
 });
 	
 </script>
