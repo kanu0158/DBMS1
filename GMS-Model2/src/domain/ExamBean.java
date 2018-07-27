@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ExamBean {
-	String examSeq,memId,score,month,subSeq,recordSeq;
+	private String examSeq,memId,score,month,subSeq,recordSeq;
 
 	@Override
 	public String toString() {

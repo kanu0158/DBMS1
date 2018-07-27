@@ -16,7 +16,9 @@ public String toString() {
 			     + "   NAME USER_NAME,   "
 			     + "   SSN USER_SSN,    "
 			     + "   ROLL USER_ROLL,   "
-			     + "   TEAM_ID   "
+			     + "   TEAM_ID,   "
+			     + "   AGE,  "
+			     + "   GENDER  "
 			    + "   FROM   "
 			     + "   MEMBER   "
 			    + "   WHERE    " 
@@ -24,9 +26,9 @@ public String toString() {
 		break;
 	case INSERT_MEMBER:
 		query = "  INSERT INTO MEMBER   "
-				+ "  (MEM_ID, NAME, PASSWORD, SSN  ) "
+				+ "  (MEM_ID, NAME, PASSWORD, SSN, AGE, GENDER, ROLL, TEAM_ID ) "
 				+ "  VALUES   "
-				+ "  ( '%s', '%s', '%s', '%s' ) ";
+				+ "  ( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' ) ";
 		break;
 	case IS_ID:
 		query = "  SELECT "
@@ -35,7 +37,9 @@ public String toString() {
 			     + "   NAME USER_NAME,   "
 			     + "   SSN USER_SSN,    "
 			     + "   ROLL USER_ROLL,   "
-			     + "   TEAM_ID   "
+			     + "   TEAM_ID,   "
+			     + "   AGE,"
+			     + "   GENDER   "
 				+ "  FROM  MEMBER   "
 				+ "  WHERE MEM_ID LIKE '%s'  ";
 		break;

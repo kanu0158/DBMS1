@@ -25,15 +25,20 @@ public class CreateCommand extends Command {
 			mem.setPassword(request.getParameter("user_pass"));
 			mem.setName(request.getParameter("user_name"));
 			mem.setSsn(request.getParameter("user_ssn"));
+			mem.setAge(request.getParameter("age"));
+			mem.setGender(request.getParameter("gender"));
+			mem.setTeamid(request.getParameter("teamid"));
+			mem.setRoll(request.getParameter("roll"));
+			mem.setSubject(ParamMap.getValues(request, "subject"));
+			System.out.println("subject : "+ mem.getSubject());
+			MemberServiceImpl.getInstance().createMember(mem);
 			if(MemberServiceImpl.getInstance().login(mem)) {
-				MemberServiceImpl.getInstance().createMember(mem);
 				request.setAttribute(Term.ISID.toString(), "TRUE");
 				System.out.println("회원가입성공!!");
 			}else {
 				request.setAttribute(Term.ISID.toString(), "FALSE");
+				System.out.println("회원가입실패!!");
 			}
-			
-			
 			break;
 			default:
 				break;
