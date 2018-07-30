@@ -19,6 +19,7 @@ public class Carrier {
 	public static void redirect(HttpServletRequest request,
 			HttpServletResponse response,String url){
 			System.out.println("7.캐리어redirect 내부");
+			System.out.println("7-1.request.getContextPath()" + request.getContextPath());
 			try {
 				response.sendRedirect(request.getContextPath()+url);
 			} catch (Exception e) {

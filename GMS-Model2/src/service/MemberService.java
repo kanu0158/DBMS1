@@ -11,6 +11,7 @@ public interface MemberService {
 	public MemberBean findById(String userid);
 	public List<MemberBean> findByName(String word);
 	public int count();
+	public boolean updateMember(MemberBean memberBean);
 	public boolean updateMemberPass(MemberBean memberBean);
 	public void updateMemberIdSsnAll();
 	public void deleteMember(MemberBean memberBean);

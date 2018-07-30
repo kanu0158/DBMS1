@@ -91,18 +91,15 @@ public class MemberDAOImpl implements MemberDAO {
 				mem.setTeamid(rs.getString("TEAM_ID"));
 				lst.add(mem);
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return lst;
 	}
 	@Override
 	public MemberBean selectMemberOne(String userid) {
 		MemberBean mem = new MemberBean();
 		try {
-			
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 					.getConnection().createStatement().executeQuery(String.format(MemberQuery.IS_ID.toString()
 							, userid));
@@ -129,18 +126,32 @@ public class MemberDAOImpl implements MemberDAO {
 				memCount = rs.getInt("멤버수");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return memCount;
 	}
 	@Override
-	public void updateMember(MemberBean memberBean) {
+	public void updateMemberPass(MemberBean memberBean) {
 		try {
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection().createStatement().execute(String.format(MemberQuery.UPDATE_PASS.toString(),memberBean.getPassword(),memberBean.getUserid()));
 		} catch (SQLException e) {e.printStackTrace();}
 	}
+	
+	@Override
+	public void updateMember(MemberBean memberBean) {
+		/*query = "  UPDATE MEMBER  "
+				+ "  SET PASSWORD = '%s',  "
+				+ "  TEAM_ID = '%s',  "
+				+ "  ROLL = '%s' "
+				+ "  WHERE MEM_ID = '%s'  ";*/
+		try {
+			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+			.getConnection().createStatement().executeUpdate(String.format(MemberQuery.UPDATE_MEMBER.toString(),
+				memberBean.getPassword(),memberBean.getTeamid(),memberBean.getRoll(),memberBean.getUserid()	));
+		} catch (Exception e) {e.printStackTrace();}
+	}
+	
 	@Override
 	public void deleteMember(MemberBean memberBean) {
 		try {
@@ -192,6 +203,6 @@ public class MemberDAOImpl implements MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		
 	}
+
 }

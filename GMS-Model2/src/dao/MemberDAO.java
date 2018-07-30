@@ -11,7 +11,8 @@ public interface MemberDAO {
 	public List<MemberBean> selectMemberTeam(String teamId);  //6정
 	public MemberBean selectMemberOne(String userid);  // 7번
 	public int countMember();   //순서 1번 ,  제일 쉬우니 이걸 먼저 구현해서 DB와 연결이 잘 되었는지 확인
-	public void updateMember(MemberBean memberBean);  //순서3번
+	public void updateMemberPass(MemberBean memberBean);  //순서3번
+	public void updateMember(MemberBean memberBean);
 	public void deleteMember(MemberBean memberBean);  //순서4번
 	public MemberBean login(MemberBean memberBean);
 	public void updateMemberIdSsn();

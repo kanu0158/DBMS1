@@ -40,8 +40,6 @@ public class CommonController extends HttpServlet { // 메인페이지로 보내
 		//session.setAttribute(Domain.CONTEXT.toString(), request.getContextPath()); // request가 가지고 있는 contextPath를 줌, 죽지않아 연관관계
 		//request.getSession().setAttribute(Domain.CONTEXT.toString(), request.getContextPath()); 
 		//request.getRequestDispatcher(Domain.WEBPATH.toString() + Domain.MAIN.toString()).forward(request, response);
-		
 		//request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response);
-		
 	}
 }

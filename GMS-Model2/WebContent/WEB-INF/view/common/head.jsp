@@ -5,7 +5,7 @@
  --%>
 <head>
 	<meta charset="UTF-8" />
-	<title>adminMain</title>
+	<title>Main</title>
 	<link rel="stylesheet" href="${css}/style.css" />
 	<script src="${js}/app.js"></script>
 </head>

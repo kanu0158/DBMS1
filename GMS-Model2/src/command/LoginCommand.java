@@ -12,12 +12,13 @@ public class LoginCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
+		setPage("mypage");
 		execute();
 	}
 	
 	@Override
 	public void execute() {
+			super.execute();
 			System.out.println("로그인에 들어옴!!");
 			MemberBean mem = new MemberBean();
 			mem.setUserid(request.getParameter("user_id"));
@@ -29,6 +30,6 @@ public class LoginCommand extends Command{
 			}else {
 				request.setAttribute(Term.MATCH.toString(), "FALSE");
 			}
-		super.execute();
+		
 	}
 }

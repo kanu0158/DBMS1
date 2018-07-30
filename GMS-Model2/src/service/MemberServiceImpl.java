@@ -35,12 +35,18 @@ public class MemberServiceImpl implements MemberService{
 		memberBean.setPassword(pass);
 		if(login(memberBean)) {
 			memberBean.setPassword(newPass);
-			MemberDAOImpl.getInstance().updateMember(memberBean);
+			MemberDAOImpl.getInstance().updateMemberPass(memberBean);
 			flag = true;
 		}
 		return flag;
 	}
 
+	@Override
+	public boolean updateMember(MemberBean memberBean) {
+		MemberDAOImpl.getInstance().updateMember(memberBean);
+		return login(memberBean);
+	}
+	
 	@Override
 	public void deleteMember(MemberBean memberBean) {
 		MemberDAOImpl.getInstance().deleteMember(memberBean);
