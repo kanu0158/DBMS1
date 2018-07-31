@@ -17,7 +17,10 @@ document.getElementById('moveLoginForm').addEventListener('click',function() {//
 });
 document.getElementById('moveJoinForm').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭조인 이벤트 체크!!');
-	router.move(['${context}','member','move','joinForm']);
+	router.move({context : '${context}',
+		domain : 'member',
+		action : 'move',
+		page : 'joinForm'});
 });
 
 </script>

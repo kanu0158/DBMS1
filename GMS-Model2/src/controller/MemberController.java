@@ -107,7 +107,6 @@ public class MemberController extends HttpServlet {
 		case LOGIN:
 			System.out.println("6.LOGIN안으로 진입");
 			if(request.getAttribute("match").equals("TRUE")){
-				request.getSession().setAttribute("user", request.getAttribute("user"));
 				//LoginCommand에서 저장한 request를 세션에 다시 담음
 				//세션은 톰캣이 관리하는,존재하는 공간(WAS)에서 저장해야함
 				Carrier.forward(request, response);

@@ -24,7 +24,26 @@ var service = (()=>{
 				}
 			}
 			return json;//json으로 값을 던져라
-		}
+		},
+		passChecker : x=>{
+			alert('패스체커 인');
+			 // 아무것도 안주면 undefined(에러), 시작부터 인트로 타입 잡아준 것
+			var json = { //json 객체다
+					checker : true,
+					text : '필수입력값이 없습니다.',	
+			};
+			alert('new : ' + x.newPass);
+			alert('old : ' + x.pass);
+			
+			if(x.newPass === x.pass ){
+				json.checker = true;
+				json.text = '비밀번호가 같습니다.';
+			}else{
+				json.checker = false;
+				json.text = '비밀번호가 다릅니다.';
+			}
+			return json;
+			}
 	  };
 })();
 

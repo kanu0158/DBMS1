@@ -12,22 +12,34 @@
 <script>
 document.getElementById('moveMain').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭홈메인 이벤트 체크!!');
-	router.move(['${context}','common','','']);
+	router.move({context : '${context}',
+		domain : 'common',
+		action : '',
+		page : ''});
 });
 
 document.getElementById('moveList').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭리스트 이벤트 체크!!');
-	router.move(['${context}','admin','list','memberList']);
+	router.move({context : '${context}',
+		domain : 'admin',
+		action : 'list',
+		page : 'memberList'});
 });
 
 document.getElementById('moveRetrieve').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭홈메인 이벤트 체크!!');
-	router.move(['${context}','member','move','searchIDForm']);
+	router.move({context : '${context}',
+		domain : 'member',
+		action : 'move',
+		page : 'searchIDForm'});
 });
 
 document.getElementById('moveSearch').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭홈메인 이벤트 체크!!');
-	router.move(['${context}','member','move','searchTeamForm']);
+	router.move({context : '${context}',
+		domain : 'member',
+		action : 'move',
+		page : 'searchTeamForm'});
 });
 	
 </script>

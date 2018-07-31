@@ -1,19 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
-<jsp:include page="../common/head.jsp"/>
+	<jsp:include page="../common/head.jsp"/>
 <body>
-	<div id="user-login-layout">
+<div id="wrapper">
+	<div id="header">
+		<jsp:include page="../common/titleBox.jsp"/>
+		<jsp:include page="../common/loginBox.jsp"/>
+		<jsp:include page="../common/menuBox.jsp"/>
+	</div> 	<!-- header end -->
+	<div id="content">
+		<div id="user-login-layout">
 	<h1>회원가입</h1>
 	<form id="user-join-form">
 		ID: <input type="text" name="user_id" /><br>
 		PASS: <input type="text" name="user_pass" /><br>
 		NAME: <input type="text" name="user_name" /><br>
 		SSN: <input type="text" name="user_ssn" /><br>
-		<input type="hidden" name="action" value="join" />
-		<input type="hidden" name="page" value="joinResult" />
-		<input type="hidden" name="gender" />
-		<input type="hidden" name="age" />
 		<br/>
 		소속팀:
 		<input type="radio" name="teamid" value="" checked="checked"/>없음
@@ -44,6 +47,11 @@
 		<input id="joinFormBtn"type="button" value="전송" />
 	</form>
 	</div>
+	</div> <!-- content end -->
+	<div id="footer">
+		<jsp:include page="../common/footerBox.jsp"/>
+	</div>
+</div>
 <script>
 document.getElementById('joinFormBtn').addEventListener('click',function(){
 	alert('조인폼태그 클릭 내부');
@@ -53,10 +61,30 @@ document.getElementById('joinFormBtn').addEventListener('click',function(){
 		form.action = "${context}/member.do"; /* 이렇게하면 action은 어트리뷰트->프로퍼티로 바뀌고 값을 바꿀수있게된다. */
 		form.method = "post";
 		mem.join([form.user_id.value,form.user_pass.value,form.user_name.value,form.user_ssn.value]);
-		form.gender.value = mem.getGender();
-		form.age.value = mem.getAge();
-		alert('form.gender' + form.gender.value);
-		alert('form.age'+form.age.value);
+		var arr = [{name : "action" , 
+					value : "join"} ,
+				   {name : "page" , 
+					value : "joinResult"} ,
+				   {name : "gender" , 
+					value : mem.getGender()},
+				   {name : "age" , 
+					value : mem.getAge()}];
+		var i=0;
+		for(i in arr){
+			var node = document.createElement('input');
+			node.setAttribute('type','hidden');
+			node.setAttribute('name',arr[i].name);
+			node.setAttribute('value',arr[i].value);
+			alert('arr[i].name : ' + arr[i].name );
+			alert('arr[i].value : ' + arr[i].value );
+			form.appendChild(node);
+		}
+		
+		/* node.innerHTML =   fm적인 방법
+		'<input type="hidden" name="action" value="join" />'
+		+ '<input type="hidden" name="page" value= "joinResult"/>'
+		+ '<input type="hidden" name="gender" value= ' + mem.getGender()+ '/>'
+		+ '<input type="hidden" name="age" value= ' + mem.getAge()+ '/>'; */
 		form.submit();
 	}else{
 		alert(x.text);

@@ -25,7 +25,7 @@ public class LoginCommand extends Command{
 			mem.setPassword(request.getParameter("user_pass"));
 			if(MemberServiceImpl.getInstance().login(mem)) {
 				request.setAttribute(Term.MATCH.toString(), "TRUE");
-				request.setAttribute(Domain.USER.toString(), MemberServiceImpl.getInstance().findById(request.getParameter("user_id")));
+				request.getSession().setAttribute(Domain.USER.toString(), MemberServiceImpl.getInstance().findById(request.getParameter("user_id")));
 				System.out.println("로그인성공!!");
 			}else {
 				request.setAttribute(Term.MATCH.toString(), "FALSE");

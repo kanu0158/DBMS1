@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
-<jsp:include page="../common/head.jsp"/>
+	<jsp:include page="../common/head.jsp"/>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<jsp:include page="../common/titleBox.jsp"/>
+		<jsp:include page="../common/loginBox.jsp"/>
+		<jsp:include page="../common/menuBox.jsp"/>
+	</div> 	<!-- header end -->
+	<div id="content">
+	
 <div>
 <form id="update-form">
 <table id="mypage-table">
@@ -43,10 +52,14 @@
 		</select></td>
 	</tr>
 </table>
-<input type="hidden" name="userid" value= "${user.userid}"/>
-<input type="hidden" name="action" value="update" />
 <input type="button" id="updateConfirmBtn" value="수정확인" />
 </form>
+</div>
+	
+	</div> <!-- content end -->
+	<div id="footer">
+		<jsp:include page="../common/footerBox.jsp"/>
+	</div>
 </div>
 <script>
 var form = document.getElementById('update-form'); //DOM(다큐먼트가 만든 객체)객체
@@ -71,11 +84,30 @@ for(var i=0;i<roll.options.length;i++){
 document.getElementById('updateConfirmBtn').addEventListener('click',function(){
 	alert('수정확인버튼 클릭함!!');
 	//업데이트 실행 하세요...
-	form.action = "${context}/member.do"; /* 이렇게하면 action은 어트리뷰트->프로퍼티로 바뀌고 값을 바꿀수있게된다. */
+	var x = service.nullChecker([form.password.value]);
+	if(x.checker){
+	form.action = "${context}/member.do";
 	form.method = "get";
+	var node = document.createElement('input');
+	node.innerHTML =
+	'<input type="hidden" name="action" value="update" />'
+	+ '<input type="hidden" name="userid" value= "${user.userid}"/>';
+	form.appendChild(node); // 객체(node)로 만든 다음에 form에 자식으로 붙여 넣는것!
+	//정적코딩은 static 준것(html들...) 에서 처리한것(메모리 잡아먹는것)
+	//동적코딩은 메소드에 의한(function(){}내부) 처리, 수행 전까지는 메모리를 잡아먹지 않고 이게 끝나면 메모리 잡아먹던 리소스가 제거된다.
 	form.submit();
+	}else{
+	alert(x.text);
+	}
 	});
 </script>
+</body>
+</html>
+
+
+
+
+
 
 	
 
