@@ -6,15 +6,35 @@ var router = (()=>{ //파라미터 없을때를 표시하기위해 소괄호 쳐
 			alert('move:클릭 테스트 성공!!${context}'); // java의 sysout과 비슷
 			//location은 객체 href는 속
 			location.href = ("common" === x.context)?x.context+"/"+x.domain+".do" : x.context+"/"+x.domain +".do?action="+x.action	+"&page="+x.page;
-		}};  /*이게 클로저다 프라이빗의 공간을 퍼블릭으로 열어주는 것, */
+		}
+		};  /*이게 클로저다 프라이빗의 공간을 퍼블릭으로 열어주는 것, */
 								/*표기법은 JSON  move : move =='move' : move	 같다고 처리해주자 디폴트로 */
 })();  
+var admin = (()=>{
+	return {
+		check : x=>{ //객체
+			var isAdmin = confirm('관리자입니까?');//confirm은 window의 객체이다. window.confirm 
+			if(isAdmin){
+				var password = prompt('관리자비번을 입력바랍니다.');//BOM의 메소드
+				if(password == 1){
+					router.move({
+						context : x,
+						domain : 'admin',
+						action : 'list',
+						page : 'main'});
+				}
+			}else{
+				alert('관리자만 접근이 허용됩니다.');
+			}
+		}  
+	};})();
+
 var service = (()=>{
 	return {
 		nullChecker : x=>{
 			alert('널체커 인');
 			var i=0; // 아무것도 안주면 undefined(에러), 시작부터 인트로 타입 잡아준 것
-			var json = { //json 객체다
+			var json = { //json 객체다 다만 이건 메소드가 없으니 개체다.
 					checker : true,
 					text : '필수입력값이 없습니다.'
 			};

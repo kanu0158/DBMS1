@@ -15,13 +15,15 @@ document.getElementById('moveMain').addEventListener('click',function() {//콜�
 		page : ''});
 });
 
+/* document.querySelector('#moveAdminMain').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
+	alert('클릭어드민메인 이벤트 체크!!');
+	admin.check("${context}");
+}); 속도는 getElementById보다 느려서 사용안해 단, 태그나 클래스네임 은 쉬우니까 querySelector사용 */ 
+
 document.getElementById('moveAdminMain').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
 	alert('클릭어드민메인 이벤트 체크!!');
-	router.move({context : '${context}',
-		domain : 'admin',
-		action : 'move',
-		page : 'main'});
-});
+	admin.check("${context}");
+}); 
 </script>
 
 <!-- <script>

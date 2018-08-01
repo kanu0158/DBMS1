@@ -44,14 +44,17 @@ public class AdminController extends HttpServlet {
      		request.getRequestDispatcher(String.format(MemberUrl.PAGE_PATH.toString(), page)).forward(request, response);*/
 			break;
 		case LIST:
-			System.out.println("6.LIST안으로 진입");
+			System.out.println("6.Admin LIST안으로 진입");
 			//mems = ((ListCommand) Sentry.cmd).getMems();
 			//System.out.println(mems);
 			//Carrier.redirect(request, response,"/member.do?action=move&page=memberList");
 			//response.sendRedirect(request.getContextPath());
 			//request.getRequestDispatcher("/index.jsp").forward(request, response);
 			Carrier.forward(request, response);
-			
+			break;
+		case RETRIEVE:
+			System.out.println("6.Admin RETRIEVE안으로 진입");
+			Carrier.forward(request, response);
 			break;
 		}
 	}

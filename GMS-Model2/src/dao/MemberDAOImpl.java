@@ -67,6 +67,8 @@ public class MemberDAOImpl implements MemberDAO {
 				mem.setRoll(rs.getString("USER_ROLL"));
 				mem.setSsn(rs.getString("USER_SSN"));
 				mem.setTeamid(rs.getString("TEAM_ID"));
+				mem.setAge(rs.getString("AGE"));
+				mem.setGender(rs.getString("GENDER"));
 				lst.add(mem);
 			}
 		} catch (Exception e) {

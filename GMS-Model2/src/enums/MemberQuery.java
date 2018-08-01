@@ -74,7 +74,9 @@ public String toString() {
 			     + "   NAME USER_NAME,   "
 			     + "   SSN USER_SSN,    "
 			     + "   ROLL USER_ROLL,   "
-			     + "   TEAM_ID   "
+			     + "   TEAM_ID,"
+			     + "   AGE,"
+			     + "   GENDER   "
 			    + "   FROM   "
 			     + "   MEMBER   ";
 		break;

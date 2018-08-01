@@ -10,16 +10,13 @@ import enums.Term;
 import service.MemberServiceImpl;
 
 public class ListCommand extends Command {
-	List<MemberBean> mems;
-	
-	public List<MemberBean> getMems() {
-		return mems;
-	}
 	public ListCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
 		setPage(request.getParameter("page"));
+		System.out.println("listcommand in  action : "+ request.getParameter("action"));
+		System.out.println("listcommand in  page : "+ request.getParameter("page"));
 		execute();
 	}
 	@Override

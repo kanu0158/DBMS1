@@ -8,4 +8,14 @@
 	<title>Main</title>
 	<link rel="stylesheet" href="${css}/style.css" />
 	<script src="${js}/app.js"></script>
+	<div>
+		<table>
+			<tr>
+				<td width="400px"></td>
+				<td colspan="2"><img src="${img}/home/nuroongzi.jpg"/></td>
+				<td width="400px"></td>
+			</tr>
+		</table>
+		
+	</div>
 </head>
