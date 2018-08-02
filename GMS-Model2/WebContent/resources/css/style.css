@@ -108,9 +108,22 @@ div#footer{
 	font-size: 1.5em;
 }
 
-
- table,th,td {border: 1px solid gray} 
+table,th,td {border: 1px solid gray} 
  .bgColorisYellow{background-color: #ffff00}
+ .center{margin: 0 auto}
+ .width100pt{width:100%}
+ .width90pt{width:90%}
+ .width80pt{width:80%}
+ .fontColorBlue{color:blue}
+ .cursor{cursor:point}
+ .marginTop30px{margin-top: 30px}
+ .marginTop50px{margin-top: 50px}
+ .marginLeft200px{margin-left: 200px}
+ .marginRight200px{margin-right: 200px}
+ .marginBot30px{margin-bottom: 30px}
+ .marginBot50px{margin-bottom: 50px}
+ .width300px{width:300px}
+ .floatRight{float:right;}
 /* 클래스네임
 .width-300{width:300px}
 .width-full{width:100%;}

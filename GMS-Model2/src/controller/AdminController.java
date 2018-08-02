@@ -56,6 +56,9 @@ public class AdminController extends HttpServlet {
 			System.out.println("6.Admin RETRIEVE안으로 진입");
 			Carrier.forward(request, response);
 			break;
+		case SEARCH:
+			System.out.println("6.Admin SEARCH안으로 진입");
+			Carrier.forward(request, response);
 		}
 	}
 

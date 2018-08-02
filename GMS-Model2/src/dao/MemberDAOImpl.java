@@ -77,12 +77,31 @@ public class MemberDAOImpl implements MemberDAO {
 		return lst;
 	}
 	@Override
-	public List<MemberBean> selectMemberTeam(String teamId) {
+	public List<MemberBean> selectMemberWord(String word) {
+		String option = word.split("/")[0]; 
+		String sword = word.split("/")[1];
 		List<MemberBean> lst = new ArrayList<>();
+		//String sql = MemberQuery.SELECT_WORD.toString();
+		String sql = " SELECT "
+				 + "   MEM_ID USER_ID, "
+			     + "   PASSWORD USER_PASS, "
+			     + "   NAME USER_NAME,   "
+			     + "   SSN USER_SSN,    "
+			     + "   ROLL USER_ROLL,   "
+			     + "   TEAM_ID,   "
+			     + "   AGE,  "
+			     + "   GENDER   "
+			     + " FROM MEMBER "
+				+ "	WHERE " +word.split("/")[0] +"  LIKE '%" + word.split("/")[1] +"%' " ;
+		
+		
 		try {
+			System.out.println("쿼리 : " + sql);
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
-					.getConnection().createStatement().executeQuery(String.format(MemberQuery.SELECT_TEAM.toString(),teamId));
+					.getConnection().createStatement().executeQuery(sql);
 			MemberBean mem = null;
+			
+			System.out.println("dao selectMemberWord in while 전 : ");
 			while(rs.next()) {
 				mem = new MemberBean();
 				mem.setUserid(rs.getString("USER_ID"));
@@ -91,7 +110,11 @@ public class MemberDAOImpl implements MemberDAO {
 				mem.setRoll(rs.getString("USER_ROLL"));
 				mem.setSsn(rs.getString("USER_SSN"));
 				mem.setTeamid(rs.getString("TEAM_ID"));
+				mem.setTeamid(rs.getString("AGE"));
+				mem.setTeamid(rs.getString("GENDER"));
+				System.out.println("dao selectMemberWord in mem : "+mem);
 				lst.add(mem);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

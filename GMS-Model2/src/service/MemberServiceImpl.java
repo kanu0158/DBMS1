@@ -53,7 +53,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public List<MemberBean> findByName(String word) {
-		return MemberDAOImpl.getInstance().selectMemberTeam(word);
+		return MemberDAOImpl.getInstance().selectMemberWord(word);
 	}
 	@Override
 	public int count() {

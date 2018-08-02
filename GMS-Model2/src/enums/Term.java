@@ -1,7 +1,7 @@
 package enums;
 
 public enum Term {
-	CONTEXT, WEBPATH, MAIN, MATCH, LIST, TEAM, ISID;
+	CONTEXT, WEBPATH, MAIN, MATCH, LIST, TEAM, ISID, NAME;
 	
 	@Override
 	public String toString() {
@@ -27,6 +27,9 @@ public enum Term {
 			break;
 		case CONTEXT:
 			term = "context";
+			break;
+		case NAME:
+			term = "name";
 			break;
 		}
 		return term;

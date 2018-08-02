@@ -26,7 +26,67 @@ var admin = (()=>{
 			}else{
 				alert('관리자만 접근이 허용됩니다.');
 			}
-		}  
+		},
+		main : x=>{
+			service.addClass(
+					document.getElementById('searchBox'),
+					'width80pt center'
+				);
+				service.addClass(
+						document.getElementById('searchWord'),
+						'width100px floatRight'
+				);
+				service.addClass(
+						document.getElementById('searchOption'),
+						'floatRight '
+				);
+				service.addClass(
+						document.getElementById('searchBtn'),
+						'floatRight '
+				); 
+				service.addClass(
+						document.getElementById('contentBoxTab'),
+						'width90pt center marginTop30px '
+				);
+				service.addClass(
+						document.getElementById('contentBoxMeta'),
+						'bgColorisYellow '
+				);
+
+
+				document.getElementById('searchBtn').addEventListener('click',function(){
+					alert('안녕 친구들~');
+					/* so.options[so.selectedIndex].value */
+					var so = document.getElementById('searchOption');
+					var sw = document.getElementById('searchWord');
+					alert('so.value : '+ so.value);
+					alert('sw.value : '+sw.value);
+					location.href = (so.value === 'user_id') ? x+'/admin.do?action=retrieve&page=memberDetail&user_id='+sw.value :
+						 x+'/admin.do?action=search&page=main&so='+so.value +'&sw='+sw.value;
+							
+					/* 	if(){//아이디검색
+					//get방식이니(보안 필요 x) 일단 location.href 쓰고 시작해라
+					location.href = ;
+				}else{//이름 or 팀 검색
+					//get방식이니(보안 필요 x) 일단 location.href 쓰고 시작해라
+					location.href = ;
+				} */
+				});
+				//var x = document.querySelectorAll('.username');//클래스 이름은 중복가능, var x에는 클래스네임이 username인 배열(Array)이담긴다. 
+
+				for(var i of document.querySelectorAll('.username')){
+					service.addClass(
+							i,
+							'cursor fontColorBlue'
+					);
+					i.addEventListener('click',function(){
+						alert('클릭 : '+this.getAttribute('id')); // 콜백함수 내부의 이때의 this는 이 function을 호출한 x[i]객체를 가리킨다.
+															//이파이패턴 내부 세터에서의 this와는 다르다 이때는 this가 자바와 똑같이 현재 클래스를 가리킨다. 
+															//js에선 클래스가 없으니 function이라고 생각하면 될 듯
+						location.href = x+"/admin.do?action=retrieve&page=memberDetail&user_id="+this.getAttribute('id');
+					}); 
+				}			
+		}
 	};})();
 
 var service = (()=>{
@@ -63,7 +123,17 @@ var service = (()=>{
 				json.text = '비밀번호가 다릅니다.';
 			}
 			return json;
+			},
+		addClass : (dom,cName) =>{
+			var arr = cName.split(" "); //cName에서 공백으로 토큰을 만든다.
+			//alert("dom : " + dom);
+			//alert("cName : " + cName);
+			//dom.className += " " +cName;
+			//alert("끝!");
+			if(arr.indexOf(cName) == -1){
+				dom.className += " " +cName;
 			}
+		}
 	  };
 })();
 
