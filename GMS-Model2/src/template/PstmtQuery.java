@@ -15,7 +15,7 @@ public class PstmtQuery extends QueryTemplate{
 				+ ColumnFinder.find(Domain.MEMBER)
 				+ " FROM %s "
 				+ " WHERE %s "
-				+ " LIKE ? ",
+				+ " LIKE ? ",   
 				map.get("table"),
 				map.get("column")));
 	}

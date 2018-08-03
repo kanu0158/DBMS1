@@ -19,12 +19,13 @@ public class ColumnFinder {
 			break;
 		}
 		Field[] f = clazz.getDeclaredFields();
+		System.out.println("ColumnFinder in f = "+f);
 		for(int i=0;i<f.length;i++) {
 			s+=(i!=(f.length-1))?
 					f[i].getName()+",":
 						f[i].getName();
+			System.out.println("ColumnFinder for in f[i].getName = "+f[i].getName());
 		}
-		System.out.println("ColumnFinder 내부");
 		return s;
 	}
 
