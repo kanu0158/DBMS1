@@ -11,42 +11,42 @@ public String toString() {
 	switch (this) {
 	case LOGIN:
 		query = "  SELECT " 
-			     + "   MEM_ID USER_ID, "
+			     + "   USERID USER_ID, "
 			     + "   PASSWORD USER_PASS, "
 			     + "   NAME USER_NAME,   "
 			     + "   SSN USER_SSN,    "
 			     + "   ROLL USER_ROLL,   "
-			     + "   TEAM_ID,   "
+			     + "   TEAMID TEAM_ID,   "
 			     + "   AGE,  "
 			     + "   GENDER  "
 			    + "   FROM   "
 			     + "   MEMBER   "
 			    + "   WHERE    " 
-			     + "   MEM_ID LIKE '%s' AND PASSWORD LIKE '%s'  ";
+			     + "   USERID LIKE '%s' AND PASSWORD LIKE '%s'  ";
 		break;
 	case INSERT_MEMBER:
 		query = "  INSERT INTO MEMBER   "
-				+ "  (MEM_ID, NAME, PASSWORD, SSN, AGE, GENDER, ROLL, TEAM_ID ) "
+				+ "  (USERID, NAME, PASSWORD, SSN, AGE, GENDER, ROLL, TEAMID ) "
 				+ "  VALUES   "
 				+ "  ( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' ) ";
 		break;
 	case IS_ID:
 		query = "  SELECT "
-				 + "   MEM_ID USER_ID, "
+				 + "   USERID USER_ID, "
 			     + "   PASSWORD USER_PASS, "
 			     + "   NAME USER_NAME,   "
 			     + "   SSN USER_SSN,    "
 			     + "   ROLL USER_ROLL,   "
-			     + "   TEAM_ID,   "
+			     + "   TEAMID TEAM_ID,   "
 			     + "   AGE,"
 			     + "   GENDER   "
 				+ "  FROM  MEMBER   "
-				+ "  WHERE MEM_ID LIKE '%s'  ";
+				+ "  WHERE USERID LIKE '%s'  ";
 		break;
 	case DELETE_MEMBER:
 		query = " DELETE  "
 				+ "  FROM MEMBER  "
-				+ "  WHERE MEM_ID LIKE '%s' AND PASSWORD LIKE '%s'  ";
+				+ "  WHERE USERID LIKE '%s' AND PASSWORD LIKE '%s'  ";
 		break;
 	case MEMBER_COUNT:
 		query = "  SELECT COUNT(*) 멤버수  "
@@ -55,7 +55,7 @@ public String toString() {
 	case UPDATE_PASS:
 		query = "  UPDATE MEMBER   "
 				+ "  SET PASSWORD = '%s'  " 
-				+ "  WHERE MEM_ID LIKE '%s'  ";
+				+ "  WHERE USERID LIKE '%s'  ";
 		break;
 	case UPDATE_MEMBER:
 		/*UPDATE MEMBER 
@@ -63,18 +63,18 @@ public String toString() {
 		WHERE MEM_ID = 'qq4';*/
 		query = "  UPDATE MEMBER  "
 				+ "  SET PASSWORD = '%s',  "
-				+ "  TEAM_ID = '%s',  "
+				+ "  TEAMID = '%s',  "
 				+ "  ROLL = '%s' "
-				+ "  WHERE MEM_ID = '%s'  ";
+				+ "  WHERE USERID = '%s'  ";
 		break;
 	case SELECT_ALL:
 		query = "  SELECT " 
-			     + "   MEM_ID USER_ID, "
+			     + "   USERID USER_ID, "
 			     + "   PASSWORD USER_PASS, "
 			     + "   NAME USER_NAME,   "
 			     + "   SSN USER_SSN,    "
 			     + "   ROLL USER_ROLL,   "
-			     + "   TEAM_ID,"
+			     + "   TEAMID TEAM_ID,"
 			     + "   AGE,"
 			     + "   GENDER   "
 			    + "   FROM   "
@@ -82,16 +82,16 @@ public String toString() {
 		break;
 	case SELECT_WORD:
 		query = " SELECT "
-				 + "   MEM_ID USER_ID, "
+				 + "   USERID USER_ID, "
 			     + "   PASSWORD USER_PASS, "
 			     + "   NAME USER_NAME,   "
 			     + "   SSN USER_SSN,    "
 			     + "   ROLL USER_ROLL,   "
-			     + "   TEAM_ID,   "
+			     + "   TEAMID TEAM_ID,   "
 			     + "   AGE,  "
 			     + "   GENDER   "
 			     + " FROM MEMBER "
-				+ "	WHERE TEAM_ID LIKE '%s' "
+				+ "	WHERE TEAMID LIKE '%s' "
 				+ "			OR    "
 				+ " 	  NAME LIKE '%s'  ";
 		break;

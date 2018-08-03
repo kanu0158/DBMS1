@@ -8,9 +8,9 @@
 		<input id="searchWord" name="searchWord" type="text" placeholder="검색어 입력"/>
 		<select name="searchOption" id="searchOption">
 			<option value="none">검색조건</option>
-			<option value="user_id">아이디</option>
+			<option value="userid">아이디</option>
 			<option value="name">이  름</option>
-			<option value="team_id">팀  명</option>
+			<option value="teamid">팀  명</option>
 		</select>
 	
 
@@ -41,12 +41,12 @@
 		<tr>
 			<td colspan="6">
 				<!-- 그 수많은 리스트를 가지고 와서 사이즈구하는건 미친짓이다! -->
-				<%-- 전체회원수 : ${count}   --%>
-				전체회원수 : ${count}  
+				<%-- 조회 회원수 : ${count}   --%>
+				조회 회원수 결과 : ${count}  
 				<br />
 				<!-- 그 수많은 리스트를 가지고 와서 사이즈구하는건 미친짓이다! -->
 				<%-- <c:forEach begin="1" end="${count%5 == 0 ? count/5 : count/5 + 1}" step="1" var="i"> --%>
-				<c:forEach begin="1" end="${page}" step="1" var="i">
+				<c:forEach begin="1" end="${pagenum}" step="1" var="i">
 					<span>${i}</span>
 				</c:forEach>
 			</td>

@@ -25,10 +25,10 @@ public class CountCommand extends Command {
 		//super.execute();
 		request.setAttribute("count", MemberServiceImpl.getInstance().count());
 		System.out.println((int)request.getAttribute("count"));
-		request.setAttribute("page", (int)request.getAttribute("count") == 0 ? (int)request.getAttribute("count")/5:(int)request.getAttribute("count")/5+1 );
+		request.setAttribute("pagenum", (int)request.getAttribute("count") == 0 ? (int)request.getAttribute("count")/5:(int)request.getAttribute("count")/5+1 );
 		
 		System.out.println("countcommand excute내부 getAttribute count  : " + request.getAttribute("count"));
-		System.out.println("countcommand excute내부 getAttribute page  : " + request.getAttribute("page"));
+		System.out.println("countcommand excute내부 getAttribute page  : " + request.getAttribute("pagenum"));
 		super.execute();
 	}
 }

@@ -23,10 +23,10 @@ public class ListCommand extends Command {
 	@Override
 	public void execute() {
 		request.setAttribute(Term.LIST.toString(), MemberServiceImpl.getInstance().findByAll());
-		request.setAttribute(Term.COUNT.toString(), request.getParameter("count"));
-		request.setAttribute(Term.PAGE.toString(), request.getParameter("page"));
+		request.setAttribute(Term.COUNT.toString(), MemberServiceImpl.getInstance().count());
+		request.setAttribute(Term.PAGENUM.toString(), (int)request.getAttribute("count") == 0 ? (int)request.getAttribute("count")/5:(int)request.getAttribute("count")/5+1 );
 		System.out.println("리스트커맨드 익스큐트 내부 getparam카운트 : "+ request.getParameter("count"));
-		System.out.println("리스트커맨드 익스큐트 내부 getparam카운트 : "+ request.getParameter("page"));
+		System.out.println("리스트커맨드 익스큐트 내부 getparam( pagenum ): "+ request.getParameter("pagenum"));
 		/*switch (Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("list커맨드진입");

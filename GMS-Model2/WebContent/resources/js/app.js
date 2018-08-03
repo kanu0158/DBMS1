@@ -21,15 +21,15 @@ var admin = (()=>{
 					router.move({
 						context : x,
 						domain : 'admin',
-						/*action : 'list',*/
-						action : 'count',
+						action : 'list',
+						/*action : 'count',*/
 						page : 'main'});
 				}
 			}else{
 				alert('관리자만 접근이 허용됩니다.');
 			}
 		},
-		list : x=>{
+		/*list : x=>{
 			if(x.islist === ""){
 			alert('리스트 없음');
 			router.move({
@@ -41,7 +41,7 @@ var admin = (()=>{
 				alert('리스트 있음');
 			}
 		}
-		,
+		,*/
 		main : x=>{
 			service.addClass(
 					document.getElementById('searchBox'),
@@ -76,8 +76,9 @@ var admin = (()=>{
 					var sw = document.getElementById('searchWord');
 					alert('so.value : '+ so.value);
 					alert('sw.value : '+sw.value);
-					location.href = (so.value === 'user_id') ? x+'/admin.do?action=retrieve&page=memberDetail&user_id='+sw.value :
-						 x+'/admin.do?action=search&page=main&so='+so.value +'&sw='+sw.value;
+					location.href =  x+'/admin.do?action=search&page=main&so='+so.value +'&sw='+sw.value;
+					/*location.href = (so.value === 'userid') ? x+'/admin.do?action=retrieve&page=memberDetail&user_id='+sw.value :
+						 x+'/admin.do?action=search&page=main&so='+so.value +'&sw='+sw.value;*/
 							
 					/* 	if(){//아이디검색
 					//get방식이니(보안 필요 x) 일단 location.href 쓰고 시작해라
