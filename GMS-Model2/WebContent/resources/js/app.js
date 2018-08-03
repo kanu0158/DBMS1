@@ -88,7 +88,7 @@ var admin = (()=>{
 				}			
 		}
 	};})();
-
+//모지
 var service = (()=>{
 	return {
 		nullChecker : x=>{
