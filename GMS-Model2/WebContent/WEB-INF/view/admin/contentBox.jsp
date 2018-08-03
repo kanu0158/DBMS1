@@ -38,11 +38,26 @@
 			<td>${member.teamid}</td>
 		</tr>
 		</c:forEach>
+		<tr>
+			<td colspan="6">
+				<!-- 그 수많은 리스트를 가지고 와서 사이즈구하는건 미친짓이다! -->
+				<%-- 전체회원수 : ${count}   --%>
+				전체회원수 : ${count}  
+				<br />
+				<!-- 그 수많은 리스트를 가지고 와서 사이즈구하는건 미친짓이다! -->
+				<%-- <c:forEach begin="1" end="${count%5 == 0 ? count/5 : count/5 + 1}" step="1" var="i"> --%>
+				<c:forEach begin="1" end="${page}" step="1" var="i">
+					<span>${i}</span>
+				</c:forEach>
+			</td>
+		</tr>
 	</table>
 </div>
 <script>
+/* admin.list({
+	islist : '${list}',
+	context : '${context}'}); */
 admin.main('${context}');
-
 //눌렀을때 움직이는거면 document.get..().add('click',fx);이지만 
 //오자마자 버튼클릭도 없이 바로 실행되어야하므로 자바는 값만 던지고 스크립트가 테이블도 만들고 모양을 만듬
 

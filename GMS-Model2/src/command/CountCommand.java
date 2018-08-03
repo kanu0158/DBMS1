@@ -24,6 +24,11 @@ public class CountCommand extends Command {
 		//this.count = MemberServiceImpl.getInstance().count();
 		//super.execute();
 		request.setAttribute("count", MemberServiceImpl.getInstance().count());
+		System.out.println((int)request.getAttribute("count"));
+		request.setAttribute("page", (int)request.getAttribute("count") == 0 ? (int)request.getAttribute("count")/5:(int)request.getAttribute("count")/5+1 );
+		
+		System.out.println("countcommand excute내부 getAttribute count  : " + request.getAttribute("count"));
+		System.out.println("countcommand excute내부 getAttribute page  : " + request.getAttribute("page"));
 		super.execute();
 	}
 }

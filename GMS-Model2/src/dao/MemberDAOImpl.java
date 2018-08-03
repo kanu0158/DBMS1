@@ -3,12 +3,15 @@ package dao;
 import java.sql.*;
 import java.util.*;
 import domain.MemberBean;
+import enums.Domain;
 import enums.MemberQuery;
 import enums.Vendor;
 import factory.Database;
 import factory.DatabaseFactory;
 import factory.Oracle;
 import pool.DBConstant;
+import template.PstmtQuery;
+import template.QueryTemplate;
 
 public class MemberDAOImpl implements MemberDAO {
 	private static MemberDAO instance = new MemberDAOImpl();
@@ -78,7 +81,18 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public List<MemberBean> selectMemberWord(String word) {
-		String option = word.split("/")[0]; 
+		//이제 템플릿 패턴 적용
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list = new ArrayList<>();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("column",word.split("/")[0]);
+		map.put("value",word.split("/")[1]);
+		map.put("table",Domain.MEMBER);
+		q.play(map);
+		for(Object s: q.getList()) {
+			list.add((MemberBean)s);
+		}
+		/*String option = word.split("/")[0]; 
 		String sword = word.split("/")[1];
 		List<MemberBean> lst = new ArrayList<>();
 		//String sql = MemberQuery.SELECT_WORD.toString();
@@ -118,8 +132,8 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		return lst;
+		}*/
+		return list;
 	}
 	@Override
 	public MemberBean selectMemberOne(String userid) {

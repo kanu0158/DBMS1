@@ -17,16 +17,31 @@ var admin = (()=>{
 			if(isAdmin){
 				var password = prompt('관리자비번을 입력바랍니다.');//BOM의 메소드
 				if(password == 1){
+					alert('action == count ');
 					router.move({
 						context : x,
 						domain : 'admin',
-						action : 'list',
+						/*action : 'list',*/
+						action : 'count',
 						page : 'main'});
 				}
 			}else{
 				alert('관리자만 접근이 허용됩니다.');
 			}
 		},
+		list : x=>{
+			if(x.islist === ""){
+			alert('리스트 없음');
+			router.move({
+				context : x.context,
+				domain : 'admin',
+				action : 'list',
+				page : 'main'});
+			}else{
+				alert('리스트 있음');
+			}
+		}
+		,
 		main : x=>{
 			service.addClass(
 					document.getElementById('searchBox'),

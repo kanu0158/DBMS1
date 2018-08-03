@@ -1,12 +1,18 @@
 package enums;
 
 public enum Term {
-	CONTEXT, WEBPATH, MAIN, MATCH, LIST, TEAM, ISID, NAME;
+	CONTEXT, WEBPATH, MAIN, MATCH, LIST, TEAM, ISID, NAME,COUNT,PAGE;
 	
 	@Override
 	public String toString() {
 		String term = "";
 		switch (this) {
+		case PAGE:
+			term = "page";
+			break;
+		case COUNT:
+			term = "count";
+			break;
 		case ISID:
 			term = "isid";
 			break;

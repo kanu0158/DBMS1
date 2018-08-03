@@ -23,6 +23,7 @@ public class AdminController extends HttpServlet {
 	//service는 doget + dopost 인 이미 있는 메소드이다.
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("1.AdminController ENTER!!!");
+		System.out.println("1-1 count : " + request.getAttribute("count"));
 		Sentry.init(request);
 		System.out.println("4.AdminController에서 액션조회: "+Sentry.cmd.getAction());
 		System.out.println("5.AdminController에서page조회: "+Sentry.cmd.getPage());
@@ -45,6 +46,7 @@ public class AdminController extends HttpServlet {
 			break;
 		case LIST:
 			System.out.println("6.Admin LIST안으로 진입");
+			System.out.println("6-1 어드민 컨트롤러list 내부에서 count 조회 : " + request.getAttribute("count"));
 			//mems = ((ListCommand) Sentry.cmd).getMems();
 			//System.out.println(mems);
 			//Carrier.redirect(request, response,"/member.do?action=move&page=memberList");
@@ -59,6 +61,11 @@ public class AdminController extends HttpServlet {
 		case SEARCH:
 			System.out.println("6.Admin SEARCH안으로 진입");
 			Carrier.forward(request, response);
+			break;
+		case COUNT:
+			System.out.println("6.Admin COUNT안으로 진입");
+			Carrier.redirect(request, response,"/admin.do?action=list&page=main&count="+request.getAttribute("count")+"&page="+request.getAttribute("page"));
+			break;
 		}
 	}
 
