@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Map;
 
 import dao.MemberDAO;
 import dao.MemberDAOImpl;
@@ -76,5 +77,8 @@ public class MemberServiceImpl implements MemberService{
 	public void updateMemberIdSsnAll() {
 		MemberDAOImpl.getInstance().updateMemberIdSsn();
 	}
-
+	@Override
+	public List<MemberBean> getList(Map<?, ?> param) {
+		return MemberDAOImpl.getInstance().selectList(param);
+	}
 }

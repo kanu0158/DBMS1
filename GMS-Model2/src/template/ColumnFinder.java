@@ -24,7 +24,7 @@ public class ColumnFinder {
 			s+=(i!=(f.length-1))?
 					f[i].getName()+",":
 						f[i].getName();
-			System.out.println("ColumnFinder for in f[i].getName = "+f[i].getName());
+			//System.out.println("ColumnFinder for in f[i].getName = "+f[i].getName());
 		}
 		return s;
 	}

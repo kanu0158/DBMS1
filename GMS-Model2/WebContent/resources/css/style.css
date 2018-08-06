@@ -124,6 +124,14 @@ table,th,td {border: 1px solid gray}
  .marginBot50px{margin-bottom: 50px}
  .width300px{width:300px}
  .floatRight{float:right;}
+ .pageBox{
+ 	list-style: none;
+ 	padding: 0;
+ 	margin: 0;
+ }
+ .pageBox li{
+ 	display:inline;
+ }
 /* 클래스네임
 .width-300{width:300px}
 .width-full{width:100%;}

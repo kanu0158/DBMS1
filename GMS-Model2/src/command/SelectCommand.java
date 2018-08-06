@@ -30,9 +30,13 @@ public class SelectCommand extends Command{//팀멤버찾는명령
 			String word = request.getParameter("sw");
 			System.out.println("selectCommand excute in option : " + option  );
 			System.out.println("selectCommand excute in word : " + word  );
-			request.setAttribute(Term.LIST.toString(), MemberServiceImpl.getInstance().findByName(option+"/"+word));
-			request.setAttribute(Term.COUNT.toString(), MemberServiceImpl.getInstance().findByName(option+"/"+word).size());
-			request.setAttribute(Term.PAGENUM.toString(), (int)request.getAttribute("count") == 0 ? (int)request.getAttribute("count")/5:(int)request.getAttribute("count")/5+1 );	
+			System.out.println("=============================================================");
+			List<MemberBean> mems = MemberServiceImpl.getInstance().findByName(option+"/"+word);
+			request.setAttribute(Term.LIST.toString(), mems);
+			System.out.println("=============================================================");
+			request.setAttribute(Term.COUNT.toString(), mems.size());
+			System.out.println("=============================================================");
+			//request.setAttribute(Term.PAGENUM.toString(), (int)request.getAttribute("count") == 0 ? (int)request.getAttribute("count")/5:(int)request.getAttribute("count")/5+1 );	
 			
 			/*switch (Domain.valueOf(domain.toUpperCase())) {
 			case MEMBER:

@@ -19,7 +19,7 @@ var admin = (()=>{
 			if(isAdmin){
 				var password = prompt('관리자비번을 입력바랍니다.');//BOM의 메소드
 				if(password == 1){
-					alert('action == count ');
+					alert('action == list ');
 					router.move({
 						context : x,
 						domain : 'admin',

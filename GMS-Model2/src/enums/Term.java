@@ -8,7 +8,7 @@ public enum Term {
 		String term = "";
 		switch (this) {
 		case PAGENUM:
-			term = "pagenum";
+			term = "pageNum";
 			break;
 		case COUNT:
 			term = "count";

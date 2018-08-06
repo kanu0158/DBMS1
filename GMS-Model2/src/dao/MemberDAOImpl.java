@@ -4,12 +4,14 @@ import java.sql.*;
 import java.util.*;
 import domain.MemberBean;
 import enums.Domain;
+import enums.MemberAction;
 import enums.MemberQuery;
 import enums.Vendor;
 import factory.Database;
 import factory.DatabaseFactory;
 import factory.Oracle;
 import pool.DBConstant;
+import template.ColumnFinder;
 import template.PstmtQuery;
 import template.QueryTemplate;
 
@@ -85,6 +87,7 @@ public class MemberDAOImpl implements MemberDAO {
 		QueryTemplate q = new PstmtQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String, Object> map = new HashMap<>();
+		map.put("action",MemberAction.SEARCH);
 		map.put("column",word.split("/")[0]);
 		map.put("value",word.split("/")[1]);
 		map.put("table",Domain.MEMBER);
@@ -92,6 +95,7 @@ public class MemberDAOImpl implements MemberDAO {
 		for(Object s: q.getList()) {
 			list.add((MemberBean)s);
 		}
+		System.out.println("dao selectMemberWord in list : " + list);
 		/*String option = word.split("/")[0]; 
 		String sword = word.split("/")[1];
 		List<MemberBean> lst = new ArrayList<>();
@@ -242,6 +246,35 @@ public class MemberDAOImpl implements MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+	}
+	@Override
+	public List<MemberBean> selectList(Map<?,?> param) {
+		//String beginRow = String.valueOf();
+		//String endRow = String.valueOf(param.get("endRow"));
+		System.out.println("dao selectList메소드 내부 beginRow, endRow :" + param.get("beginRow") + " ," + param.get("endRow"));
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list = new ArrayList<>();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("action", MemberAction.LIST);
+		map.put("column"," T.SEQ ");
+		map.put("beginRow",  param.get("beginRow"));
+		map.put("endRow",  param.get("endRow"));
+		map.put("table"," (" + 
+				"	SELECT ROWNUM SEQ, "
+				+   ColumnFinder.find(Domain.MEMBER) + 
+				"	FROM MEMBER " + 
+				"	ORDER BY SEQ DESC) T ");
+		q.play(map);
+		for(Object s: q.getList()) {
+			list.add((MemberBean)s);
+		}
+		System.out.println("dao selectList메소드 내부 list : "+list);
+		/*(
+				SELECT ROWNUM SEQ, M.* 
+				FROM MEMBER M
+				ORDER BY SEQ DESC) T*/
+		
+		return list;
 	}
 
 }

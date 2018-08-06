@@ -44,11 +44,21 @@
 				<%-- 조회 회원수 : ${count}   --%>
 				조회 회원수 결과 : ${count}  
 				<br />
+				<ul class="pageBox">
+					<c:forEach begin="${beginPage}" end="${endPage}" step="1" varStatus="i">
+					<li>
+						<span><a href="#">${i.index}</a><span>
+					</li>
+					</c:forEach>
+					<c:if test="${count gt pageNum}"> 
+						<li>다음▶</li>
+					 </c:if> 
+				</ul>
 				<!-- 그 수많은 리스트를 가지고 와서 사이즈구하는건 미친짓이다! -->
 				<%-- <c:forEach begin="1" end="${count%5 == 0 ? count/5 : count/5 + 1}" step="1" var="i"> --%>
-				<c:forEach begin="1" end="${pagenum}" step="1" var="i">
-					<span>${i}</span>
-				</c:forEach>
+				<%-- <c:forEach begin="1" end="${pagenum}" step="1" varStatus="i">
+					<span><a href="#">${i.index}</a><span>
+				</c:forEach> --%>
 			</td>
 		</tr>
 	</table>

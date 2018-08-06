@@ -1,6 +1,8 @@
 package command;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,9 +24,23 @@ public class ListCommand extends Command {
 	}
 	@Override
 	public void execute() {
-		request.setAttribute(Term.LIST.toString(), MemberServiceImpl.getInstance().findByAll());
-		request.setAttribute(Term.COUNT.toString(), MemberServiceImpl.getInstance().count());
-		request.setAttribute(Term.PAGENUM.toString(), (int)request.getAttribute("count") == 0 ? (int)request.getAttribute("count")/5:(int)request.getAttribute("count")/5+1 );
+		//request.setAttribute(Term.LIST.toString(), MemberServiceImpl.getInstance().findByAll());
+		//request.setAttribute(Term.COUNT.toString(), MemberServiceImpl.getInstance().count());
+		Map<String,Object> param = new HashMap<>();
+		int beginRow = 1;
+		int endRow = 5;
+		param.put("beginRow", beginRow); // int - > Integer로 바뀜
+		param.put("endRow", endRow);
+		List<MemberBean> mems = MemberServiceImpl.getInstance().getList(param);
+		System.out.println("list 커맨드 내부 list : " + mems);
+		request.setAttribute(Term.LIST.toString(), mems);
+		request.setAttribute(Term.COUNT.toString(),26);
+		request.setAttribute("beginPage", (request.getParameter("beginPage")==null)?"1":request.getParameter("beginPage"));
+		int endPage = (int)request.getAttribute("count")%5 == 0 ? (int)request.getAttribute("count")/5:(int)request.getAttribute("count")/5+1;
+		request.setAttribute("endPage", (endPage>5)?"5": endPage);
+		request.setAttribute(Term.PAGENUM.toString(),25);
+		
+		//request.setAttribute(Term.PAGENUM.toString(), (int)request.getAttribute("count")%5 == 0 ? (int)request.getAttribute("count")/5:(int)request.getAttribute("count")/5+1 );
 		System.out.println("리스트커맨드 익스큐트 내부 getparam카운트 : "+ request.getParameter("count"));
 		System.out.println("리스트커맨드 익스큐트 내부 getparam( pagenum ): "+ request.getParameter("pagenum"));
 		/*switch (Domain.valueOf(domain.toUpperCase())) {
