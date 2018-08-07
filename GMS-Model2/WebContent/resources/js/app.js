@@ -25,7 +25,7 @@ var admin = (()=>{
 						domain : 'admin',
 						action : 'list',
 						/*action : 'count',*/
-						page : 'main&pageNum=1'});
+						page : 'main'});
 				}
 			}else{
 				alert('관리자만 접근이 허용됩니다.');
@@ -91,25 +91,47 @@ var admin = (()=>{
 				} */
 				});
 				
-				document.querySelector('.blockPrev').addEventListener('click',function(){
-					alert('다음~');
+				/*document.querySelector('.blockPrev').addEventListener('click',function(){
+					alert('이전~');
 					service.addClass(
 							document.querySelector('.blockPrev'),
 							'cursor '
 					);
 					location.href = x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
 					
-				});
+				});*/
 				
-				document.querySelector('.blockNext').addEventListener('click',function(){
-					alert('다음~');
+				
+				/*document.querySelector('.blockNext').addEventListener('click',function(){
+					alert('다음~ : ' + this.getAttribute('id'));
 					service.addClass(
 							document.querySelector('.blockNext'),
 							'cursor '
 					);
 					location.href = x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
 					
-				});
+				});*/
+				for(var i of document.querySelectorAll('.blockNext')){
+					service.addClass(
+							i,
+							'cursor '
+					);
+					i.addEventListener('click',function(){
+						alert('다음~ :  '+this.getAttribute('id'));
+						location.href = x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
+					});
+				}
+				for(var i of document.querySelectorAll('.prevBlock')){
+					service.addClass(
+							i,
+							'cursor '
+					);
+					i.addEventListener('click',function(){
+						alert('이전~ :  '+this.getAttribute('id'));
+						location.href = x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
+					});
+				}
+				
 				
 				//var x = document.querySelectorAll('.username');//클래스 이름은 중복가능, var x에는 클래스네임이 username인 배열(Array)이담긴다. 
 				for(var i of document.querySelectorAll('.pageNum')){

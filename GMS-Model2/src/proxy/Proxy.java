@@ -1,5 +1,7 @@
 package proxy;
 
+import java.util.Map;
+
 public interface Proxy {
-	public void carryOut();
+	public Map<?,?> carryOut(Map<?,?>param);
 }
