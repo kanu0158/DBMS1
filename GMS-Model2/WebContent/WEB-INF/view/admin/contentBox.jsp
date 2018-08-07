@@ -12,7 +12,6 @@
 			<option value="name">이  름</option>
 			<option value="teamid">팀  명</option>
 		</select>
-	
 
 	</div>
 
@@ -45,13 +44,18 @@
 				조회 회원수 결과 : ${count}  
 				<br />
 				<ul class="pageBox">
+					<c:if test="${existPrev}"> 
+						<li><a class="blockPrev" id="${blockPrev}" >이전▶</a></li>
+					 </c:if> 
+				
 					<c:forEach begin="${beginPage}" end="${endPage}" step="1" varStatus="i">
 					<li>
-						<span><a href="#">${i.index}</a><span>
+						<span><a class="pageNum" id="${i.index}">${i.index}</a></span>
 					</li>
 					</c:forEach>
-					<c:if test="${count gt pageNum}"> 
-						<li>다음▶</li>
+					<%-- <c:if test="${count gt next}"> --%>
+					<c:if test="${existNext}"> 
+						<li><a class="blockNext" id="${blockNext}" >다음▶</a></li>
 					 </c:if> 
 				</ul>
 				<!-- 그 수많은 리스트를 가지고 와서 사이즈구하는건 미친짓이다! -->

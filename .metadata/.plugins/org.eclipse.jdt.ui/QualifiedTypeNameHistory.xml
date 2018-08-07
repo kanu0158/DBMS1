@@ -36,13 +36,9 @@
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="command.Sentry"/>
 <fullyQualifiedTypeName name="org.apache.tomcat.jni.User"/>
-<fullyQualifiedTypeName name="dao.MemberDAOImpl"/>
 <fullyQualifiedTypeName name="enums.MemberQuery"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Member"/>
-<fullyQualifiedTypeName name="enums.MemberAction"/>
 <fullyQualifiedTypeName name="enums.Term"/>
-<fullyQualifiedTypeName name="service.MemberServiceImpl"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="enums.Vendor"/>
 <fullyQualifiedTypeName name="pool.DBConstant"/>
@@ -50,14 +46,18 @@
 <fullyQualifiedTypeName name="lombok.Data"/>
 <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 <fullyQualifiedTypeName name="com.sun.org.apache.bcel.internal.classfile.Field"/>
-<fullyQualifiedTypeName name="template.ColumnFinder"/>
 <fullyQualifiedTypeName name="factory.DatabaseFactory"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="template.QueryTemplate"/>
 <fullyQualifiedTypeName name="template.PstmtQuery"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="enums.Domain"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="service.MemberServiceImpl"/>
+<fullyQualifiedTypeName name="dao.MemberDAOImpl"/>
+<fullyQualifiedTypeName name="template.ColumnFinder"/>
+<fullyQualifiedTypeName name="enums.MemberAction"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="domain.MemberBean"/>
 </qualifiedTypeNameHistroy>

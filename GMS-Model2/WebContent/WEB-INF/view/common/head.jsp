@@ -12,7 +12,7 @@
 		<table>
 			<tr>
 				<td width="400px"></td>
-				<td colspan="2"><img src="${img}/home/nuroongzi.jpg"/></td>
+				<td colspan="2"><img src="${img}/home/turtle.jpg"/></td>
 				<td width="400px"></td>
 			</tr>
 		</table>
