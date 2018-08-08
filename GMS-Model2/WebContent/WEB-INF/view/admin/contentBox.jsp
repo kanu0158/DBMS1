@@ -73,6 +73,8 @@
 	islist : '${list}',
 	context : '${context}'}); */
 admin.main('${context}');
+	
+	//good
 //눌렀을때 움직이는거면 document.get..().add('click',fx);이지만 
 //오자마자 버튼클릭도 없이 바로 실행되어야하므로 자바는 값만 던지고 스크립트가 테이블도 만들고 모양을 만듬
 
