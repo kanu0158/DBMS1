@@ -4,20 +4,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lombok.Data;
+import service.MemberServiceImpl;
 
 @Data
 public class Pagination implements Proxy {
-	int pageNumber, pageSize, blockSize, 
+	private int pageNum, pageSize, blockSize, 
 		count, pageCount, blockCount, 
 		beginRow, endRow, beginPage, 
-		endPage, prevBlock,	nextBlock;
-	boolean existPrev, existNext;
+		endPage, prevBlock,	nextBlock,list;
+	private boolean existPrev, existNext;
 
 	@Override
-	public Map<?, ?> carryOut(Map<?, ?> param) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("beginRow", beginRow); // int - > Integer로 바뀜
-		map.put("endRow", endRow);
-		return map;
+	public void carryOut(Object o) {
+		pageNum = (int) o;
+		pageSize = 5;
+		blockSize = 5;
+		count = MemberServiceImpl.getInstance().count();
+		pageCount = (count % pageSize == 0)?count/pageSize:count/pageSize+1;
+		blockCount = (pageCount%blockSize==0)?pageCount/blockSize:pageCount/blockSize+1;
+		beginRow = 1 + pageSize*(pageNum-1);
+		endRow = pageSize*(pageNum-1) + ((count - pageSize*(pageNum-1))>5?5:count - pageSize*(pageNum-1));
+		beginPage = (pageNum%blockSize == 0)?1+blockSize*(int)(pageNum/(blockSize+1)):1+blockSize*(int)(pageNum/blockSize);
+		endPage = ((beginPage + (blockSize-1))<pageCount?beginPage + (blockSize-1):pageCount);
+		prevBlock = beginPage - blockSize;
+		nextBlock = beginPage + blockSize;
+		existPrev = (prevBlock >= 0);
+		existNext = (nextBlock <= pageCount);
 	}
 }

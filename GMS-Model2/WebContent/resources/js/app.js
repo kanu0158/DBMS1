@@ -71,7 +71,7 @@ var admin = (()=>{
 				);
 
 
-				document.getElementById('searchBtn').addEventListener('click',function(){
+				document.getElementById('searchBtn').addEventListener('click',()=>{
 					alert('안녕 친구들~');
 					/* so.options[so.selectedIndex].value */
 					var so = document.getElementById('searchOption');
@@ -91,32 +91,17 @@ var admin = (()=>{
 				} */
 				});
 				
-				/*document.querySelector('.blockPrev').addEventListener('click',function(){
-					alert('이전~');
-					service.addClass(
-							document.querySelector('.blockPrev'),
-							'cursor '
-					);
-					location.href = x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
-					
-				});*/
 				
+				/*document.getElementById('nextBlock').addEventListenner('click',()=>{
+					alert
+				})*/
 				
-				/*document.querySelector('.blockNext').addEventListener('click',function(){
-					alert('다음~ : ' + this.getAttribute('id'));
-					service.addClass(
-							document.querySelector('.blockNext'),
-							'cursor '
-					);
-					location.href = x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
-					
-				});*/
-				for(var i of document.querySelectorAll('.blockNext')){
+				/*for(var i of document.querySelectorAll('.nextBlock')){
 					service.addClass(
 							i,
 							'cursor '
 					);
-					i.addEventListener('click',function(){
+					i.addEventListener('click',()=>{
 						alert('다음~ :  '+this.getAttribute('id'));
 						location.href = x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
 					});
@@ -126,11 +111,11 @@ var admin = (()=>{
 							i,
 							'cursor '
 					);
-					i.addEventListener('click',function(){
+					i.addEventListener('click',()=>{
 						alert('이전~ :  '+this.getAttribute('id'));
 						location.href = x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
 					});
-				}
+				}*/
 				
 				
 				//var x = document.querySelectorAll('.username');//클래스 이름은 중복가능, var x에는 클래스네임이 username인 배열(Array)이담긴다. 
@@ -139,8 +124,8 @@ var admin = (()=>{
 							i,
 							'cursor '
 					);
-					i.addEventListener('click',function(){
-						alert('클릭 : '+this.getAttribute('id'));
+					i.addEventListener('click',function(){ //this 있는 녀석은 ()=>이 불가능함
+						alert('pageNum 클릭 : '+this.getAttribute('id'));
 						location.href = x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
 					});
 				}
@@ -151,7 +136,7 @@ var admin = (()=>{
 							'cursor fontColorBlue'
 					);
 					i.addEventListener('click',function(){
-						alert('클릭 : '+this.getAttribute('id')); // 콜백함수 내부의 이때의 this는 이 function을 호출한 x[i]객체를 가리킨다.
+						alert('username 클릭 : '+this.getAttribute('id')); // 콜백함수 내부의 이때의 this는 이 function을 호출한 x[i]객체를 가리킨다.
 															//이파이패턴 내부 세터에서의 this와는 다르다 이때는 this가 자바와 똑같이 현재 클래스를 가리킨다. 
 															//js에선 클래스가 없으니 function이라고 생각하면 될 듯
 						location.href = x+"/admin.do?action=retrieve&page=memberDetail&user_id="+this.getAttribute('id');

@@ -41,22 +41,22 @@
 			<td colspan="6">
 				<!-- 그 수많은 리스트를 가지고 와서 사이즈구하는건 미친짓이다! -->
 				<%-- 조회 회원수 : ${count}   --%>
-				조회 회원수 결과 : ${count}  
+				조회 회원수 결과 : ${page.count}  
 				<br />
 				<ul class="pageBox">
-					<c:if test="${existPrev}"> 
-						<li><a class="prevBlock" id="${prevBlock}" >이전◀</a></li>
+					<c:if test="${page.existPrev}"> 
+						<li><a class="pageNum" id="${page.prevBlock}" >이전◀</a></li>
 					 </c:if> 
 				
-					<c:forEach begin="${beginPage}" end="${endPage}" step="1" varStatus="i">
+					<c:forEach begin="${page.beginPage}" end="${page.endPage}" step="1" varStatus="i">
 					<li>
 						<span><a class="pageNum" id="${i.index}">${i.index}</a></span>
 					</li>
 					</c:forEach>
 					
 					<%-- <c:if test="${count gt next}"> --%>
-					<c:if test="${existNext}"> 
-						<li><a class="blockNext" id="${nextBlock}" >다음▶</a></li>
+					<c:if test="${page.existNext}"> 
+						<li><a class="pageNum" id="${page.nextBlock}" >다음▶</a></li>
 					 </c:if> 
 				</ul>
 				<!-- 그 수많은 리스트를 가지고 와서 사이즈구하는건 미친짓이다! -->
