@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<%-- 
-<% 
-	String ctx = application.getContextPath(); //서블릿 설정값의 경로를 가지고 온다 .현재 스크립틀릿(클라)에서 서블릿(서버)으로 가기위해
-%>
-
- --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- jstl.jar 사용하기 위해 한 것 -->
 <!doctype html>
 <html lang="en">
 <jsp:include page="../common/head.jsp"/>
@@ -14,15 +7,18 @@
 <div id="wrapper">
 	<div id="header">
 		<h1>관리자페이지</h1>
-		<jsp:include page="menuBox.jsp"/>
+		<jsp:include page="../common/menuBox.jsp"/>
 	</div> 	<!-- header end -->
 	<div id="content">
-		<jsp:include page="contentBox.jsp"/>
+		<jsp:include page="../member/search.jsp"/>
 	</div> <!-- content end -->
 	<div id="footer">
 		<jsp:include page="../common/footerBox.jsp"/>
 	</div>
 </div>
+<script>
+admin.main('${context}');
+</script>
 </body>
 </html>
 

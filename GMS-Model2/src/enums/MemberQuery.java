@@ -1,99 +1,72 @@
 package enums;
+
+import template.ColumnFinder;
+
 /*static String으로 두면 나중에 쿼리가 많아지면 메모리에(상수풀에) 산더미처럼 쌓이게 된다. 그러면 문제가 생길 수 있어
 그렇기때문에 static(시작하자마자 미리 땅을 점유하게되므로)으로 하지 말고 enum으로 처리해서 상황끝나면 가비지컬렉터에 의해 처리되도록 한다*/
 /*static의 final을 대체하기 위해 enum을 사용한다*/
 /*앤트맨처럼 긴 쿼리문을 이넘의 짧은걸로 대체할수있음 속도에선 이넘값으로 호출하니 약간 느릴순있지만 장점이 크기때문에 감수할만 하다*/
 public enum MemberQuery {
-LOGIN,INSERT_MEMBER,IS_ID,DELETE_MEMBER,MEMBER_COUNT,UPDATE_PASS,SELECT_ALL, SELECT_WORD, UPDATE_MEMBER;
+INSERT,
+LIST,SEARCH,RETRIEVE,COUNT,
+UPDATE,
+DELETE,
+LOGIN
+;
 @Override
 public String toString() {
 	String query = "";
 	switch (this) {
+	case INSERT:
+		/*String userid,password,name,ssn,age,gender,teamid,roll,subject;*/
+		query = "  INSERT INTO MEMBER   "
+				+ "  ( "
+				+ ColumnFinder.find(Domain.MEMBER) +" ) "
+				+ "  VALUES   "
+				+ "  ( ?, ?, ?, ?, ?, ?, ?, ? ,?) ";
+		break;
+	case LIST:
+		query = " SELECT t.* "
+				+ " FROM (SELECT ROWNUM SEQ, M.* "
+				+ " FROM MEMBER M "
+				+ " ORDER BY SEQ DESC) T "
+				+ " WHERE T.SEQ BETWEEN ? AND ?  ";
+		break;
+	case SEARCH:
+		query = " SELECT t.* "
+				+ " FROM (SELECT ROWNUM SEQ, M.* "
+				+ " FROM MEMBER M "
+				+ " WHERE %s LIKE ? "
+				+ " ORDER BY SEQ DESC) T "
+				+ " WHERE T.SEQ BETWEEN ? AND ?  ";
+		break;
+	case RETRIEVE:
+		query = "  SELECT "
+				+ ColumnFinder.find(Domain.MEMBER)
+				+ "  FROM  MEMBER   "
+				+ "  WHERE USERID LIKE ?  ";
+		break;
+	case COUNT:
+		query = "  SELECT COUNT(*) AS count  "
+				+ " FROM MEMBER ";
+		break;
+	case UPDATE:
+		query = "  UPDATE MEMBER  "
+				+ "  SET %s = ?   "
+				+ "  WHERE USERID LIKE ?  ";
+		break;
+	case DELETE:
+		query = " DELETE  "
+				+ "  FROM MEMBER  "
+				+ "  WHERE USERID LIKE ? AND PASSWORD LIKE ?  ";
+		break;
 	case LOGIN:
 		query = "  SELECT " 
-			     + "   USERID USER_ID, "
-			     + "   PASSWORD USER_PASS, "
-			     + "   NAME USER_NAME,   "
-			     + "   SSN USER_SSN,    "
-			     + "   ROLL USER_ROLL,   "
-			     + "   TEAMID TEAM_ID,   "
-			     + "   AGE,  "
-			     + "   GENDER  "
+			     + ColumnFinder.find(Domain.MEMBER)
 			    + "   FROM   "
 			     + "   MEMBER   "
 			    + "   WHERE    " 
-			     + "   USERID LIKE '%s' AND PASSWORD LIKE '%s'  ";
-		break;
-	case INSERT_MEMBER:
-		query = "  INSERT INTO MEMBER   "
-				+ "  (USERID, NAME, PASSWORD, SSN, AGE, GENDER, ROLL, TEAMID ) "
-				+ "  VALUES   "
-				+ "  ( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' ) ";
-		break;
-	case IS_ID:
-		query = "  SELECT "
-				 + "   USERID USER_ID, "
-			     + "   PASSWORD USER_PASS, "
-			     + "   NAME USER_NAME,   "
-			     + "   SSN USER_SSN,    "
-			     + "   ROLL USER_ROLL,   "
-			     + "   TEAMID TEAM_ID,   "
-			     + "   AGE,"
-			     + "   GENDER   "
-				+ "  FROM  MEMBER   "
-				+ "  WHERE USERID LIKE '%s'  ";
-		break;
-	case DELETE_MEMBER:
-		query = " DELETE  "
-				+ "  FROM MEMBER  "
-				+ "  WHERE USERID LIKE '%s' AND PASSWORD LIKE '%s'  ";
-		break;
-	case MEMBER_COUNT:
-		query = "  SELECT COUNT(*) 멤버수  "
-				+ " FROM MEMBER ";
-		break;
-	case UPDATE_PASS:
-		query = "  UPDATE MEMBER   "
-				+ "  SET PASSWORD = '%s'  " 
-				+ "  WHERE USERID LIKE '%s'  ";
-		break;
-	case UPDATE_MEMBER:
-		/*UPDATE MEMBER 
-		SET PASSWORD = '1', TEAM_ID = 'STEAM', ROLL = 'front'
-		WHERE MEM_ID = 'qq4';*/
-		query = "  UPDATE MEMBER  "
-				+ "  SET PASSWORD = '%s',  "
-				+ "  TEAMID = '%s',  "
-				+ "  ROLL = '%s' "
-				+ "  WHERE USERID = '%s'  ";
-		break;
-	case SELECT_ALL:
-		query = "  SELECT " 
-			     + "   USERID USER_ID, "
-			     + "   PASSWORD USER_PASS, "
-			     + "   NAME USER_NAME,   "
-			     + "   SSN USER_SSN,    "
-			     + "   ROLL USER_ROLL,   "
-			     + "   TEAMID TEAM_ID,"
-			     + "   AGE,"
-			     + "   GENDER   "
-			    + "   FROM   "
-			     + "   MEMBER   ";
-		break;
-	case SELECT_WORD:
-		query = " SELECT "
-				 + "   USERID USER_ID, "
-			     + "   PASSWORD USER_PASS, "
-			     + "   NAME USER_NAME,   "
-			     + "   SSN USER_SSN,    "
-			     + "   ROLL USER_ROLL,   "
-			     + "   TEAMID TEAM_ID,   "
-			     + "   AGE,  "
-			     + "   GENDER   "
-			     + " FROM MEMBER "
-				+ "	WHERE TEAMID LIKE '%s' "
-				+ "			OR    "
-				+ " 	  NAME LIKE '%s'  ";
+			     + "   USERID LIKE ? AND PASSWORD LIKE ?  ";
 		break;
 	}
 	return query;

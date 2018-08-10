@@ -2,8 +2,7 @@ package factory;
 
 import java.util.Map;
 
-import enums.Vendor;
-import pool.DBConstant;
+import enums.*;
 
 /*ShapeFactory 클래스*/
 public class DatabaseFactory {
@@ -12,25 +11,12 @@ public class DatabaseFactory {
 		String driver = "",url="";
 		switch (v) {
 		case ORACLE://ENUM은 여기서 사용후 없어지는 느낌, 상수는 계속 남아있는...?
-			driver = DBConstant.ORACLE_DRIVER;
-			url = DBConstant.CONNECTION_URL;
+			driver = DBConstant.ORACLE_DRIVER.toString();
+			url = DBConstant.CONNECTION_URL.toString();
 			db = new Oracle(driver,url,id,pass);
 			break;
-		case MYSQL:
-			driver = DBConstant.MYSQL_DRIVER;
-			url = DBConstant.CONNECTION_URL;
-			db = new MySQL(driver,url,id,pass);
+		default:
 			break;
-		case MARIADB:
-			driver = DBConstant.MARIADB_DRIVER;
-			url = DBConstant.CONNECTION_URL;
-			db = new MariaDB(driver,url,id,pass);
-			break;
-		case MSSQL:
-			driver = DBConstant.MSSQL_DRIVER;
-			url = DBConstant.CONNECTION_URL;
-			break;
-			//DEFAULT는 없는게 낫다. 무조건 선택하게하고 다른 예외를 처리하는게 낫다.
 		}
 		return db;
 	}
@@ -40,25 +26,12 @@ public class DatabaseFactory {
 		String driver = "",url="";
 		switch ((Vendor)map.get("vendor")) {
 		case ORACLE://ENUM은 여기서 사용후 없어지는 느낌, 상수는 계속 남아있는...?
-			driver = DBConstant.ORACLE_DRIVER;
-			url = DBConstant.CONNECTION_URL;
-			db = new Oracle(driver,url,(String)map.get("username"),(String)map.get("password"));
+			driver = DBConstant.ORACLE_DRIVER.toString();
+			url = DBConstant.CONNECTION_URL.toString();
+			db = new Oracle(driver,url,(String)map.get("id"),(String)map.get("password"));
 			break;
-		case MYSQL:
-			driver = DBConstant.MYSQL_DRIVER;
-			url = DBConstant.CONNECTION_URL;
-			db = new MySQL(driver,url,(String)map.get("username"),(String)map.get("password"));
+		default:
 			break;
-		case MARIADB:
-			driver = DBConstant.MARIADB_DRIVER;
-			url = DBConstant.CONNECTION_URL;
-			db = new MariaDB(driver,url,(String)map.get("username"),(String)map.get("password"));
-			break;
-		case MSSQL:
-			driver = DBConstant.MSSQL_DRIVER;
-			url = DBConstant.CONNECTION_URL;
-			break;
-			//DEFAULT는 없는게 낫다. 무조건 선택하게하고 다른 예외를 처리하는게 낫다.
 		}
 		return db;
 	}

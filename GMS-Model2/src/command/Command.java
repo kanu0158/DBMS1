@@ -10,6 +10,6 @@ public class Command implements Order {
 	
 	@Override
 	public void execute() {
-		this.view = "/WEB-INF/view/"+domain+"/"+page+".jsp";
+		this.view = "/WEB-INF/view/"+domain+"/main.jsp";
 	}
 }

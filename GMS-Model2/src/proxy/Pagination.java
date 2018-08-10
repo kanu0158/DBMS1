@@ -30,5 +30,19 @@ public class Pagination implements Proxy {
 		nextBlock = beginPage + blockSize;
 		existPrev = (prevBlock >= 0);
 		existNext = (nextBlock <= pageCount);
+		System.out.println("=========== pagenation 내부 ========================");
+		System.out.println("PageNum() : "+pageNum);
+		System.out.println("Count() : "+count);
+		System.out.println("pageCount() : "+pageCount);
+		System.out.println("blockCount() : "+blockCount);
+		System.out.println("beginRow() : "+beginRow);
+		System.out.println("endRow() : "+ endRow);
+		System.out.println("beginPage() : "+ beginPage);
+		System.out.println("endPage() : " + endPage);
+		System.out.println("existPrev() : " +  existPrev);
+		System.out.println("existNext() : " +  existNext);
+		System.out.println("prevBlock() : " +  prevBlock);
+		System.out.println("nextBlock() : " +  nextBlock);
+		System.out.println("=========== pagenation 완료 ========================");
 	}
 }

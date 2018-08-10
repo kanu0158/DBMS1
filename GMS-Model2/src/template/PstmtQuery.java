@@ -5,42 +5,32 @@ import java.sql.SQLException;
 
 import domain.MemberBean;
 import enums.Domain;
-import enums.MemberAction;
+import enums.MemberQuery;
+import enums.Action;
 import factory.DatabaseFactory;
 
 public class PstmtQuery extends QueryTemplate{
 	@Override
 	void initialize() {
-		switch ((MemberAction)map.get("action")) {
+		System.out.println("=======pstmtQuery init =========");
+		switch ((Action)map.get("action")) {
 		case LIST:
-			map.put("sql", String.format(
-					" SELECT "
-					+ ColumnFinder.find(Domain.MEMBER)
-					+ " FROM %s "
-					+ " WHERE %s "
-					+ " BETWEEN ? AND ?" ,   
-					map.get("table"),
-					map.get("column")));
+			/*map.put("sql", String.format(MemberQuery.LIST.toString(),
+					map.get(key)));*/
 			break;
 		case SEARCH:
-			map.put("sql", String.format(
-					" SELECT "
-					+ ColumnFinder.find(Domain.MEMBER)
-					+ " FROM %s "
-					+ " WHERE %s "
-					+ " LIKE ? " ,   
-					map.get("table"),
-					map.get("column")));
+			map.put("sql", MemberQuery.SEARCH.toString());
 			break;
 		default:
 			break;
 		}
+		System.out.println("sql :" + map.get("sql"));
 		
 	}
 	@Override
 	void startPlay() {
 		System.out.println("PstmtQuery startPlay 내부 ");
-		switch ((MemberAction)map.get("action")) {
+		switch ((Action)map.get("action")) {
 		case LIST:
 			System.out.println("map.get(sql) : "+map.get("sql"));
 			System.out.println("map.get(beginRow) : "+map.get("beginRow"));
@@ -77,7 +67,7 @@ public class PstmtQuery extends QueryTemplate{
 		System.out.println("PstmtQuery endPlay 내부 ");
 		ResultSet rs;
 		
-		switch ((MemberAction)map.get("action")) {
+		switch ((Action)map.get("action")) {
 		case SEARCH:
 		case LIST:
 			try {

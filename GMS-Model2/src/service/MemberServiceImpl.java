@@ -10,75 +10,35 @@ import domain.MemberBean;
 public class MemberServiceImpl implements MemberService{
 	private static MemberService instance = new MemberServiceImpl();
 	public static MemberService getInstance() {return instance;}
-	private MemberServiceImpl() {session = new MemberBean();};
-	private MemberBean session;
+	private MemberServiceImpl() {}
 	@Override
-	public boolean createMember(MemberBean memberBean) {
-		/*return (MemberDAOImpl.getInstance().insertMember(memberBean) != null);*/
-		MemberDAOImpl.getInstance().insertMember(memberBean);
-		return (findById(memberBean.getUserid()) != null);
-	}
-
-	@Override
-	public MemberBean findById(String userid) {
-		return MemberDAOImpl.getInstance().selectMemberOne(userid);
+	public boolean add(MemberBean memberBean) {
+		return false;
 	}
 	@Override
-	public List<MemberBean> findByAll() {
-		return MemberDAOImpl.getInstance().selectMemberList();
-	}
-
-	@Override
-	public boolean updateMemberPass(MemberBean memberBean) {
-		boolean flag = false;
-		String pass = memberBean.getPassword().split("/")[0];
-		String newPass = memberBean.getPassword().split("/")[1];
-		memberBean.setPassword(pass);
-		if(login(memberBean)) {
-			memberBean.setPassword(newPass);
-			MemberDAOImpl.getInstance().updateMemberPass(memberBean);
-			flag = true;
-		}
-		return flag;
-	}
-
-	@Override
-	public boolean updateMember(MemberBean memberBean) {
-		MemberDAOImpl.getInstance().updateMember(memberBean);
-		return login(memberBean);
-	}
-	
-	@Override
-	public void deleteMember(MemberBean memberBean) {
-		MemberDAOImpl.getInstance().deleteMember(memberBean);
+	public List<MemberBean> search(Map<?, ?> param) {
+		//토스만 하는데 사용하는 이유는 보안때문이다. 속도는 좀 저하 될지라도. ex/ 택배기사
+		return MemberDAOImpl.getInstance().selectSome(param);
 	}
 	@Override
-	public List<MemberBean> findByName(String word) {
-		return MemberDAOImpl.getInstance().selectMemberWord(word);
+	public MemberBean retrieve(String userid) {
+		return null;
 	}
 	@Override
 	public int count() {
-		return MemberDAOImpl.getInstance().countMember();
+		return MemberDAOImpl.getInstance().count();
+	}
+	@Override
+	public boolean modify(Map<?, ?> param) {
+		return false;
+	}
+	@Override
+	public boolean remove(MemberBean memberBean) {
+		return false;
 	}
 	@Override
 	public boolean login(MemberBean memberBean) {
-		boolean flag = false;
-		session = MemberDAOImpl.getInstance().login(memberBean);
-		if(session != null) {
-			flag = true;
-		}
-		return flag;
-	}
-	@Override
-	public MemberBean session() {
-		return session;
-	}
-	@Override
-	public void updateMemberIdSsnAll() {
-		MemberDAOImpl.getInstance().updateMemberIdSsn();
-	}
-	@Override
-	public List<MemberBean> getList(Map<?, ?> param) {
-		return MemberDAOImpl.getInstance().selectList(param);
-	}
+		return false;
+	};
+	
 }

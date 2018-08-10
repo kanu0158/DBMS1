@@ -7,7 +7,12 @@ public class MoveCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
 		execute();
+	}
+	@Override
+	public void execute() {
+		super.execute();
+		System.out.println("=========move command excute 내부========");
+		request.setAttribute("pagename", request.getParameter("page"));
 	}
 }

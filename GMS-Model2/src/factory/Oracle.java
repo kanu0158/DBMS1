@@ -2,7 +2,6 @@ package factory;
 
 import java.sql.*;
 
-import pool.DBConstant;
 /*Shape구현체*/
 public class Oracle implements Database{
 	private Connection conn;

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.servlet.ServletException"/>
-<fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.sql.DriverManager"/>
 <fullyQualifiedTypeName name="factory.DataBase"/>
 <fullyQualifiedTypeName name="factory.Oracle"/>
@@ -16,7 +13,6 @@
 <fullyQualifiedTypeName name="command.Command"/>
 <fullyQualifiedTypeName name="command.Commander"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
-<fullyQualifiedTypeName name="enums.Action"/>
 <fullyQualifiedTypeName name="command.Receiver"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
@@ -34,9 +30,7 @@
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="command.Sentry"/>
 <fullyQualifiedTypeName name="org.apache.tomcat.jni.User"/>
-<fullyQualifiedTypeName name="enums.MemberQuery"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Member"/>
-<fullyQualifiedTypeName name="enums.Term"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="enums.Vendor"/>
 <fullyQualifiedTypeName name="pool.DBConstant"/>
@@ -45,19 +39,25 @@
 <fullyQualifiedTypeName name="com.sun.org.apache.bcel.internal.classfile.Field"/>
 <fullyQualifiedTypeName name="factory.DatabaseFactory"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-<fullyQualifiedTypeName name="template.QueryTemplate"/>
-<fullyQualifiedTypeName name="template.PstmtQuery"/>
-<fullyQualifiedTypeName name="enums.Domain"/>
-<fullyQualifiedTypeName name="java.lang.Object"/>
-<fullyQualifiedTypeName name="dao.MemberDAOImpl"/>
-<fullyQualifiedTypeName name="template.ColumnFinder"/>
 <fullyQualifiedTypeName name="enums.MemberAction"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="domain.MemberBean"/>
-<fullyQualifiedTypeName name="service.MemberServiceImpl"/>
 <fullyQualifiedTypeName name="proxy.Proxy"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="proxy.PageProxy"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="lombok.Data"/>
+<fullyQualifiedTypeName name="proxy.Pagination"/>
+<fullyQualifiedTypeName name="service.MemberServiceImpl"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="oracle.net.aso.i"/>
+<fullyQualifiedTypeName name="enums.Term"/>
+<fullyQualifiedTypeName name="dao.MemberDAOImpl"/>
+<fullyQualifiedTypeName name="template.QueryTemplate"/>
+<fullyQualifiedTypeName name="template.PstmtQuery"/>
+<fullyQualifiedTypeName name="enums.Action"/>
+<fullyQualifiedTypeName name="template.ColumnFinder"/>
+<fullyQualifiedTypeName name="enums.Domain"/>
+<fullyQualifiedTypeName name="enums.MemberQuery"/>
 </qualifiedTypeNameHistroy>
