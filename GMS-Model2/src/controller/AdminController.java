@@ -1,17 +1,10 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import command.Carrier;
-import command.Receiver;
-import domain.MemberBean;
+import javax.servlet.http.*;
+import command.*;
 import enums.Action;
 
 /**
@@ -25,7 +18,6 @@ public class AdminController extends HttpServlet {
 		System.out.println("1.AdminController ENTER!!!");
 		Receiver.init(request);
 		System.out.println("4.AdminController에서 액션조회: "+Receiver.cmd.getAction());
-		System.out.println("5.AdminController에서page조회: "+Receiver.cmd.getPage());
 		switch (Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {// 센트리가 말해줌 이친구 무브때문에 왔대요
 		case SEARCH:
 			System.out.println("6.Admin SEARCH안으로 진입");
@@ -39,7 +31,9 @@ public class AdminController extends HttpServlet {
 			System.out.println("6.move안으로 진입");
 			Carrier.forward(request, response); //이친구 단순히 페이지이동만 일어난데 캐리어병사 처리하게
 			break;
-
+		default:
+			Carrier.redirect(request, response,"");
+			break;
 		}
 	}
 

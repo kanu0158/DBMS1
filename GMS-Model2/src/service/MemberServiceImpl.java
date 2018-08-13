@@ -1,9 +1,6 @@
 package service;
 
-import java.util.List;
-import java.util.Map;
-
-import dao.MemberDAO;
+import java.util.*;
 import dao.MemberDAOImpl;
 import domain.MemberBean;
 
@@ -12,8 +9,8 @@ public class MemberServiceImpl implements MemberService{
 	public static MemberService getInstance() {return instance;}
 	private MemberServiceImpl() {}
 	@Override
-	public boolean add(MemberBean memberBean) {
-		return false;
+	public void add(Map<?,?> param) {
+		MemberDAOImpl.getInstance().insert(param);
 	}
 	@Override
 	public List<MemberBean> search(Map<?, ?> param) {
@@ -21,24 +18,24 @@ public class MemberServiceImpl implements MemberService{
 		return MemberDAOImpl.getInstance().selectSome(param);
 	}
 	@Override
-	public MemberBean retrieve(String userid) {
-		return null;
+	public MemberBean retrieve(Map<?,?> param) {
+		return MemberDAOImpl.getInstance().selectOne(param);
 	}
 	@Override
-	public int count() {
-		return MemberDAOImpl.getInstance().count();
+	public int count(Map<?,?> param) {
+		return MemberDAOImpl.getInstance().count(param);
 	}
 	@Override
-	public boolean modify(Map<?, ?> param) {
-		return false;
+	public void modify(Map<?, ?> param) {
+		MemberDAOImpl.getInstance().update(param);
 	}
 	@Override
-	public boolean remove(MemberBean memberBean) {
-		return false;
+	public void remove(Map<?,?> param) {
+		MemberDAOImpl.getInstance().delete(param);
 	}
 	@Override
-	public boolean login(MemberBean memberBean) {
-		return false;
+	public boolean login(Map<?,?> param) {
+		return (MemberDAOImpl.getInstance().login(param)!=null);
 	};
 	
 }

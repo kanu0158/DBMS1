@@ -16,6 +16,5 @@
 				<td width="400px"></td>
 			</tr>
 		</table>
-		
 	</div>
 </head>

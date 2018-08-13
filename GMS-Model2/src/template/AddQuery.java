@@ -1,96 +1,47 @@
 package template;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import domain.MemberBean;
-import enums.Domain;
 import enums.MemberQuery;
-import enums.Action;
-import factory.DatabaseFactory;
 
 public class AddQuery extends QueryTemplate{
 	@Override
 	void initialize() {
-		System.out.println("=======pstmtQuery init =========");
-		switch ((Action)map.get("action")) {
-		case LIST:
-			/*map.put("sql", String.format(MemberQuery.LIST.toString(),
-					map.get(key)));*/
-			break;
-		case SEARCH:
-			map.put("sql", MemberQuery.SEARCH.toString());
-			break;
-		default:
-			break;
-		}
+		System.out.println("=======AddQuery init =========");
+		map.put("sql", MemberQuery.INSERT.toString());
 		System.out.println("sql :" + map.get("sql"));
 		
 	}
 	@Override
 	void startPlay() {
-		System.out.println("PstmtQuery startPlay 내부 ");
-		switch ((Action)map.get("action")) {
-		case LIST:
-			System.out.println("map.get(sql) : "+map.get("sql"));
-			System.out.println("map.get(beginRow) : "+map.get("beginRow"));
-			System.out.println("map.get(endRow) : "+map.get("endRow"));
-			try {
-				pstmt = DatabaseFactory.createDatabase2(map)
-						.getConnection().prepareStatement((String)map.get("sql"));
-				pstmt.setString(1,   // 얘는 1부터 간다. ?에 집어넣는 것임
-						String.valueOf(map.get("beginRow")));
-				pstmt.setString(2,   // 얘는 1부터 간다. ?에 집어넣는 것임
-						String.valueOf(map.get("endRow")));
-				System.out.println("pstmt : " + pstmt);
-			} catch (SQLException e) {e.printStackTrace();}
-			break;
-		case SEARCH:
-			System.out.println("map.get(sql) : "+map.get("sql"));
-			System.out.println("map.get(value) : "+map.get("value"));
-			try {
-				pstmt = DatabaseFactory.createDatabase2(map)
-						.getConnection().prepareStatement((String)map.get("sql"));
-				pstmt.setString(1,   // 얘는 1부터 간다. ?에 집어넣는 것임
-						String.valueOf(map.get("value")));
-				System.out.println("pstmt : " + pstmt);
-			} catch (SQLException e) {e.printStackTrace();}
-			break;
-
-		default:
-			break;
-		}
-		
+		System.out.println("AddQuery startPlay 내부 ");
+		try {
+			pstmt.setString(1, String.valueOf(map.get("userId")));
+			pstmt.setString(2, String.valueOf(map.get("userPass")));
+			pstmt.setString(3, String.valueOf(map.get("name")));
+			pstmt.setString(4, String.valueOf(map.get("ssn")));
+			pstmt.setString(5, String.valueOf(map.get("age")));
+			pstmt.setString(6, String.valueOf(map.get("gender")));
+			pstmt.setString(7, String.valueOf(map.get("teamId")));
+			pstmt.setString(8, String.valueOf(map.get("roll")));
+			pstmt.setString(9, String.valueOf(map.get("subject")));
+			System.out.println("====== set 쿼리밸류들 ==========");
+			System.out.println(map.get("userId"));
+			System.out.println(map.get("userPass"));
+			System.out.println(map.get("name"));
+			System.out.println(map.get("ssn"));
+			System.out.println(map.get("age"));
+			System.out.println(map.get("gender"));
+			System.out.println(map.get("teamId"));
+			System.out.println(map.get("roll"));
+			System.out.println(map.get("subject"));
+		} catch (Exception e) {e.printStackTrace();}
+		System.out.println("AddQuery startPlay 완료");
 	}
 	@Override
 	void endPlay() {
-		System.out.println("PstmtQuery endPlay 내부 ");
-		ResultSet rs;
-		
-		switch ((Action)map.get("action")) {
-		case SEARCH:
-		case LIST:
-			try {
-				rs = pstmt.executeQuery();
-				MemberBean mem = null;
-				while(rs.next()) {
-					mem = new MemberBean();
-					mem.setUserid(rs.getString("USERID"));
-					mem.setTeamid(rs.getString("TEAMID"));
-					mem.setName(rs.getString("NAME"));
-					mem.setAge(rs.getString("AGE"));
-					mem.setGender(rs.getString("GENDER"));
-					mem.setRoll(rs.getString("ROLL"));
-					mem.setPassword(rs.getString("PASSWORD"));
-					mem.setSsn(rs.getString("SSN"));
-					list.add(mem);
-				}
-			} catch (SQLException e) {e.printStackTrace();}
-			break;
-
-		default:
-			break;
-		}
-		
+		System.out.println("AddQuery endPlay 내부 ");
+		try {
+			pstmt.executeUpdate();
+		} catch (Exception e) {e.printStackTrace();}
+		System.out.println("AddQuery endPlay 완료 ");
 	}
 }

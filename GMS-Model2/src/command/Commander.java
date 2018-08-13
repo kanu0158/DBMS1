@@ -36,11 +36,11 @@ public class Commander {
 		case LOGIN:
 			System.out.println("3.커맨더 LOGIN진입");
 			cmd = new LoginCommand(request);
-			break;		
-		case COUNT:
-			System.out.println("3.커맨더 COUNT진입");
-			cmd = new CountCommand(request);
-			break;		
+			break;
+		case FILEUPLOAD:
+			System.out.println("3.커맨더 FILE_UPLOAD진입");
+			cmd = new FileCommand(request);
+			break;	
 		}
 		return cmd;
 	}

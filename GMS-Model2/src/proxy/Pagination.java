@@ -1,6 +1,5 @@
 package proxy;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import lombok.Data;
@@ -15,11 +14,11 @@ public class Pagination implements Proxy {
 	private boolean existPrev, existNext;
 
 	@Override
-	public void carryOut(Object o) {
-		pageNum = (int) o;
+	public void carryOut(Map<?,?> param) {
+		pageNum = Integer.parseInt((String) param.get("pageNum"));
 		pageSize = 5;
 		blockSize = 5;
-		count = MemberServiceImpl.getInstance().count();
+		count = MemberServiceImpl.getInstance().count(param);
 		pageCount = (count % pageSize == 0)?count/pageSize:count/pageSize+1;
 		blockCount = (pageCount%blockSize==0)?pageCount/blockSize:pageCount/blockSize+1;
 		beginRow = 1 + pageSize*(pageNum-1);

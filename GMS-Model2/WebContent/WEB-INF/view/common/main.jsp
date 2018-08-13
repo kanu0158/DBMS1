@@ -18,9 +18,10 @@
 	</div>
 </div>
 <script> /* 바디 안에 넣음, 전역메소드로 처리한 것 */
-
-common.main('${context}');
-
+common.main({
+	context : '${context}',
+	adminPass : '${adminPass}'}
+	);
 </script>
 </body>
 </html>

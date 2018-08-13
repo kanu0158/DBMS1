@@ -12,6 +12,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\1027\eclipse\jee-oxygen\eclipse\JeeWorkspace\GMS-Model2-master"/>
 			<item value="C:\Users\1027\eclipse\jee-oxygen\eclipse\JeeWorkspace\BankCollection-master\BankCollection-master"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">

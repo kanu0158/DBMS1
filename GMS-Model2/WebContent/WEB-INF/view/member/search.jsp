@@ -8,9 +8,9 @@
 		<input id="searchWord" name="searchWord" type="text" placeholder="검색어 입력"/>
 		<select name="searchOption" id="searchOption">
 			<option value="none">검색조건</option>
-			<option value="userid">아이디</option>
+			<option value="userId">아이디</option>
 			<option value="name">이  름</option>
-			<option value="teamid">팀  명</option>
+			<option value="teamId">팀  명</option>
 		</select>
 
 	</div>
@@ -25,16 +25,16 @@
 			<th>팀아이디</th>
 		</tr>
 		<%-- <c:forEach begin="" end="" items="" step="" var="" varStatus=""> for-loop --%>
-		<c:forEach items='${list}' var='member'> <!-- for-each -->
+		<c:forEach items='${list}' var='user'> <!-- for-each -->
 		<tr>
-			<td>${member.userid}</td>
-			<td><a class="username"  id="${member.userid}">${member.name}</a></td>
+			<td>${user.userId}</td>
+			<td><a class="username"  id="${user.userId}">${user.name}</a></td>
 			<!-- 이렇게 살지 말자 우리 삼촌세대에서 이렇게 했다. -->
 			<%-- <td><a href="${context}/admin.do?action=retrieve&page=memberDetail&user_id=${member.userid}" style="cursor:pointer;">${member.name}</a></td> --%>
-			<td>${member.age}</td>
-			<td>${member.gender}</td>
-			<td>${member.roll}</td>
-			<td>${member.teamid}</td>
+			<td>${user.age}</td>
+			<td>${user.gender}</td>
+			<td>${user.roll}</td>
+			<td>${user.teamId}</td>
 		</tr>
 		</c:forEach>
 		<tr>

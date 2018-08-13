@@ -10,14 +10,30 @@
 		<jsp:include page="../common/menuBox.jsp"/>
 	</div> 	<!-- header end -->
 	<div id="content">
-		<jsp:include page="../member/search.jsp"/>
+		<c:choose>
+			<c:when test="${pageName eq 'search'}">
+				<jsp:include page="../member/search.jsp"/>
+			</c:when>
+			<c:when test="${pageName eq 'remove'}">
+			<jsp:include page="../member/remove.jsp"></jsp:include>
+		</c:when>
+		<c:when test="${pageName eq 'modify'}">
+			<jsp:include page="../member/modify.jsp"></jsp:include>
+		</c:when>
+			<c:otherwise>
+				<jsp:include page="../member/retrieve.jsp"/>
+			</c:otherwise>
+		</c:choose>
 	</div> <!-- content end -->
 	<div id="footer">
 		<jsp:include page="../common/footerBox.jsp"/>
 	</div>
 </div>
 <script>
-admin.main('${context}');
+admin.main({
+		context : '${context}',
+		pageName : '${pageName}'
+	});
 </script>
 </body>
 </html>

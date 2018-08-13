@@ -15,7 +15,6 @@ public class ModifyCommand extends Command {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage("user_login_form");
 		execute();
 	}
 	@Override
@@ -23,14 +22,20 @@ public class ModifyCommand extends Command {
 		super.execute();
 		switch (Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
-			System.out.println("update에 들어옴");
+			System.out.println("ModifyCommand에 들어옴");
 			Map<String, Object> param = new HashMap<String, Object>();
 			MemberBean m = (MemberBean) request.getSession().getAttribute("user");
-			m.setPassword(request.getParameter("password"));
-			m.setRoll(request.getParameter("roll"));
-			m.setTeamid(request.getParameter("teamid"));
+			System.out.println("ModifyCommand내부 변경 전 세션값:"+request.getSession().getAttribute("user"));
+			param.put("userId", m.getUserId());
+			param.put("userPass",request.getParameter("userPass"));
+			param.put("roll", request.getParameter("roll"));
+			param.put("teamId", request.getParameter("teamId"));
 			MemberServiceImpl.getInstance().modify(param);
-			System.out.println("업뎃커맨드내부 세션값:"+request.getSession().getAttribute("user"));
+			m.setPassword(request.getParameter("userPass"));
+			m.setRoll(request.getParameter("roll"));
+			m.setTeamId(request.getParameter("teamId"));
+			request.setAttribute("pageName", "retrieve");
+			System.out.println("ModifyCommand내부 변경 후 세션값:"+request.getSession().getAttribute("user"));
 			
 			/*MemberBean mem = new MemberBean();
 			mem.setUserid(request.getParameter("userid"));

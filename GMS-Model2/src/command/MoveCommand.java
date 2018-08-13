@@ -13,6 +13,7 @@ public class MoveCommand extends Command{
 	public void execute() {
 		super.execute();
 		System.out.println("=========move command excute 내부========");
-		request.setAttribute("pagename", request.getParameter("page"));
+		request.setAttribute("pageName", request.getParameter("page"));
+		System.out.println("pageName" + request.getAttribute("pageName"));
 	}
 }

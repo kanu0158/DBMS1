@@ -8,7 +8,7 @@ import template.ColumnFinder;
 /*앤트맨처럼 긴 쿼리문을 이넘의 짧은걸로 대체할수있음 속도에선 이넘값으로 호출하니 약간 느릴순있지만 장점이 크기때문에 감수할만 하다*/
 public enum MemberQuery {
 INSERT,
-LIST,SEARCH,RETRIEVE,COUNT,
+LIST,SEARCH,RETRIEVE,COUNT,COUNT_SOME,
 UPDATE,
 DELETE,
 LOGIN
@@ -50,9 +50,14 @@ public String toString() {
 		query = "  SELECT COUNT(*) AS count  "
 				+ " FROM MEMBER ";
 		break;
+	case COUNT_SOME:
+		query = "  SELECT COUNT(*) AS count  "
+				+ " FROM MEMBER "
+				+ " WHERE %s LIKE ?  ";
+		break;
 	case UPDATE:
 		query = "  UPDATE MEMBER  "
-				+ "  SET %s = ?   "
+				+ "  SET TEAMID = ?, PASSWORD = ?, ROLL = ?   "
 				+ "  WHERE USERID LIKE ?  ";
 		break;
 	case DELETE:

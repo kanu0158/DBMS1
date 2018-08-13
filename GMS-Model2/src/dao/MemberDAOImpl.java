@@ -2,12 +2,7 @@ package dao;
 
 import java.util.*;
 import domain.*;
-import enums.Action;
-import enums.Domain;
-import enums.MemberQuery;
-import template.ColumnFinder;
-import template.QueryTemplate;
-import template.SearchQuery;
+import template.*;
 
 public class MemberDAOImpl implements MemberDAO {
 	private static MemberDAO instance = new MemberDAOImpl();
@@ -15,39 +10,50 @@ public class MemberDAOImpl implements MemberDAO {
 	private MemberDAOImpl() {}
 	private QueryTemplate q;
 	@Override
-	public void insert(MemberBean memberBean) {
-		
+	public void insert(Map<?,?> param) {
+		System.out.println("dao insert메소드 내부");
+		q = new AddQuery();
+		q.play(param);
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<MemberBean> selectSome(Map<?, ?> param) {
 		System.out.println("dao selectSome메소드 내부 beginRow, endRow :" + param.get("beginRow") + " ," + param.get("endRow"));
-		List<MemberBean> list = new ArrayList<>();
 		q = new SearchQuery();
 		q.play(param);
-		for(Object s: q.getList()) {
-			list.add((MemberBean)s);
-		}
-		System.out.println("dao selectList메소드 내부 list : "+list);
-		return list;
+		return (List<MemberBean>)(Object)q.getList();
 	}
 	@Override
-	public MemberBean selectOne(String userid) {
-		return null;
+	public MemberBean selectOne(Map<?,?> param) {
+		System.out.println("dao selectOne메소드 내부");
+		q = new RetrieveQuery();
+		q.play(param);
+		return (MemberBean) q.getList().get(0);
 	}
 	@Override
-	public int count() {
-		return 81;
+	public int count(Map<?,?> param) {
+		System.out.println("dao count메소드 내부");
+		q = new CountQuery();
+		q.play(param);
+		return (int) q.getMap().get("count");
 	}
 	@Override
 	public void update(Map<?, ?> param) {
-		
+		System.out.println("dao update메소드 내부");
+		q = new ModifyQuery();
+		q.play(param);
 	}
 	@Override
-	public void delete(MemberBean memberBean) {
-		
+	public void delete(Map<?,?> param) {
+		System.out.println("dao delete메소드 내부");
+		q = new RemoveQuery();
+		q.play(param);
 	}
 	@Override
-	public MemberBean login(MemberBean memberBean) {
-		return null;
+	public MemberBean login(Map<?,?> param) {
+		System.out.println("dao login메소드 내부");
+		q = new LoginQuery();
+		q.play(param);
+		return (q.getList().isEmpty()?null:(MemberBean) q.getList().get(0));
 	}
 }

@@ -2,8 +2,7 @@
 "use strict";
 var router = (()=>{ //파라미터 없을때를 표시하기위해 소괄호 쳐준거고 밑에 x는 소괄호 생략, 파라미터는 무조건 하나만 보낸다 
 		return {move : x =>{ // new가 아니라 이게 진짜 객체의 모습이다.  스칼라모양
-			console.log('console:클릭 테스트성공!!${context}');
-			alert('move:클릭 테스트 성공!!${context}'); // java의 sysout과 비슷
+			alert('move:클릭'); // java의 sysout과 비슷
 			location.href = ("common" === x.context)?x.context+"/"+x.domain+".do" : x.context+"/"+x.domain +".do?action="+x.action	+"&page="+x.page;
 		}
 		};  
@@ -12,21 +11,40 @@ var router = (()=>{ //파라미터 없을때를 표시하기위해 소괄호 쳐
 var member = (()=>{
 	return{
 		main : x=>{
-			document.getElementById('moveLogin').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
-				alert('클릭로그인 이벤트 체크!!');
-				router.move({context : x,
-					domain : 'member',
-					action : 'move',
-					page : 'login'});
-				//배열말고 JSON으로 만들어서 보냄
-			});
-			document.getElementById('moveAdd').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
-				alert('클릭조인 이벤트 체크!!');
-				router.move({context : x,
-					domain : 'member',
-					action : 'move',
-					page : 'add'});
-			});
+			switch (x.result) {
+			case 'success':
+				alert('회원가입성공');
+				break;
+			case 'fail':
+				alert('회원가입실패');
+				break;
+			default:
+				break;
+			}
+			service.moveHome(x.context);
+			service.moveLoginAdd(x.context);
+			switch (x.pageName) {
+			case 'login':
+				alert('service.loginFormSubmit(x) 호출');
+				service.loginFormSubmit(x);
+				break;
+			case 'add':
+				alert('service.addFormSubmit(x) 호출');
+				service.addFormSubmit(x);
+				break;
+			case 'remove':
+				alert('service.removeFormSubmit(x) 호출');
+				service.removeFormSubmit(x);
+				break;
+			case 'modify':
+				alert('service.modifyFormSubmit(x) 호출');
+				service.modifyFormSubmit(x);
+				break;
+			default://retrieve
+				alert('service.moveRemoveModify(x) 호출');
+				service.moveRemoveModify(x.context);
+				break;
+			}
 		}
 	};
 })();
@@ -36,37 +54,17 @@ var common = (()=>{
 		main : x=>{
 			document.getElementById('moveAdminMain').addEventListener('click',()=>{//콜백함수(연이어서 호출되는 함수)
 				alert('클릭어드민메인 이벤트 체크!!');
-				var isAdmin = confirm('관리자입니까?');//confirm은 window의 객체이다. window.confirm 
-				if(isAdmin){
-					var password = prompt('관리자비번을 입력바랍니다.');//BOM의 메소드
-					if(password == 1){
-						router.move({
-							context : x,
-							domain : 'admin',
-							action : 'search',
-							page : 'main'});
+					if(prompt('관리자비번을 입력바랍니다.') === x.adminPass){
+						alert('확인되었습니다.');
+						location.href = x.context+"/admin.do?action=search";
+					}else{
+						alert('비밀번호가 틀렸습니다.');
 					}
-				}else{
-					alert('관리자만 접근이 허용됩니다.');
-				}
 				
 			});
+			service.moveHome(x.context);
+			service.moveLoginAdd(x.context);
 			
-			document.getElementById('moveLogin').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
-				alert('클릭로그인 이벤트 체크!!');
-				router.move({context : x,
-					domain : 'member',
-					action : 'move',
-					page : 'login'});
-				//배열말고 JSON으로 만들어서 보냄
-			});
-			document.getElementById('moveAdd').addEventListener('click',function() {//콜백함수(연이어서 호출되는 함수)
-				alert('클릭조인 이벤트 체크!!');
-				router.move({context : x,
-					domain : 'member',
-					action : 'move',
-					page : 'add'});
-			});
 		}
 	};
 })();
@@ -74,63 +72,68 @@ var common = (()=>{
 var admin = (()=>{
 	return {
 		main : x=>{
-			service.addClass(
-					document.getElementById('searchBox'),
-					'width80pt center'
-				);
+			switch (x.pageName) {
+			case 'search':
 				service.addClass(
-						document.getElementById('searchWord'),
-						'width100px floatRight'
-				);
-				service.addClass(
-						document.getElementById('searchOption'),
-						'floatRight '
-				);
-				service.addClass(
-						document.getElementById('searchBtn'),
-						'floatRight '
-				); 
-				service.addClass(
-						document.getElementById('contentBoxTab'),
-						'width90pt center marginTop30px '
-				);
-				service.addClass(
-						document.getElementById('contentBoxMeta'),
-						'bgColorisYellow '
-				);
+						document.getElementById('searchBox'),
+						'width80pt center'
+					);
+					service.addClass(
+							document.getElementById('searchWord'),
+							'width100px floatRight'
+					);
+					service.addClass(
+							document.getElementById('searchOption'),
+							'floatRight'
+					);
+					service.addClass(
+							document.getElementById('searchBtn'),
+							'floatRight'
+					); 
+					service.addClass(
+							document.getElementById('contentBoxTab'),
+							'width90pt center marginTop30px'
+					);
+					service.addClass(
+							document.getElementById('contentBoxMeta'),
+							'bgColorisYellow'
+					);
 
-				document.getElementById('searchBtn').addEventListener('click',()=>{
-					alert('안녕 친구들~');
-					var so = document.getElementById('searchOption');
-					var sw = document.getElementById('searchWord');
-					alert('so.value : '+ so.value);
-					alert('sw.value : '+sw.value);
-					location.href =  x+'/admin.do?action=search&searchOption='+so.value +'&searchWord='+sw.value;
-				});
-				
-				for(var i of document.querySelectorAll('.pageNum')){
-					service.addClass(
-							i,
-							'cursor '
-					);
-					i.addEventListener('click',function(){ //this 있는 녀석은 ()=>이 불가능함
-						alert('pageNum 클릭 : '+this.getAttribute('id'));
-						location.href = x+"/admin.do?action=search&pageNum="+this.getAttribute('id');
+					document.getElementById('searchBtn').addEventListener('click',()=>{
+						alert('searchBtn 클릭!');
+						var so = document.getElementById('searchOption');
+						var sw = document.getElementById('searchWord');
+						alert('so.value : '+ so.value);
+						alert('sw.value : '+sw.value);
+						location.href =  x.context+'/admin.do?action=search&searchOption='+so.value +'&searchWord='+sw.value;
 					});
-				}
-				
-				for(var i of document.querySelectorAll('.username')){
-					service.addClass(
-							i,
-							'cursor fontColorBlue'
-					);
-					i.addEventListener('click',function(){
-						alert('username 클릭 : '+this.getAttribute('id')); // 콜백함수 내부의 이때의 this는 이 function을 호출한 x[i]객체를 가리킨다.
-															//이파이패턴 내부 세터에서의 this와는 다르다 이때는 this가 자바와 똑같이 현재 클래스를 가리킨다. 
-															//js에선 클래스가 없으니 function이라고 생각하면 될 듯
-						location.href = x+"/admin.do?action=retrieve&user_id="+this.getAttribute('id');
-					}); 
-				}
+					
+					for(var i of document.querySelectorAll('.pageNum')){
+						service.addClass(
+								i,
+								'cursor '
+						);
+						i.addEventListener('click',function(){ //this 있는 녀석은 ()=>이 불가능함
+							alert('pageNum 클릭 : '+this.getAttribute('id'));
+							location.href = x.context+"/admin.do?action=search&pageNum="+this.getAttribute('id');
+						});
+					}
+					
+					for(var i of document.querySelectorAll('.username')){
+						service.addClass(
+								i,
+								'cursor fontColorBlue'
+						);
+						i.addEventListener('click',function(){
+							alert('username 클릭 : '+this.getAttribute('id')); 
+							location.href = x.context+"/member.do?action=retrieve&userId="+this.getAttribute('id');
+						}); 
+					}
+				break;
+			default:
+				break;
+			}
+
 		}
 	};})();
 
@@ -171,13 +174,154 @@ var service = (()=>{
 			},
 		addClass : (dom,cName) =>{
 			var arr = cName.split(" "); //cName에서 공백으로 토큰을 만든다.
-			//alert("dom : " + dom);
-			//alert("cName : " + cName);
-			//dom.className += " " +cName;
-			//alert("끝!");
-			if(arr.indexOf(cName) == -1){
+			dom.className += " " +cName;
+			/*if(arr.indexOf(cName) == -1){
 				dom.className += " " +cName;
+			}*/
+		},
+		moveHome : x=>{
+			document.getElementById('moveCommonMain').addEventListener('click',()=>{
+				alert('서비스무브홈 내부 클릭커먼메인 : ' + x+"/common.do");
+				location.href = x+"/common.do";
+			});
+		},
+		moveLoginAdd : x=>{
+			document.getElementById('moveLogin').addEventListener('click',()=>{//콜백함수(연이어서 호출되는 함수)
+				alert('서비스moveLogin ');
+				location.href = x+"/member.do?action=move&page=login";
+			});
+			document.getElementById('moveAdd').addEventListener('click',()=>{//콜백함수(연이어서 호출되는 함수)
+				alert('서비스moveAdd ');
+				location.href = x+"/member.do?action=move&page=add";
+			});
+		},
+		moveRemoveModify : x=>{
+			document.getElementById('myPageMoveToModify').addEventListener('click',
+					()=> {
+						alert('서비스무브모디파이 ');
+						location.href = x+"/member.do?action=move&page=modify";
+					});
+	
+			document.getElementById('myPageMoveToRemove').addEventListener('click',
+					()=> {
+						alert('서비스무브리무브 ');
+						location.href = x+"/member.do?action=move&page=remove";
+					});
+		},
+		loginFormSubmit : x=>{
+			document.getElementById('loginFormBtn').addEventListener('click',()=>{
+				alert('login폼 전송버튼 클릭 내부 pageName : '+x.pageName);
+				var form = document.getElementById('user-login-form');
+				var y = service.nullChecker([form.userId.value,form.userPass.value]);
+				if(y.checker){
+					form.action = x.context+"/member.do"; /* 이렇게하면 action은 어트리뷰트->프로퍼티로 바뀌고 값을 바꿀수있게된다. */
+					form.method = "post";
+					var node = document.createElement('input');
+					node.setAttribute('type','hidden');
+					node.setAttribute('name','action');
+					node.setAttribute('value',x.pageName);
+					//node.innerHTML = '<input type="hidden" name="action" value="login" />';
+					form.appendChild(node);
+					form.submit();
+				}else{
+					alert(y.text);
+				}
+			});
+		},
+		addFormSubmit : x=>{
+			document.getElementById('addFormBtn').addEventListener('click',()=>{
+				alert('ADD폼 전송버튼 클릭 내부 pageName : '+x.pageName);
+				var form = document.getElementById('user-join-form');
+				var y = service.nullChecker([form.userId.value,form.userPass.value,form.name.value,form.ssn.value]);
+				if(y.checker){
+					form.action = x.context+"/member.do"; /* 이렇게하면 action은 어트리뷰트->프로퍼티로 바뀌고 값을 바꿀수있게된다. */
+					form.method = "post";
+					mem.join([form.userId.value,form.userPass.value,form.name.value,form.ssn.value]);
+					var arr = [{name : "action" , 
+								value : x.pageName} ,
+							   {name : "gender" , 
+								value : mem.getGender()},
+							   {name : "age" , 
+								value : mem.getAge()}];
+					var i=0;
+					for(i in arr){
+						var node = document.createElement('input');
+						node.setAttribute('type','hidden');
+						node.setAttribute('name',arr[i].name);
+						node.setAttribute('value',arr[i].value);
+						alert('arr[i].name : ' + arr[i].name );
+						alert('arr[i].value : ' + arr[i].value );
+						form.appendChild(node);
+					}
+					
+					/* node.innerHTML =   fm적인 방법
+					'<input type="hidden" name="action" value="join" />'
+					+ '<input type="hidden" name="page" value= "joinResult"/>'
+					+ '<input type="hidden" name="gender" value= ' + mem.getGender()+ '/>'
+					+ '<input type="hidden" name="age" value= ' + mem.getAge()+ '/>'; */
+					form.submit();
+				}else{
+					alert(y.text);
+				}
+			})
+		},
+		removeFormSubmit : x=>{
+			var form = document.getElementById('user-delete-form'); //폼은 이제 객체
+			
+			 document.getElementById('removeFormBtn').addEventListener('click',()=>{
+					alert('removeFormBtn 클릭 내부 user : '+ x.userPass);
+					var password = form.userPass.value;
+					var y = service.passChecker({pass : x.userPass,
+												 newPass : password	});
+					if(y.checker){
+						form.action = x.context+"/member.do";
+						form.method = "post";
+						var node = document.createElement('input');
+						node.setAttribute('type','hidden');
+						node.setAttribute('name','action');
+						node.setAttribute('value',x.pageName);
+						form.appendChild(node); 
+						form.submit();
+					}else{
+						alert(y.text);
+					}
+				}); 
+		},
+		modifyFormSubmit : x=>{
+			var form = document.getElementById('modify-form'); 
+			var team = document.getElementById('teamId');
+			for(var i=0;i<team.options.length;i++){
+				if(team.options[i].value=== x.teamId){
+					alert('userteamid : ' + x.teamId);
+					team.options[i].setAttribute("selected","selected");
+				}
 			}
+			alert('form.teamid : '+form.teamId.value + 'form.roll : ' + form.roll.value);
+
+			var roll = document.getElementById('roll');
+			for(var i=0;i<roll.options.length;i++){
+				if(roll.options[i].value===x.roll){
+					alert('--userRoll : ' + x.roll);
+					roll.options[i].setAttribute("selected","selected");
+				}
+			}
+
+			document.getElementById('modifyConfirmBtn').addEventListener('click',()=>{
+				alert('modifyConfirmBtn 클릭!!');
+				var y = service.nullChecker([form.userPass.value]);
+				if(y.checker){
+				form.action = x.context+"/member.do";
+				form.method = "get";
+				var node = document.createElement('input');
+				node.setAttribute('type','hidden');
+				node.setAttribute('name','action');
+				node.setAttribute('value',x.pageName);
+				form.appendChild(node); 
+				form.submit();
+				}else{
+				alert(y.text);
+				}
+				});
 		}
 	  };
 })();
