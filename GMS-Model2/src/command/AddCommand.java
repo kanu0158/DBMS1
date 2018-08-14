@@ -3,6 +3,8 @@ package command;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import enums.Domain;
+import proxy.ParamMap;
+import proxy.Proxy;
 import service.MemberServiceImpl;
 
 public class AddCommand extends Command {
@@ -17,7 +19,7 @@ public class AddCommand extends Command {
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("회원가입에 들어옴!!");
-			Map<String, String> param = new HashMap<>();
+			Map<String, Object> param = new HashMap<>();
 			param.put("userId", request.getParameter("userId"));
 			param.put("userPass", request.getParameter("userPass"));
 			param.put("name", request.getParameter("name"));
@@ -26,8 +28,15 @@ public class AddCommand extends Command {
 			param.put("gender", request.getParameter("gender"));
 			param.put("teamId", request.getParameter("teamId"));
 			param.put("roll", request.getParameter("roll"));
-			param.put("subject", ParamMap.getValues(request, "subject"));
-			
+			param.put("proxy", "checkBox");
+			param.put("request", request);
+			param.put("checkName", "subject");
+			Proxy pxy = new Proxy();
+			pxy.carryOut(param);
+			param.put("subject", pxy.getParamMap().getText());
+			System.out.println("============== subject : " + param.get("subject"));
+			param.put("domain", Domain.MEMBER.toString());
+			System.out.println("domain : " + param.get("domain"));
 			MemberServiceImpl.getInstance().add(param);
 			if(MemberServiceImpl.getInstance().login(param)) {
 				request.setAttribute("pageName", "login");
@@ -39,8 +48,6 @@ public class AddCommand extends Command {
 				System.out.println("회원가입실패!!");
 			}
 			break;
-			default:
-				break;
 		}
 		super.execute();
 	}

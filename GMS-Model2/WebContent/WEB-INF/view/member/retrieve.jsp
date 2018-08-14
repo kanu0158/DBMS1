@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div id="content">
-	<h1>retrieve page 진입</h1>
+	<h1>retrieve page 진입 ${img}${profile} </h1>
 	<div>
 		<table id="mypage-table">
-			<tr>
-				<td rowspan="3"><img src="${img}/home/bugs.PNG" alt="" /></td>
+			<tr><!-- home/bugs.PNG -->
+				<td rowspan="3"><img src="${img}${profile}" alt="" /></td>
 				<td>ID</td>
 				<td colspan="2">${user.userId}</td>
 			</tr>

@@ -30,6 +30,8 @@ public class CommonController extends HttpServlet { // 메인페이지로 보내
 		}
 		request.getSession()
 			.setAttribute("adminPass", "1");
+		request.getSession().removeAttribute("searchOption");
+		System.out.println("==============request.getSession().removeAttribute(searchOption)===========");
 		String servletPath = request.getServletPath();
 		System.out.println("common 컨트롤러 내부 servletPath : "+servletPath);
 		System.out.println("common 컨트롤러 내부 servletPath.substring : "+request.getServletPath().substring(0, request.getServletPath().indexOf(".")));

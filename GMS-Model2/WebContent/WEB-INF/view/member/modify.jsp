@@ -4,7 +4,7 @@
 <form id="modify-form">
 <table id="retrieve-table">
 	<tr>
-		<td rowspan="3"><img src="${img}/home/bugs.PNG" alt="" /> </td>
+		<td rowspan="3"><img src="${img}${profile}" alt="" /> </td>
 		<td>ID</td>
 		<td colspan="2">${user.userId}</td>
 	</tr>
@@ -47,7 +47,7 @@
 </form>
 </div>
 </div> <!-- content end -->
-<form method="POST" enctype="multipart/form-data" action="${context}/member.do?action=fileUpload">
+<form method="POST" enctype="multipart/form-data" action="${context}/member.do?action=fileUpload&userId=${user.userId}">
     파일업로드: <input type="file" name="upfile"><br/>
   <input type="submit" value="파일업로드">
 </form>

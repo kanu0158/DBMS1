@@ -42,7 +42,7 @@ var member = (()=>{
 				break;
 			default://retrieve
 				alert('service.moveRemoveModify(x) 호출');
-				service.moveRemoveModify(x.context);
+				service.moveRemoveModify(x);
 				break;
 			}
 		}
@@ -199,13 +199,13 @@ var service = (()=>{
 			document.getElementById('myPageMoveToModify').addEventListener('click',
 					()=> {
 						alert('서비스무브모디파이 ');
-						location.href = x+"/member.do?action=move&page=modify";
+						location.href = x.context+"/member.do?action=move&page=modify&userId="+x.userId;
 					});
 	
 			document.getElementById('myPageMoveToRemove').addEventListener('click',
 					()=> {
 						alert('서비스무브리무브 ');
-						location.href = x+"/member.do?action=move&page=remove";
+						location.href = x.context+"/member.do?action=move&page=remove";
 					});
 		},
 		loginFormSubmit : x=>{

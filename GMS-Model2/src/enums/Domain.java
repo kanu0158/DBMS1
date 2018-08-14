@@ -1,7 +1,7 @@
 package enums;
 
 public enum Domain {
-	MEMBER, USER, EXAM, PROJECTTEAM, RECORD, SUBJECT;
+	MEMBER, USER, EXAM, PROJECTTEAM, RECORD, SUBJECT, IMAGE;
 	@Override
 	public String toString() {
 		String domain = "";
@@ -23,6 +23,9 @@ public enum Domain {
 			break;
 		case SUBJECT:
 			domain = "subject";
+			break;
+		case IMAGE:
+			domain = "image";
 			break;
 		}
 		return domain;

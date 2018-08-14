@@ -1,7 +1,7 @@
 package enums;
 
 public enum Term {
-	CONTEXT, WEBPATH, MAIN, MATCH, LIST, TEAM, ISID, NAME,COUNT,PAGENUM;
+	CONTEXT, WEBPATH, MAIN, MATCH, LIST, TEAM, ISID, NAME,COUNT,PAGENUM,UPLOAD_PATH;
 	
 	@Override
 	public String toString() {
@@ -36,6 +36,9 @@ public enum Term {
 			break;
 		case NAME:
 			term = "name";
+			break;
+		case UPLOAD_PATH:
+			term = "C:\\Users\\1027\\eclipse\\jee-oxygen\\eclipse\\JeeWorkspace\\GMS-Model2\\WebContent\\resources\\img\\upload\\";
 			break;
 		}
 		return term;

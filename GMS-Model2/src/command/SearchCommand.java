@@ -18,22 +18,22 @@ public class SearchCommand extends Command {
 	public void execute() {
 		System.out.println("=========== SearchCommand execute 내부 ==========");
 		request.setAttribute("pageName", "search");
-		Map<String,String> param = new HashMap<>();
-		PageProxy pxy = new PageProxy();
-		
+		Map<String,Object> param = new HashMap<>();
+		Proxy pxy = new Proxy();
 		if(request.getParameter("searchOption")!=null) {
 			System.out.println("========= searchCommand searchOption 있을때(조건검색) 체크 ==========");
 				request.getSession().setAttribute("searchOption", request.getParameter("searchOption"));
 				request.getSession().setAttribute("searchWord", request.getParameter("searchWord"));
-				param.put("column", (String) request.getSession().getAttribute("searchOption"));
-				param.put("columnValue", (String) request.getSession().getAttribute("searchWord"));
+				param.put("column", request.getSession().getAttribute("searchOption"));
+				param.put("columnValue", request.getSession().getAttribute("searchWord"));
 		}else if(request.getSession().getAttribute("searchOption") != null) {
 			System.out.println("========= searchCommand 조건검색하고 페이지넘버누를때  ==========");
-			param.put("column", (String) request.getSession().getAttribute("searchOption"));
-			param.put("columnValue", (String) request.getSession().getAttribute("searchWord"));
+			param.put("column", request.getSession().getAttribute("searchOption"));
+			param.put("columnValue", request.getSession().getAttribute("searchWord"));
 		}
 		
 		param.put("pageNum", (request.getParameter("pageNum")==null)?"1":request.getParameter("pageNum"));
+		param.put("proxy", "pagination");
 		pxy.carryOut(param);
 		Pagination page = pxy.getPagination();
 		String[] arr1 = {"domain","beginRow","endRow"};

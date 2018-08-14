@@ -11,7 +11,9 @@ INSERT,
 LIST,SEARCH,RETRIEVE,COUNT,COUNT_SOME,
 UPDATE,
 DELETE,
-LOGIN
+LOGIN,
+IMG_INSERT,
+IMG_RETRIEVE
 ;
 @Override
 public String toString() {
@@ -72,6 +74,22 @@ public String toString() {
 			     + "   MEMBER   "
 			    + "   WHERE    " 
 			     + "   USERID LIKE ? AND PASSWORD LIKE ?  ";
+		break;
+	case IMG_INSERT:
+		query = " INSERT INTO IMAGE  "
+				+ " ( "
+				+ " IMG_SEQ,IMGNAME,EXTENSION,USERID "
+				+ " ) "
+				+ " VALUES "
+				+ " (  IMG_SEQ.NEXTVAL, ?, ?, ? ) ";
+		break;
+	case IMG_RETRIEVE:
+		query = " SELECT"
+				+ " IMG_SEQ, IMGNAME, EXTENSION, USERID "
+				+ " FROM "
+				+ "  IMAGE  "
+				+ " WHERE  "
+				+ " USERID LIKE ? ";
 		break;
 	}
 	return query;

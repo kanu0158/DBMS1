@@ -6,7 +6,7 @@ import lombok.Data;
 import service.MemberServiceImpl;
 
 @Data
-public class Pagination implements Proxy {
+public class Pagination implements Capable {
 	private int pageNum, pageSize, blockSize, 
 		count, pageCount, blockCount, 
 		beginRow, endRow, beginPage, 
