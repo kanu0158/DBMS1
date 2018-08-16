@@ -37,6 +37,10 @@ public class Commander {
 			System.out.println("3.커맨더 LOGIN진입");
 			cmd = new LoginCommand(request);
 			break;
+		case LOGOUT:
+			System.out.println("3.커맨더 LOGOUT진입");
+			cmd = new LogoutCommand(request);
+			break;
 		case FILEUPLOAD:
 			System.out.println("3.커맨더 FILE_UPLOAD진입");
 			cmd = new FileCommand(request);

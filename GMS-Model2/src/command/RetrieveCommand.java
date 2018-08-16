@@ -33,8 +33,8 @@ public class RetrieveCommand extends Command {
 		System.out.println("ImagePath 프록시 호출 전 proxy : " + param.get("proxy"));
 		Proxy pxy = new Proxy();
 		pxy.carryOut(param);
-		request.setAttribute("profile", pxy.getImagePath().getImgPath());
-		System.out.println("profile : " + request.getAttribute("profile"));
+		request.getSession().setAttribute("profile", pxy.getImagePath().getImgPath());
+		System.out.println("profile : " + request.getSession().getAttribute("profile"));
 		
 		System.out.println("RetrieveCommand excute내부 member : "+ request.getSession().getAttribute("user"));
 		super.execute();

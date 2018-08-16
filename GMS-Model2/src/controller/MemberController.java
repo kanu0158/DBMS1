@@ -66,6 +66,10 @@ public class MemberController extends HttpServlet {
 			System.out.println("6.LOGIN안으로 진입");
 			Carrier.forward(request, response);
 			break;
+		case LOGOUT:
+			System.out.println("6.LOGOUT안으로 진입");
+			Carrier.redirect(request, response, "");
+			break;
 		case MOVE:
 			System.out.println("6.move안으로 진입");
 			Carrier.forward(request, response); // form 이동 담당

@@ -40,14 +40,14 @@ public class ModifyCommand extends Command {
 			request.setAttribute("pageName", "retrieve");
 			System.out.println("ModifyCommand내부 변경 후 세션값:"+request.getSession().getAttribute("user"));
 			
-			System.out.println("getParameter(userId) : "+param.get("userId"));
+			/*System.out.println("getParameter(userId) : "+param.get("userId"));
 			param.put("proxy", "imgPath");
 			System.out.println("ImagePath 프록시 호출 전 proxy : " + param.get("proxy"));
 			Proxy pxy = new Proxy();
 			pxy.carryOut(param);
 			request.setAttribute("profile", pxy.getImagePath().getImgPath());
 			System.out.println("profile : " + request.getAttribute("profile"));
-			
+*/			
 			break;
 
 		default:

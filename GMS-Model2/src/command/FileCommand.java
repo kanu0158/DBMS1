@@ -74,7 +74,7 @@ public class FileCommand extends Command{
 						System.out.println("6-6-1 controller img : "+img);
 						String imgPath = "/upload/"+img;
 						System.out.println("imgPath : " + imgPath);
-						request.setAttribute("profile", imgPath);
+						request.getSession().setAttribute("profile", imgPath);
 						System.out.println("request.getAttri(profile) : " + request.getAttribute("profile"));
 					}else {
 						System.out.println("6-6.파일업로드 실패");

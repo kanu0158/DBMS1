@@ -22,7 +22,7 @@ public class ImageDAOImpl implements ImageDAO{
 		System.out.println("ImageDAOImpl selectOne메소드 내부");
 		q = new RetrieveQuery();
 		q.play(param);
-		return (ImageBean) q.getList().get(0);
+		return (q.getList().isEmpty() == true)?null:(ImageBean) q.getList().get(0);
 	}
 
 }

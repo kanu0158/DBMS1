@@ -73,13 +73,16 @@ public class RetrieveQuery extends QueryTemplate{
 					list.add(imb);
 				}
 				if(imb == null) {
+					System.out.println("리트리브 쿼리 내부 기본이미지 출력~!================");
+				}
+				/*if(imb == null) {
 					imb = new ImageBean();
 					imb.setExtension("jpg");
 					imb.setImgName("turtle");
 					imb.setImgSeq("1024");
 					imb.setUserId("admin");
 					list.add(imb);
-				}
+				}*/
 				System.out.println("RetrieveQuery endPlay 내부 list : " + list);
 			} catch (Exception e) {e.printStackTrace();}
 			break;

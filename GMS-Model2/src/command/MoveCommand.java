@@ -23,7 +23,7 @@ public class MoveCommand extends Command{
 		System.out.println("=========move command excute 내부========");
 		request.setAttribute("pageName", request.getParameter("page"));
 		System.out.println("pageName : " + request.getAttribute("pageName"));
-		if(request.getAttribute("pageName").equals("modify")) {
+		/*if(request.getAttribute("pageName").equals("modify")) {
 			Map<String , Object> param = new HashMap<>();
 			param.put("userId", request.getParameter("userId"));
 			System.out.println("getParameter(userId) : "+request.getParameter("userId"));
@@ -33,6 +33,6 @@ public class MoveCommand extends Command{
 			pxy.carryOut(param);
 			request.setAttribute("profile", pxy.getImagePath().getImgPath());
 			System.out.println("profile : " + request.getAttribute("profile"));
-		}
+		}*/
 	}
 }

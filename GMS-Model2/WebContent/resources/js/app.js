@@ -39,10 +39,19 @@ var member = (()=>{
 			case 'modify':
 				alert('service.modifyFormSubmit(x) 호출');
 				service.modifyFormSubmit(x);
+				service.addClass(
+						document.getElementById('img'),
+						'width50pt height50pt'
+					);
 				break;
 			default://retrieve
 				alert('service.moveRemoveModify(x) 호출');
 				service.moveRemoveModify(x);
+				service.moveLogout(x);
+				service.addClass(
+						document.getElementById('img'),
+						'width50pt height50pt'
+					);
 				break;
 			}
 		}
@@ -98,37 +107,12 @@ var admin = (()=>{
 							document.getElementById('contentBoxMeta'),
 							'bgColorisYellow'
 					);
-
-					document.getElementById('searchBtn').addEventListener('click',()=>{
-						alert('searchBtn 클릭!');
-						var so = document.getElementById('searchOption');
-						var sw = document.getElementById('searchWord');
-						alert('so.value : '+ so.value);
-						alert('sw.value : '+sw.value);
-						location.href =  x.context+'/admin.do?action=search&searchOption='+so.value +'&searchWord='+sw.value;
-					});
 					
-					for(var i of document.querySelectorAll('.pageNum')){
-						service.addClass(
-								i,
-								'cursor '
-						);
-						i.addEventListener('click',function(){ //this 있는 녀석은 ()=>이 불가능함
-							alert('pageNum 클릭 : '+this.getAttribute('id'));
-							location.href = x.context+"/admin.do?action=search&pageNum="+this.getAttribute('id');
-						});
-					}
+					service.searchBtnSubmit(x);
+					service.movePageNum(x);
+					service.moveRetrieve(x);
+					service.moveHome(x.context);
 					
-					for(var i of document.querySelectorAll('.username')){
-						service.addClass(
-								i,
-								'cursor fontColorBlue'
-						);
-						i.addEventListener('click',function(){
-							alert('username 클릭 : '+this.getAttribute('id')); 
-							location.href = x.context+"/member.do?action=retrieve&userId="+this.getAttribute('id');
-						}); 
-					}
 				break;
 			default:
 				break;
@@ -208,6 +192,48 @@ var service = (()=>{
 						location.href = x.context+"/member.do?action=move&page=remove";
 					});
 		},
+		moveLogout : x=>{
+			document.getElementById('logoutBtn').addEventListener('click',()=>{
+				alert('서비스 무브로그아웃 logout버튼 클릭  : ');
+				location.href = x.context+"/member.do?action=logout";
+			})
+		},
+		movePageNum : x=>{
+			for(var i of document.querySelectorAll('.pageNum')){
+				service.addClass(
+						i,
+						'cursor '
+				);
+				i.addEventListener('click',function(){ //this 있는 녀석은 ()=>이 불가능함
+					alert('pageNum 클릭 : '+this.getAttribute('id'));
+					location.href = x.context+"/admin.do?action=search&pageNum="+this.getAttribute('id');
+				});
+			}
+		},
+		moveRetrieve : x=>{
+			for(var i of document.querySelectorAll('.username')){
+				service.addClass(
+						i,
+						'cursor fontColorBlue'
+				);
+				i.addEventListener('click',function(){
+					alert('username 클릭 : '+this.getAttribute('id')); 
+					location.href = x.context+"/member.do?action=retrieve&userId="+this.getAttribute('id');
+				}); 
+			}
+		}
+		,
+		searchBtnSubmit : x=>{
+			document.getElementById('searchBtn').addEventListener('click',()=>{
+				alert('searchBtn 클릭!');
+				var so = document.getElementById('searchOption');
+				var sw = document.getElementById('searchWord');
+				alert('so.value : '+ so.value);
+				alert('sw.value : '+sw.value);
+				location.href =  x.context+'/admin.do?action=search&searchOption='+so.value +'&searchWord='+sw.value;
+			});
+		}
+		,
 		loginFormSubmit : x=>{
 			document.getElementById('loginFormBtn').addEventListener('click',()=>{
 				alert('login폼 전송버튼 클릭 내부 pageName : '+x.pageName);

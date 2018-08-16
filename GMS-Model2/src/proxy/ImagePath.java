@@ -20,10 +20,19 @@ public class ImagePath implements Capable{//체크박스를 가져오는 유틸
 		map.put("domain", Domain.IMAGE.toString());
 		System.out.println("ImagePath 프록시 retrieve 호출 전 domain : " + param.get("domain"));
 		ImageBean imgBean = ImageServiceImpl.getInstance().retrieve(map);
-		System.out.println("ImagePath 프록시 imgBean : " + imgBean);
-		String img = imgBean.getImgName()+"."+imgBean.getExtension();
-		System.out.println("img : "+img);
-		imgPath = "/upload/"+img;
-		System.out.println("imgPath : " + imgPath);
+		String img = "";
+		if(imgBean == null) {
+			System.out.println("저장된 프로필 이미지가 없음");
+			img = "turtle.jpg";
+			imgPath = "/upload/"+img;
+			System.out.println("imgPath : "+imgPath);
+		}else {
+			System.out.println("저장된 프로필 이미지가 있음");
+			System.out.println("ImagePath 프록시 imgBean : " + imgBean);
+			img = imgBean.getImgName()+"."+imgBean.getExtension();
+			System.out.println("img : "+img);
+			imgPath = "/upload/"+img;
+			System.out.println("imgPath : " + imgPath);
+		}
 	}
 }

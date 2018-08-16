@@ -114,6 +114,8 @@ table,th,td {border: 1px solid gray}
  .width100pt{width:100%}
  .width90pt{width:90%}
  .width80pt{width:80%}
+ .width50pt{width:50%}
+ .height50pt{height:50%}
  .fontColorBlue{color:blue}
  .cursor{cursor:pointer}
  .marginTop30px{margin-top: 30px}

@@ -5,7 +5,7 @@
 	<div>
 		<table id="mypage-table">
 			<tr><!-- home/bugs.PNG -->
-				<td rowspan="3"><img src="${img}${profile}" alt="" /></td>
+				<td rowspan="3"><img id="img" src="${img}${profile}" alt="" /></td>
 				<td>ID</td>
 				<td colspan="2">${user.userId}</td>
 			</tr>
@@ -32,7 +32,7 @@
 		</table>
 	</div>
 	<div>
-		<a><button>로그아웃</button></a> <a id="myPageMoveToModify"><button>정보수정</button></a>
+		<a id="logoutBtn"><button>로그아웃</button></a> <a id="myPageMoveToModify"><button>정보수정</button></a>
 		<a id="myPageMoveToRemove"><button>계정탈퇴</button></a>
 	</div>
 
